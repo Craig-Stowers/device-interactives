@@ -1,0 +1,40 @@
+.app {
+   background-color: red;
+}
+
+.fullScreen {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100vw;
+   height: 100vh;
+   background-color: rgba(255, 0, 0, 0.5);
+   display: flex;
+   flex-direction: column;
+}
+
+.title {
+   background-color: rgba(0, 200, 0, 0.5);
+   padding: 20px;
+}
+
+.content {
+   display: flex;
+   flex-direction: row;
+   background-color: pink;
+   flex-grow: 1;
+}
+
+.animation {
+   width: 50%;
+}
+
+.panel {
+   background-color: yellow;
+   padding: 20px;
+}
+
+.foot-buttons {
+   background-color: blue;
+   padding: 20px;
+}
