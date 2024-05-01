@@ -1,0 +1,30 @@
+.Ring {
+   position: absolute;
+   transform: translate(-50%, -50%);
+   box-sizing: border-box;
+   cursor: pointer;
+   /* animation: pulse 3s infinite ease-in-out; */
+}
+
+.outline {
+   border: 6px solid var(--hotlink-purple);
+   border-radius: 50%;
+   position: absolute;
+   transform: translate(-50%, -50%);
+   box-sizing: border-box;
+   transition: width 0.2s, height 0.2s;
+}
+
+.Ring:hover .outline {
+   background-color: var(--hotlink-purple);
+}
+
+@keyframes pulse {
+   0%,
+   100% {
+      transform: scale(1); /* Circle at normal size */
+   }
+   50% {
+      transform: scale(1.3); /* Increase the size of the circle */
+   }
+}

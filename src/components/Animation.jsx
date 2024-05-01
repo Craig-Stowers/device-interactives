@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
-import useAnimationLoader from "./useAnimationLoader";
+
 import Lottie from "lottie-react";
+import withSizeObserver from "../hoc/withSizeObserver";
 
 const animationUrls = [
    "/animations/headphones.json",
@@ -9,13 +10,13 @@ const animationUrls = [
    "/animations/imac.json",
 ];
 
-export default function Animation() {
+const Animation = ({ size, settings }) => {
    //const { isLoading } = useAnimationLoader();
-   const [grow, setGrow] = React.useState(false);
+
    const [animationData, setAnimationData] = React.useState(null);
    const [loading, setLoading] = React.useState(true);
 
-   const [currAnimationIndex, setCurrAnimationIndex] = React.useState(0);
+   const link = settings.link.replace("./", "/");
 
    useEffect(() => {
       const controller = new AbortController();
@@ -23,7 +24,7 @@ export default function Animation() {
 
       setLoading(true);
 
-      fetch(animationUrls[currAnimationIndex])
+      fetch(link)
          .then((response) => response.json())
          .then((data) => {
             setAnimationData(data);
@@ -32,26 +33,42 @@ export default function Animation() {
          .catch((error) => console.error("Failed to load animation", error));
 
       return () => controller.abort();
-   }, [currAnimationIndex]);
+   }, [link]);
 
-   const nextAnimation = () => {
-      setCurrAnimationIndex((currAnimationIndex + 1) % animationUrls.length);
-   };
+   const animationRatio = 800 / 1080;
+   const containerRatio = size.width / size.height;
 
-   const handleGrow = () => {
-      setGrow(!grow);
-   };
+   let animationWidth;
+   let animationHeight;
+   let left = 0;
+   let top = 0;
+
+   if (containerRatio > animationRatio) {
+      animationWidth = size.width;
+      animationHeight = size.width / animationRatio;
+      top = (size.height - animationHeight) / 2;
+   } else {
+      animationHeight = size.height;
+      animationWidth = size.height * animationRatio;
+   }
+
+   console.log("animationHeight", animationHeight);
+   console.log("animationWidth", animationWidth);
 
    return (
-      <div>
-         <button onClick={nextAnimation}>TOGGLE</button>
-         <button onClick={handleGrow}>grow</button>
-         <div
-            style={{ marginLeft: "100px", width: grow ? "300px" : "600px", height: "580px", border: "1px solid red" }}
-         >
-            {!loading && <Lottie animationData={animationData} loop={true} />}
-            {loading && <div>loading...</div>}
-         </div>
+      <div
+         style={{
+            width: animationWidth + "px",
+            height: animationHeight + "px",
+            top: top + "px",
+            left: left + "px",
+            position: "absolute",
+         }}
+      >
+         {!loading && <Lottie animationData={animationData} loop={true} />}
+         {loading && <div>loading...</div>}
       </div>
    );
-}
+};
+
+export default withSizeObserver(Animation);

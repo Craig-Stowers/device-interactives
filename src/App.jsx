@@ -1,47 +1,62 @@
 import React, { useEffect, useState } from "react";
 import styles from "./App.module.css";
 import Animation from "./components/Animation";
+import useWindowSize from "./hooks/useWindowSize";
+import useURLSearchParams from "./hooks/useURLSearchParams";
+import TextPanel from "./components/TextPanel";
+import { animationsObject, panelContent } from "./data/imac.js";
+import HotSpot from "./components/HotSpot.jsx";
 
 function App() {
-   const [removeWrapper, setRemoveWrapper] = useState(getWrapperValue());
+   const [width, height] = useWindowSize();
+   const [topicIndex, setTopicIndex] = useState(0);
+   const [chapterIndex, setChapterIndex] = useState(0);
+   const [screen, setScreen] = useState("home");
 
-   // Helper function to parse query and return 'wrapper' parameter
-   function getWrapperValue() {
-      const query = new URLSearchParams(window.location.search);
-      return query.get("removewrapper") === "true"; // Assuming 'wrapper' is either 'true' or not set
-   }
+   const vertical = width / height < 1;
 
-   useEffect(() => {
-      // Handles URL change from browser navigation or manual change
-      const handleLocationChange = () => {
-         setRemoveWrapper(getWrapperValue());
-      };
+   const removeWrapper = useURLSearchParams("removewrapper") === "true";
 
-      window.addEventListener("popstate", handleLocationChange);
-      window.addEventListener("load", handleLocationChange); // Handle initial load
+   const handleChapterChange = (i) => {
+      setChapterIndex(i);
+   };
 
-      return () => {
-         window.removeEventListener("popstate", handleLocationChange);
-         window.removeEventListener("load", handleLocationChange);
-      };
-   }, []);
+   const newPanelContent = Object.entries(panelContent).map(([key, value]) => ({ key, ...value }));
+   const currContent = newPanelContent[topicIndex];
 
-   console.log("removeWrapper", removeWrapper);
+   const title = currContent.title[chapterIndex] || currContent.title[0];
+   const text = currContent.content[chapterIndex];
+
+   console.log("newPanelContent", newPanelContent);
+   const animation = animationsObject[currContent.key][chapterIndex];
 
    return (
-      <div className={styles.app}>
+      <div className={`${styles.app} ${vertical ? "vertical" : "horizontal"}`}>
          <div className={styles.fullScreen}>
             {!removeWrapper && <div className={styles.title}>title here</div>}
             <div className={styles.content}>
-               <div className={styles.animation}>
-                  <Animation />
-               </div>
+               {screen === "info" && (
+                  <>
+                     <div className={styles.animationContainer}>
+                        <Animation settings={animation} />
+                     </div>
+                     <div className={styles.textPanelContainer}>
+                        <TextPanel
+                           onChapterChange={handleChapterChange}
+                           content={newPanelContent[chapterIndex]}
+                           title={title}
+                           text={text}
+                           chapterIndex={chapterIndex}
+                           buttonCount={currContent.content.length}
+                        />
+                     </div>
+                  </>
+               )}
 
-               <div className={styles.panel}>panel here</div>
+               {screen === "home" && <HotSpot />}
             </div>
 
             <div className={styles.footer}>
-               footer here{" "}
                <a href="?removewrapper=true" target="_blank">
                   FULL SCREEN
                </a>

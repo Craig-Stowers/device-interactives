@@ -1,5 +1,4 @@
 .app {
-   background-color: red;
 }
 
 .fullScreen {
@@ -8,33 +7,65 @@
    left: 0;
    width: 100vw;
    height: 100vh;
-   background-color: rgba(255, 0, 0, 0.5);
+   background-color: var(--white-background);
    display: flex;
    flex-direction: column;
+   padding-left: 30px;
+   padding-right: 30px;
+   box-sizing: border-box;
 }
 
 .title {
-   background-color: rgba(0, 200, 0, 0.5);
    padding: 20px;
 }
 
 .content {
    display: flex;
    flex-direction: row;
-   background-color: pink;
+   background-color: var(--background);
    flex-grow: 1;
 }
 
-.animation {
-   width: 50%;
+.animationContainer {
+   width: 60%;
+   overflow: hidden;
 }
 
-.panel {
-   background-color: yellow;
-   padding: 20px;
+.textPanelContainer {
+   background-color: var(--white);
+   border: 1px solid rgba(0, 0, 0, 0.25);
+   width: 40%;
 }
 
-.foot-buttons {
-   background-color: blue;
-   padding: 20px;
+.footer {
+   padding: 30px;
+}
+
+:root {
+   font-synthesis: none;
+   text-rendering: optimizeLegibility;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+}
+
+:global(.vertical) {
+   .content {
+      flex-direction: column;
+   }
+
+   .textPanelContainer {
+      width: 100%;
+      height: 40%;
+   }
+
+   .animationContainer {
+      width: 100%;
+      height: 60%;
+   }
+}
+
+@media screen and (max-width: 600px) {
+   .fullScreen {
+      padding: 0;
+   }
 }

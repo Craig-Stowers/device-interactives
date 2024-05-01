@@ -1,0 +1,53 @@
+.ChapterButtons {
+   display: flex;
+   width: 100%;
+   height: 100%;
+}
+
+.arrow {
+   width: 20px;
+
+   font-size: 30px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-weight: bold;
+   font-size: 35px;
+   font-weight: 600;
+   cursor: pointer;
+   color: var(--button-purple);
+   transition: transform 0.1s, color 0.1s;
+   user-select: none;
+}
+.arrow:hover {
+   transform: scale(1.2);
+   color: green;
+}
+.buttons {
+   /* padding-left: 15px;
+   padding-right: 15px; */
+   flex-grow: 1;
+   width: 80%;
+   display: flex;
+   /* justify-content: space-between; */
+   justify-content: space-around;
+   background-color: var(--white-hover);
+   border-radius: 15px;
+   margin-left: 10px;
+   margin-right: 10px;
+}
+
+.button {
+   border: none;
+
+   width: 25px;
+   height: 25px;
+   border-radius: 50%;
+
+   margin-bottom: auto;
+   margin-top: auto;
+}
+
+.button.active {
+   background-color: var(--button-purple);
+}
