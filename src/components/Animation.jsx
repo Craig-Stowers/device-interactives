@@ -47,7 +47,7 @@ export default function Animation() {
          <button onClick={nextAnimation}>TOGGLE</button>
          <button onClick={handleGrow}>grow</button>
          <div
-            style={{ marginLeft: "100px", width: grow ? "800px" : "600px", height: "1080px", border: "1px solid red" }}
+            style={{ marginLeft: "100px", width: grow ? "300px" : "600px", height: "580px", border: "1px solid red" }}
          >
             {!loading && <Lottie animationData={animationData} loop={true} />}
             {loading && <div>loading...</div>}
