@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useMemo } from "react";
 import styles from "./App.module.css";
+import basicStyles from "./styles/basic.module.css";
 import Animation from "./components/Animation";
 import useWindowSize from "./hooks/useWindowSize";
 import useURLSearchParams from "./hooks/useURLSearchParams";
 import TextPanel from "./components/TextPanel";
-import { animationsObject, panelContent, hotlinks, views } from "./data/imac.js";
+import { animationsObject, panelContent, hotlinks, views, deviceTitle } from "./data/imac.js";
 import HotSpot from "./components/HotSpot.jsx";
 import { BrowserView, MobileView, isBrowser, isMobile } from "react-device-detect";
 import backImage from "./images/device_back.svg";
@@ -32,12 +33,20 @@ function App() {
       setTopicId(id);
    };
 
+   const handleClose = () => {
+      setScreen("home");
+      setTopicId(null);
+      setSubTopicIndex(0);
+   };
+
    const { title, text, animation, subTopicCount } = useMemo(() => {
       let title = null;
       let text = null;
       let animation = null;
       let subTopicCount = null;
       if (!topicId) return { title, text, animation, subTopicCount };
+
+      console.log("calculating", topicId, subTopicIndex, panelContent[topicId]);
 
       const currContent = panelContent[topicId];
       title = currContent.title[subTopicIndex] || currContent?.title[0];
@@ -67,7 +76,7 @@ function App() {
          <div className={styles.fullScreen}>
             {!removeWrapper && (
                <div className={styles.title}>
-                  <h1>Title is here</h1>
+                  <h1>{deviceTitle}</h1>
                </div>
             )}
             <div className={styles.content}>
@@ -79,7 +88,7 @@ function App() {
                      <div className={styles.textPanelContainer}>
                         <TextPanel
                            onChapterChange={handleChapterChange}
-                           onClose={() => setScreen("home")}
+                           onClose={handleClose}
                            title={title}
                            text={text}
                            chapterIndex={subTopicIndex}
@@ -103,18 +112,20 @@ function App() {
                      >
                         {view !== "back" && (
                            <button
+                              className={basicStyles.basicButton}
                               onClick={() => setView("back")}
-                              style={{ marginLeft: "auto", marginRight: "auto", padding: "20px" }}
+                              style={{ marginLeft: "auto", marginRight: "auto" }}
                            >
-                              show back
+                              View iMac back
                            </button>
                         )}
                         {view !== "front" && (
                            <button
+                              className={basicStyles.basicButton}
                               onClick={() => setView("front")}
-                              style={{ marginLeft: "auto", marginRight: "auto", padding: "20px" }}
+                              style={{ marginLeft: "auto", marginRight: "auto" }}
                            >
-                              show front
+                              View iMac front
                            </button>
                         )}
                      </div>
@@ -122,16 +133,20 @@ function App() {
                )}
             </div>
 
-            <div className={styles.footer}>
-               <div className={styles.footerContent}>
-                  <span>
-                     You can also view the above interactive full screen in a <strong>new browser window</strong>.
-                  </span>
-                  <a href="?removewrapper=true" target="_blank" className={styles.borderButton}>
-                     <button>Launch full screen {">"}</button>
-                  </a>
+            {!removeWrapper && (
+               <div className={styles.footer}>
+                  <div className={styles.footerContent}>
+                     <span>
+                        You can also view the above interactive full screen in a <strong>new browser window</strong>.
+                     </span>
+                     <a href="?removewrapper=true" target="_blank" className={styles.borderButton}>
+                        <button>
+                           <span>Launch </span>full screen <span>{">"}</span>
+                        </button>
+                     </a>
+                  </div>
                </div>
-            </div>
+            )}
          </div>
       </div>
    );

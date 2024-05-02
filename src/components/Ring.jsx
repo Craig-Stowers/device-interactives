@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, forwardRef } from "react";
 import styles from "./Ring.module.css";
 import { isMobile } from "react-device-detect";
 
-const Ring = forwardRef(({ top, left, width, onSelected, onUnselect, selected, text }, ref) => {
+const Ring = forwardRef(({ top, left, width, onSelected, onUnselect, selected, text, highlightWidth }, ref) => {
    const [hovering, setHovering] = useState(false);
    const renderedWidthRef = useRef(width);
    const targetWidthRef = useRef(width);
@@ -21,7 +21,7 @@ const Ring = forwardRef(({ top, left, width, onSelected, onUnselect, selected, t
 
    useEffect(() => {
       if (selected) {
-         targetWidthRef.current = 120;
+         targetWidthRef.current = highlightWidth;
       } else {
          targetWidthRef.current = width;
       }
@@ -120,7 +120,10 @@ const Ring = forwardRef(({ top, left, width, onSelected, onUnselect, selected, t
             </svg>
          </div>
 
-         <div className={styles.hitbox} style={{ position: "absolute", left: "-75px", top: "-75px" }}>
+         <div
+            className={styles.hitbox}
+            style={{ position: "absolute", left: "-75px", top: "-75px", height: "150px", width: "150px" }}
+         >
             <svg width="150" height="150" viewBox="0 0 150 150">
                <circle
                   // ref={hitCircleRef}
@@ -135,7 +138,12 @@ const Ring = forwardRef(({ top, left, width, onSelected, onUnselect, selected, t
                   onMouseOut={handleMouseOut}
                />
             </svg>
-            <div className={styles.text}>{text}</div>
+            <div
+               style={{ fontSize: highlightWidth * 0.16 + "px", width: highlightWidth * 0.9 + "px" }}
+               className={styles.text}
+            >
+               {text}
+            </div>
          </div>
 
          {/* <div className={styles.outline} style={{ width: newWidth + "px", height: newWidth + "px" }}></div> */}

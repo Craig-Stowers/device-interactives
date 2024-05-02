@@ -28,7 +28,7 @@
 }
 
 .title h1 {
-   font-size: 34px;
+   font-size: 30px;
    margin: 0;
 }
 
@@ -64,6 +64,8 @@
 }
 
 .footerContent span {
+   margin-top: auto;
+   margin-bottom: auto;
    text-align: center;
 }
 
@@ -90,22 +92,45 @@
 
    .textPanelContainer {
       width: 100%;
-      height: 40%;
+      height: 35%;
    }
 
    .animationContainer {
       width: 100%;
-      height: 60%;
+      height: 65%;
+   }
+}
+
+@media screen and (max-height: 700px) {
+   :global(.vertical) {
+      .textPanelContainer {
+         height: 45%;
+      }
+      .animationContainer {
+         height: 55%;
+      }
+   }
+}
+
+@media screen and (max-height: 600px) {
+   :global(.vertical) {
+      .textPanelContainer {
+         height: 50%;
+      }
+      .animationContainer {
+         height: 50%;
+      }
    }
 }
 
 @media screen and (max-width: 600px) {
-   .title h1 {
-      font-size: 24px;
-   }
    .title {
       padding: 5px;
    }
+   .title h1 {
+      font-size: 24px;
+   }
+
    .fullScreen {
       padding: 0;
    }
@@ -122,5 +147,35 @@
       margin-right: auto;
       margin-top: 8px;
       font-size: 16px;
+   }
+}
+
+@media screen and (max-width: 500px) {
+   .footerContent {
+      flex-direction: row;
+      font-size: 14px;
+      line-height: 18px;
+   }
+
+   .borderButton {
+      margin-top: auto;
+      margin-bottom: auto;
+      margin-left: 3px;
+      button {
+         font-size: 14px;
+         padding: 5px;
+      }
+      span {
+         display: none;
+      }
+   }
+}
+
+@media screen and (max-width: 400px) {
+   .title {
+      padding: 0px;
+   }
+   .title h1 {
+      font-size: 18px;
    }
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import Lottie from "lottie-react";
 import withSizeObserver from "../hoc/withSizeObserver";
@@ -15,8 +15,26 @@ const Animation = ({ size, settings }) => {
 
    const [animationData, setAnimationData] = React.useState(null);
    const [loading, setLoading] = React.useState(true);
+   const [showLoading, setShowLoading] = React.useState(false);
+   const [loadingAnimationCycle, setLoadingAnimationCycle] = useState(0);
+   if (!settings) {
+      console.error("No settings provided for Animation component");
+      return null;
+   }
 
-   const link = settings.link.replace("./", "/");
+   const link = settings?.link.replace("./", "/");
+
+   useEffect(() => {
+      if (!loading) return;
+      const timer = setInterval(() => {
+         if (!showLoading) {
+            setShowLoading(true);
+            return;
+         }
+         setLoadingAnimationCycle((prev) => (prev + 1) % 4);
+      }, 300);
+      return () => clearInterval(timer);
+   }, [loading]);
 
    useEffect(() => {
       const controller = new AbortController();
@@ -53,9 +71,6 @@ const Animation = ({ size, settings }) => {
       left = (size.width - animationWidth) / 2;
    }
 
-   console.log("animationHeight", animationHeight);
-   console.log("animationWidth", animationWidth);
-
    return (
       <div
          style={{
@@ -67,7 +82,23 @@ const Animation = ({ size, settings }) => {
          }}
       >
          {!loading && <Lottie animationData={animationData} loop={true} />}
-         {loading && <div>loading...</div>}
+         {showLoading && loading && (
+            <div
+               style={{
+                  fontSize: "30px",
+                  position: "absolute",
+                  left: "50%",
+                  color: "white",
+                  top: "50%",
+                  transform: "translate(-50%, -50%)",
+                  fontWeight: "bold",
+               }}
+            >
+               loading<span style={{ visibility: loadingAnimationCycle > 0 ? "visible" : "hidden" }}>.</span>
+               <span style={{ visibility: loadingAnimationCycle > 1 ? "visible" : "hidden" }}>.</span>
+               <span style={{ visibility: loadingAnimationCycle > 2 ? "visible" : "hidden" }}>.</span>
+            </div>
+         )}
       </div>
    );
 };

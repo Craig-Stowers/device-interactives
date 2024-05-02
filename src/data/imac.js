@@ -3,8 +3,8 @@ var views = ["front", "back"];
 var hotlinks = [
       {
          id: "Monitor",
-         x: 0,
-         y: 0,
+         x: 27,
+         y: 38,
       },
       {
          id: "Webcam",
@@ -13,49 +13,49 @@ var hotlinks = [
       },
       {
          id: "Desktop",
-         x: 45,
-         y: 30,
+         x: 52,
+         y: 38,
       },
       {
          id: "AppleMenu",
-         x: 8,
-         y: 12,
+         x: 12,
+         y: 20.1,
       },
       {
          id: "StatusSymbols",
-         x: 52,
-         y: 12,
+         x: 60,
+         y: 20.1,
       },
       {
          id: "Dock",
-         x: 34,
-         y: 44,
+         x: 40,
+         y: 54,
       },
       {
          id: "HeadphonePort",
-         x: 5,
-         y: 50,
+         x: 9.2,
+         y: 61,
       },
       {
          id: "Mouse",
-         x: 63,
-         y: 69,
+         x: 70,
+         y: 80,
       },
       {
          id: "Keyboard",
          x: 34,
-         y: 69,
+         y: 81.5,
       },
       {
          id: "RearPorts",
-         x: 12,
-         y: 60,
+         x: 16.5,
+         y: 70.3,
          view: "back",
       },
       {
          id: "RearPowerButton",
-         x: 61,
-         y: 60,
+         x: 68.89,
+         y: 71.3,
          view: "back",
       },
    ],
@@ -396,7 +396,7 @@ var hotlinks = [
       ],
    };
 
-const deviceTitle = "Get to know your iMac",
+const deviceTitle = "iMac",
    device = "device__iMac",
    deviceFront__Id = "#iMac__front",
    deviceBack__Id = "#iMac__back",

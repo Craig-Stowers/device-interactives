@@ -8,7 +8,7 @@ export default function TextPanel({ title, text, buttonCount, ...props }) {
       <div className={styles.TextPanel}>
          <div className={styles.header}>
             <button onClick={props.onClose} className={styles.closeButton}>
-               Close
+               <span>Close</span> X
             </button>
          </div>
          <div className={styles.body}>

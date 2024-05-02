@@ -1,0 +1,21 @@
+.basicButton {
+   font-family: "Roboto Slab", serif;
+   background-color: var(--button-purple);
+   color: var(--white);
+   border: none;
+   border-radius: 5px;
+
+   padding: 7px 14px;
+
+   text-align: center;
+   text-decoration: none;
+   /* display: inline-block; */
+   font-size: 18px;
+   font-weight: bold;
+
+   cursor: pointer;
+}
+
+.basicButton:hover {
+   background-color: var(--button-purple-hover);
+}

@@ -112,6 +112,7 @@ const HotSpot = ({ hotSpotData, size, onLoadDetails, image }) => {
                   text: hotlink.title,
                   tabIndex: i,
                   width: circleWidth * (newWidth / defaultDimensions.width),
+                  highlightWidth: 140 * (newWidth / defaultDimensions.width) + 15,
                   onSelected: () => handleSelected(hotlink.id),
                   onUnselect: () => handleUnselected(hotlink.id),
                   selected: selectedIndex === hotlink.id,

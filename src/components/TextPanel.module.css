@@ -1,4 +1,5 @@
 .TextPanel {
+   position: relative;
    box-sizing: border-box;
    display: flex;
    flex-direction: column;
@@ -9,21 +10,34 @@
 }
 
 .TextPanel h1 {
-   font-size: 44px;
+   font-size: 33px;
    margin: 0;
-   margin-bottom: 20px;
+   margin-bottom: 14px;
+   margin-top: 35px;
 }
 
-.header {
-   display: flex;
-
-   width: 100%;
-   .closeButton {
-      margin-left: auto;
-      margin-right: 0;
-      padding: 10px 20px;
-   }
+.closeButton {
+   border: none;
+   position: absolute;
+   right: 0px;
+   top: 0px;
+   margin-left: auto;
+   margin-right: 0;
+   padding: 10px 20px;
+   font-size: 18px;
+   font-weight: bold;
+   cursor: pointer;
+   background-color: var(--button-purple);
+   color: var(--white);
+   font-weight: bolder;
+   padding: 6px 18px 6px 18px;
+   border-bottom-left-radius: 7px;
 }
+
+.closeButton:hover {
+   background-color: var(--button-purple-hover);
+}
+
 .body {
    font-size: 20px;
    padding: 5px 20px;
@@ -41,15 +55,34 @@
 }
 
 :global(.vertical) .TextPanel h1 {
-   /* font-size: 22px; */
+   margin-top: 5px;
+}
+
+@media screen and (max-width: 900px) {
+   .TextPanel h1 {
+      font-size: 27px;
+      /* margin-top: 4px;
+      margin-bottom: 7px; */
+   }
+   .body {
+      font-size: 18px;
+   }
 }
 
 @media screen and (max-width: 600px) {
    .TextPanel h1 {
       font-size: 22px;
-      margin-top: -12px;
+      margin-top: 10px;
       margin-bottom: 10px;
       display: inline-block;
+   }
+
+   .chapterButtonsContainer {
+      height: 43px;
+   }
+
+   .closeButton span {
+      display: none;
    }
 
    .body {
@@ -60,11 +93,12 @@
 
 @media screen and (max-height: 600px) {
    .TextPanel h1 {
-      font-size: 22px;
-      margin-top: -14px;
+      font-size: 20px;
+      margin-top: 11px;
    }
 
    .body {
-      font-size: 16px;
+      font-size: 15px;
+      line-height: 20px;
    }
 }
