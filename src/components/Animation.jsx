@@ -31,7 +31,7 @@ const Animation = ({ size, settings }) => {
             setShowLoading(true);
             return;
          }
-      }, 100);
+      }, 250);
       return () => clearTimeout(timer);
    }, [loading]);
 
@@ -48,16 +48,30 @@ const Animation = ({ size, settings }) => {
       const signal = controller.signal;
 
       setLoading(true);
+      setShowLoading(false);
+      setLoadingAnimationCycle(0);
+
+      let timer = null;
+      let timer2 = null;
 
       fetch(link)
          .then((response) => response.json())
          .then((data) => {
-            setAnimationData(data);
-            // setLoading(false);
+            //setLoading(false);
+            timer = setTimeout(() => {
+               setAnimationData(data);
+            }, 100);
+            timer2 = setTimeout(() => {
+               setLoading(false);
+            }, 200);
          })
          .catch((error) => console.error("Failed to load animation", error));
 
-      return () => controller.abort();
+      return () => {
+         controller.abort();
+         clearTimeout(timer);
+         clearTimeout(timer2);
+      };
    }, [link]);
 
    const animationRatio = 800 / 1080;
@@ -88,8 +102,9 @@ const Animation = ({ size, settings }) => {
             position: "absolute",
          }}
       >
-         <div style={{ opacity: loading ? 0 : 1, transition: "opacity 0.8s" }}>
-            {!loading && <Lottie animationData={animationData} loop={true} />}
+         <div style={{ opacity: loading ? 0 : 1, transition: "opacity 0.20s" }}>
+            {/* <div style={{ width: "500px", height: "50px", backgroundColor: "red" }}>testing testing testing</div> */}
+            {animationData && <Lottie animationData={animationData} loop={true} />}
          </div>
 
          {loading && (
