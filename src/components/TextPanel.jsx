@@ -7,11 +7,13 @@ export default function TextPanel({ title, text, buttonCount, ...props }) {
    return (
       <div className={styles.TextPanel}>
          <div className={styles.header}>
-            <button className={styles.closeButton}>Close Xxx</button>
+            <button onClick={props.onClose} className={styles.closeButton}>
+               Close
+            </button>
          </div>
          <div className={styles.body}>
             <h1>{title}</h1>
-            <div>{text}</div>
+            <div dangerouslySetInnerHTML={{ __html: text }} />
          </div>
 
          <div className={styles.chapterButtonsContainer}>

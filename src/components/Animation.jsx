@@ -50,6 +50,7 @@ const Animation = ({ size, settings }) => {
    } else {
       animationHeight = size.height;
       animationWidth = size.height * animationRatio;
+      left = (size.width - animationWidth) / 2;
    }
 
    console.log("animationHeight", animationHeight);

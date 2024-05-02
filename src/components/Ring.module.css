@@ -1,22 +1,64 @@
 .Ring {
    position: absolute;
-   transform: translate(-50%, -50%);
    box-sizing: border-box;
-   cursor: pointer;
+   z-index: 1;
+
    /* animation: pulse 3s infinite ease-in-out; */
 }
 
-.outline {
-   border: 6px solid var(--hotlink-purple);
-   border-radius: 50%;
-   position: absolute;
-   transform: translate(-50%, -50%);
-   box-sizing: border-box;
-   transition: width 0.2s, height 0.2s;
+.Ring.hovering {
+   z-index: 2;
 }
 
-.Ring:hover .outline {
-   background-color: var(--hotlink-purple);
+.hitbox {
+   /* transform: translate(-50px, -50px); */
+   position: absolute;
+   pointer-events: none;
+}
+
+.hitbox svg circle {
+   pointer-events: auto;
+   cursor: pointer;
+}
+
+.outline {
+   pointer-events: none;
+}
+
+.outline svg circle {
+   stroke: var(--button-purple);
+
+   fill: var(--button-purple-0);
+   transition: fill 0.2s;
+}
+
+.Ring.hovering .outline svg circle {
+   fill: var(--button-purple);
+}
+
+.text {
+   position: absolute;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%, -50%) scale(0.7);
+   color: white;
+   pointer-events: none;
+   width: 110px;
+   text-align: center;
+
+   opacity: 0;
+   transition: opacity 0.3s, transform 0.17s ease-in-out;
+   font-weight: bold;
+   font-size: 18px;
+   user-select: none;
+
+   /* word-wrap: break-word;
+   hyphens: auto; */
+}
+
+.Ring.hovering .text {
+   opacity: 1;
+   transform: translate(-50%, -50%) scale(1);
 }
 
 @keyframes pulse {

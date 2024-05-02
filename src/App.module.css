@@ -1,6 +1,13 @@
 .app {
 }
 
+:root {
+   font-synthesis: none;
+   text-rendering: optimizeLegibility;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+}
+
 .fullScreen {
    position: fixed;
    top: 0;
@@ -16,7 +23,13 @@
 }
 
 .title {
-   padding: 20px;
+   padding: 10px;
+   text-align: center;
+}
+
+.title h1 {
+   font-size: 34px;
+   margin: 0;
 }
 
 .content {
@@ -38,14 +51,36 @@
 }
 
 .footer {
-   padding: 30px;
+   padding: 20px 0px;
+   display: flex;
 }
 
-:root {
-   font-synthesis: none;
-   text-rendering: optimizeLegibility;
-   -webkit-font-smoothing: antialiased;
-   -moz-osx-font-smoothing: grayscale;
+.footerContent {
+   font-size: 16px;
+   margin-left: auto;
+   margin-right: auto;
+   display: flex;
+   flex-direction: row;
+}
+
+.footerContent span {
+   text-align: center;
+}
+
+.borderButton {
+   margin-left: 20px;
+   flex-shrink: 0;
+
+   button {
+      border: 2px solid var(--button-purple);
+      background-color: var(--button-purple-0);
+      color: var(--button-purple);
+      padding: 10px 16px;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: bold;
+      transition: background-color 0.2s;
+   }
 }
 
 :global(.vertical) {
@@ -65,7 +100,27 @@
 }
 
 @media screen and (max-width: 600px) {
+   .title h1 {
+      font-size: 24px;
+   }
+   .title {
+      padding: 5px;
+   }
    .fullScreen {
       padding: 0;
+   }
+
+   .footer {
+      padding: 5px 8px;
+   }
+
+   .footerContent {
+      flex-direction: column;
+   }
+   .borderButton {
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 8px;
+      font-size: 16px;
    }
 }

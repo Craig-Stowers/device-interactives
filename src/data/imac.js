@@ -1,8 +1,10 @@
+var views = ["front", "back"];
+
 var hotlinks = [
       {
          id: "Monitor",
-         x: 23,
-         y: 30,
+         x: 0,
+         y: 0,
       },
       {
          id: "Webcam",
@@ -48,11 +50,13 @@ var hotlinks = [
          id: "RearPorts",
          x: 12,
          y: 60,
+         view: "back",
       },
       {
          id: "RearPowerButton",
          x: 61,
          y: 60,
+         view: "back",
       },
    ],
    panelContent = {
@@ -400,6 +404,7 @@ const deviceTitle = "Get to know your iMac",
    turnDeviceFrontAltCTA_Text = "View iMac front";
 
 export {
+   views,
    hotlinks,
    panelContent,
    animationsObject,
