@@ -82,7 +82,7 @@ const Animation = ({ size, settings }) => {
          }}
       >
          {!loading && <Lottie animationData={animationData} loop={true} />}
-         {showLoading && loading && (
+         {loading && (
             <div
                style={{
                   fontSize: "30px",
@@ -92,6 +92,8 @@ const Animation = ({ size, settings }) => {
                   top: "50%",
                   transform: "translate(-50%, -50%)",
                   fontWeight: "bold",
+                  opacity: showLoading ? 1 : 0,
+                  transition: "opacity 0.5s",
                }}
             >
                loading<span style={{ visibility: loadingAnimationCycle > 0 ? "visible" : "hidden" }}>.</span>
