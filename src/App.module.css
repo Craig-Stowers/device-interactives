@@ -1,4 +1,5 @@
 .app {
+   user-select: none;
 }
 
 :root {
