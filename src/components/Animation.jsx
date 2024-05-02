@@ -31,7 +31,7 @@ const Animation = ({ size, settings }) => {
             setShowLoading(true);
             return;
          }
-      }, 250);
+      }, 400);
       return () => clearTimeout(timer);
    }, [loading]);
 
@@ -60,10 +60,10 @@ const Animation = ({ size, settings }) => {
             //setLoading(false);
             timer = setTimeout(() => {
                setAnimationData(data);
-            }, 100);
+            }, 300);
             timer2 = setTimeout(() => {
                setLoading(false);
-            }, 200);
+            }, 400);
          })
          .catch((error) => console.error("Failed to load animation", error));
 
@@ -102,7 +102,7 @@ const Animation = ({ size, settings }) => {
             position: "absolute",
          }}
       >
-         <div style={{ opacity: loading ? 0 : 1, transition: "opacity 0.20s" }}>
+         <div style={{ opacity: loading ? 0 : 1, transition: "opacity 0.30s" }}>
             {/* <div style={{ width: "500px", height: "50px", backgroundColor: "red" }}>testing testing testing</div> */}
             {animationData && <Lottie animationData={animationData} loop={true} />}
          </div>

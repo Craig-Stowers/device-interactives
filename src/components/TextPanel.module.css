@@ -43,6 +43,15 @@
    padding: 5px 20px;
 }
 
+.body span {
+   display: block;
+   margin-bottom: 20px;
+}
+
+.body span:last-child {
+   margin-bottom: 0;
+}
+
 .chapterButtonsContainer {
    margin-top: auto;
    height: 50px;
@@ -58,7 +67,7 @@
    margin-top: 5px;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1200px) {
    .TextPanel h1 {
       font-size: 27px;
       /* margin-top: 4px;
@@ -88,6 +97,40 @@
    .body {
       padding: 0px 9px;
       font-size: 16px;
+   }
+
+   .body span {
+      margin-bottom: 4px;
+   }
+
+   .body span:last-child {
+      margin-bottom: 0;
+   }
+}
+
+@media screen and (max-height: 640px) {
+   .TextPanel h1 {
+      font-size: 20px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      display: inline-block;
+   }
+
+   .chapterButtonsContainer {
+      height: 43px;
+   }
+
+   .closeButton span {
+      display: none;
+   }
+
+   .TextPanel .body {
+      padding: 0px 6px;
+      font-size: 14px;
+   }
+
+   .body span {
+      margin-bottom: 4px;
    }
 }
 

@@ -6,7 +6,8 @@
    text-rendering: optimizeLegibility;
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale;
-   --background: #37a7de;
+   --background: rgb(55, 167, 222);
+   --background-30: rgb(55, 167, 222, 0.3);
    --white: #ffffff;
    --white-background: #f1f1f1;
    --white-hover: #cccccc;

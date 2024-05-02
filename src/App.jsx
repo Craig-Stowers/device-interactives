@@ -21,7 +21,7 @@ function App() {
    const [selectedImage, setSelectedImage] = useState(0);
    const [view, setView] = useState(views[0]);
 
-   const vertical = width / height < 1;
+   const vertical = width / height < 1.1;
    const removeWrapper = useURLSearchParams("removewrapper") === "true";
 
    const handleChapterChange = (i) => {
@@ -72,17 +72,26 @@ function App() {
    const image = images[view];
 
    return (
-      <div className={`${styles.app} ${vertical ? "vertical" : "horizontal"}`}>
+      <div className={`${styles.app} ${vertical ? "vertical" : "horizontal"} ${removeWrapper ? "nowrapper" : ""}`}>
          <div className={styles.fullScreen}>
-            {!removeWrapper && (
+            {/* {!removeWrapper && (
                <div className={styles.title}>
                   <h1>{deviceTitle}</h1>
                </div>
-            )}
+            )} */}
             <div className={styles.content}>
+               {screen === "home" && (
+                  <div className={styles.altTitleContainer}>
+                     <h1>iMac</h1>
+                  </div>
+               )}
                {screen === "info" && (
                   <>
                      <div className={styles.animationContainer}>
+                        <div className={styles.altTitleContainer}>
+                           <h1>iMac</h1>
+                        </div>
+
                         <Animation settings={animation} />
                      </div>
                      <div className={styles.textPanelContainer}>
