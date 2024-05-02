@@ -26,15 +26,22 @@ const Animation = ({ size, settings }) => {
 
    useEffect(() => {
       if (!loading) return;
-      const timer = setInterval(() => {
+      const timer = setTimeout(() => {
          if (!showLoading) {
             setShowLoading(true);
             return;
          }
+      }, 100);
+      return () => clearTimeout(timer);
+   }, [loading]);
+
+   useEffect(() => {
+      if (!loading && !showLoading) return;
+      const timer = setInterval(() => {
          setLoadingAnimationCycle((prev) => (prev + 1) % 4);
       }, 300);
       return () => clearInterval(timer);
-   }, [loading]);
+   }, [loading, showLoading]);
 
    useEffect(() => {
       const controller = new AbortController();
@@ -46,7 +53,7 @@ const Animation = ({ size, settings }) => {
          .then((response) => response.json())
          .then((data) => {
             setAnimationData(data);
-            setLoading(false);
+            // setLoading(false);
          })
          .catch((error) => console.error("Failed to load animation", error));
 
@@ -81,7 +88,10 @@ const Animation = ({ size, settings }) => {
             position: "absolute",
          }}
       >
-         {!loading && <Lottie animationData={animationData} loop={true} />}
+         <div style={{ opacity: loading ? 0 : 1, transition: "opacity 0.8s" }}>
+            {!loading && <Lottie animationData={animationData} loop={true} />}
+         </div>
+
          {loading && (
             <div
                style={{
@@ -93,7 +103,7 @@ const Animation = ({ size, settings }) => {
                   transform: "translate(-50%, -50%)",
                   fontWeight: "bold",
                   opacity: showLoading ? 1 : 0,
-                  transition: "opacity 0.5s",
+                  transition: "opacity 0.3s",
                }}
             >
                loading<span style={{ visibility: loadingAnimationCycle > 0 ? "visible" : "hidden" }}>.</span>
