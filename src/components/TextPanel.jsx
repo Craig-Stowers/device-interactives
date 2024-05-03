@@ -24,7 +24,7 @@ const TextPanel = ({ title, text, buttonCount, size, ...props }) => {
             </button>
          </div>
          <div className={styles.body}>
-            <h1>{sizeClass}</h1>
+            <h1>{title}</h1>
             <div dangerouslySetInnerHTML={{ __html: text }} />
          </div>
 

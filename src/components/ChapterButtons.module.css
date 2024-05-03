@@ -46,6 +46,7 @@
    border: 3px solid var(--white);
    border-radius: 11px;
    transform: scale(1);
+   flex-grow: 0;
 
    margin-bottom: auto;
    margin-top: auto;
