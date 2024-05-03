@@ -42,7 +42,7 @@ const Ring = forwardRef(({ top, left, width, onSelected, onUnselect, selected, t
 
          renderedWidthRef.current = newWidth;
          setRenderedWidth(newWidth);
-      }, 16);
+      }, 1000 / 60);
       return () => clearInterval(interval);
    }, []);
 
@@ -103,15 +103,18 @@ const Ring = forwardRef(({ top, left, width, onSelected, onUnselect, selected, t
 
    // console.log(renderedWidth);
 
+   const svgWidth = highlightWidth + 4; //account for border
+   const offsetLeft = `-${svgWidth / 2}px`;
+
    return (
       <div className={`${styles.Ring} ${selected ? styles.hovering : ""}`} style={{ top, left }}>
-         <div className={styles.outline} style={{ position: "absolute", left: "-75px", top: "-75px" }}>
-            <svg width="150" height="150" viewBox="0 0 150 150" tabIndex={"0"}>
+         <div className={styles.outline} style={{ position: "absolute", left: offsetLeft, top: offsetLeft }}>
+            <svg width={svgWidth} height={svgWidth} viewBox={`0 0 ${svgWidth} ${svgWidth}`} tabIndex={"0"}>
                <circle
                   tabIndex={"0"}
                   onKeyDown={handleKeyDown}
-                  cx="75"
-                  cy="75"
+                  cx={svgWidth / 2}
+                  cy={svgWidth / 2}
                   r={renderedWidth / 2}
                   stroke="black"
                   strokeWidth="4"
@@ -122,13 +125,13 @@ const Ring = forwardRef(({ top, left, width, onSelected, onUnselect, selected, t
 
          <div
             className={styles.hitbox}
-            style={{ position: "absolute", left: "-75px", top: "-75px", height: "150px", width: "150px" }}
+            style={{ position: "absolute", left: offsetLeft, top: offsetLeft, height: svgWidth, width: svgWidth }}
          >
-            <svg width="150" height="150" viewBox="0 0 150 150">
+            <svg width={svgWidth} height={svgWidth} viewBox={`0 0 ${svgWidth} ${svgWidth}`}>
                <circle
                   // ref={hitCircleRef}
-                  cx="75"
-                  cy="75"
+                  cx={svgWidth / 2}
+                  cy={svgWidth / 2}
                   r={50}
                   fill="rgba(255,255,0,0.0)"
                   // onClick={handleMouseClick}

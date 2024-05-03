@@ -55,7 +55,7 @@
 
 .TextPanel.extralarge {
    h1 {
-      font-size: 40px;
+      font-size: 34px;
       margin: 0;
       margin-bottom: 18px;
       margin-top: 5px;
@@ -70,7 +70,7 @@
    }
 
    .closeButton {
-      font-size: 26px;
+      font-size: 24px;
       padding: 10px 20px;
    }
 

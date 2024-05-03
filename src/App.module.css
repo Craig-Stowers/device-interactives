@@ -161,6 +161,17 @@
    }
 } */
 
+@media screen and (max-width: 400px) {
+   :global(.vertical) {
+      .animationContainer {
+         height: 55%;
+      }
+      .textPanelContainer {
+         height: 45%;
+      }
+   }
+}
+
 @media screen and (max-width: 600px) {
    .title {
       padding: 5px;
