@@ -32,6 +32,10 @@
    transition: fill 0.2s;
 }
 
+.outline svg circle:focus {
+   outline: none;
+}
+
 .Ring.hovering .outline svg circle {
    fill: var(--button-purple);
 }

@@ -1,7 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./ChapterButtons.module.css";
 
 export default function ChapterButtons({ count, ...props }) {
+   useEffect(() => {
+      const handleKeyPress = (event) => {
+         switch (event.key) {
+            case "Escape":
+               props.onClose();
+               break;
+            case "ArrowLeft":
+               handlePrevious();
+               break;
+            case "ArrowRight":
+               handleNext();
+               break;
+            default:
+               break;
+         }
+      };
+
+      // Add event listener for keydown
+      window.addEventListener("keydown", handleKeyPress);
+
+      // Cleanup the event listener when the component unmounts
+      return () => {
+         window.removeEventListener("keydown", handleKeyPress);
+      };
+   }, [props.chapterIndex]); // Empty dependency array means this effect runs only on mount and unmount
+
    const handleButtonClick = (i) => {
       props.onChapterChange(i);
    };

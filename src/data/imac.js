@@ -2,9 +2,9 @@ var views = ["front", "back"];
 
 var hotlinks = [
       {
-         id: "Monitor",
-         x: 27,
-         y: 38,
+         id: "AppleMenu",
+         x: 12,
+         y: 20.1,
       },
       {
          id: "Webcam",
@@ -12,19 +12,19 @@ var hotlinks = [
          y: 18.7,
       },
       {
-         id: "Desktop",
-         x: 52,
-         y: 38,
-      },
-      {
-         id: "AppleMenu",
-         x: 12,
-         y: 20.1,
-      },
-      {
          id: "StatusSymbols",
          x: 60,
          y: 20.1,
+      },
+      {
+         id: "Monitor",
+         x: 27,
+         y: 38,
+      },
+      {
+         id: "Desktop",
+         x: 52,
+         y: 38,
       },
       {
          id: "Dock",
@@ -36,15 +36,16 @@ var hotlinks = [
          x: 9.2,
          y: 61,
       },
-      {
-         id: "Mouse",
-         x: 70,
-         y: 80,
-      },
+
       {
          id: "Keyboard",
          x: 34,
          y: 81.5,
+      },
+      {
+         id: "Mouse",
+         x: 70,
+         y: 80,
       },
       {
          id: "RearPorts",

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./TextPanel.module.css";
 
 import ChapterButtons from "./ChapterButtons";
@@ -14,7 +14,33 @@ const TextPanel = ({ title, text, buttonCount, size, ...props }) => {
    if (panelArea > 20000) sizeClass = styles.large;
    if (panelArea > 30000) sizeClass = styles.extralarge;
 
-   console.log("size", sizeClass);
+   useEffect(() => {
+      const handleKeyPress = (event) => {
+         switch (event.key) {
+            case "Escape":
+               props.onClose();
+               break;
+            case "ArrowLeft":
+               console.log("Left arrow key pressed!");
+               // Add your code here to handle the Left arrow key
+               break;
+            case "ArrowRight":
+               console.log("Right arrow key pressed!");
+               // Add your code here to handle the Right arrow key
+               break;
+            default:
+               break;
+         }
+      };
+
+      // Add event listener for keydown
+      window.addEventListener("keydown", handleKeyPress);
+
+      // Cleanup the event listener when the component unmounts
+      return () => {
+         window.removeEventListener("keydown", handleKeyPress);
+      };
+   }, []); // Empty dependency array means this effect runs only on mount and unmount
 
    return (
       <div className={`${styles.TextPanel} ${sizeClass}`}>

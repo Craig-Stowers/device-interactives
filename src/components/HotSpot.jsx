@@ -8,7 +8,7 @@ import { hotlinks } from "../data/imac";
 
 const defaultDimensions = { width: 800, height: 1080 };
 
-const HotSpot = ({ hotSpotData, size, onLoadDetails, image }) => {
+const HotSpot = ({ hotSpotData, onLoadDetails, image, size }) => {
    const [circleWidth, setCircleWidth] = useState(50);
    const [selectedIndex, setSelectedIndex] = useState(null);
    const hitboxRefs = useRef({});
@@ -77,6 +77,10 @@ const HotSpot = ({ hotSpotData, size, onLoadDetails, image }) => {
       setSelectedIndex(null);
    };
 
+   const handleFocusEnter = () => {
+      onLoadDetails(selectedIndex);
+   };
+
    //console.log("curr index", selectedIndex);
    // console.log("hot size", size);
    return (
@@ -116,6 +120,7 @@ const HotSpot = ({ hotSpotData, size, onLoadDetails, image }) => {
                   onSelected: () => handleSelected(hotlink.id),
                   onUnselect: () => handleUnselected(hotlink.id),
                   selected: selectedIndex === hotlink.id,
+                  onFocusEnter: handleFocusEnter,
                   ref: (ref) => (hitboxRefs.current[hotlink.id] = ref),
                };
 
