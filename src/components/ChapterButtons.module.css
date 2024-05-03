@@ -39,6 +39,7 @@
 
 .button {
    box-sizing: border-box;
+   padding: 0;
 
    width: 22px;
    height: 22px;
