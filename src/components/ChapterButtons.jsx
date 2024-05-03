@@ -43,6 +43,8 @@ export default function ChapterButtons({ count, ...props }) {
       console.log("chapterIndex", props.chapterIndex);
       props.onChapterChange(nextIndex);
    };
+
+   if (count < 2) return null;
    return (
       <div className={styles.ChapterButtons}>
          <div
