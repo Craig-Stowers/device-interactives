@@ -85,7 +85,7 @@ const HotSpot = ({ hotSpotData, size, onLoadDetails, image }) => {
             position: "absolute",
             width: newWidth + "px",
             height: newHeight + "px",
-            transform: "scale(1)",
+
             left: "50%",
             top: "50%",
             transform: "translate(-50%, -50%)",

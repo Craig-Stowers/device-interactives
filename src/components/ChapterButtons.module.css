@@ -7,14 +7,14 @@
 
 .arrow {
    width: 20px;
+   margin-top: -2px;
 
-   font-size: 37px;
+   font-size: 44px;
    display: flex;
    justify-content: center;
    align-items: center;
-   font-weight: bold;
-   font-size: 35px;
-   font-weight: bold;
+   font-weight: 800;
+
    cursor: pointer;
    color: var(--button-purple);
    transition: transform 0.1s, color 0.1s;
@@ -27,14 +27,14 @@
    /* padding-left: 15px;
    padding-right: 15px; */
    flex-grow: 1;
-   width: 78%;
+   width: 75%;
    display: flex;
    /* justify-content: space-between; */
    justify-content: space-around;
    background-color: var(--white-hover);
    border-radius: 15px;
-   margin-left: 5px;
-   margin-right: 5px;
+   margin-left: 9px;
+   margin-right: 9px;
 }
 
 .button {
@@ -66,7 +66,7 @@
    transform: scale(1);
 }
 
-@media screen and (max-width: 600px) {
+/* @media screen and (max-width: 600px) {
    .ChapterButtons {
       height: 20px;
    }
@@ -78,4 +78,4 @@
       width: 16px;
       height: 16px;
    }
-}
+} */

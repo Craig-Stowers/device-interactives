@@ -21,7 +21,7 @@ function App() {
    const [selectedImage, setSelectedImage] = useState(0);
    const [view, setView] = useState(views[0]);
 
-   const vertical = width / height < 1.1;
+   const vertical = width / height < 1.15;
    const removeWrapper = useURLSearchParams("removewrapper") === "true";
 
    const handleChapterChange = (i) => {

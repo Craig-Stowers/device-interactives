@@ -7,13 +7,22 @@
    width: 100%;
    height: 100%;
    background-color: #f5f5f5;
+
+   padding-top: 40px;
+
+   .body {
+      span {
+         display: block;
+      }
+
+      > div > span:last-of-type {
+         margin-bottom: 0;
+      }
+   }
 }
 
-.TextPanel h1 {
-   font-size: 33px;
-   margin: 0;
-   margin-bottom: 14px;
-   margin-top: 35px;
+:global(.vertical) .TextPanel {
+   padding-top: 0px;
 }
 
 .closeButton {
@@ -21,58 +30,150 @@
    position: absolute;
    right: 0px;
    top: 0px;
-   margin-left: auto;
-   margin-right: 0;
-   padding: 10px 20px;
+   margin-left: 0;
    font-size: 18px;
+   padding: 6px 14px;
+   border-bottom-left-radius: 7px;
    font-weight: bold;
    cursor: pointer;
    background-color: var(--button-purple);
    color: var(--white);
    font-weight: bolder;
-   padding: 6px 18px 6px 18px;
-   border-bottom-left-radius: 7px;
+}
+
+.chapterButtonsContainer {
+   position: absolute;
+   bottom: 5px;
+   width: 95%;
+   padding: 5px;
+   box-sizing: border-box;
+   max-width: 600px;
+   margin-left: auto;
+   left: 50%;
+   transform: translateX(-50%);
+}
+
+.TextPanel.extralarge {
+   h1 {
+      font-size: 40px;
+      margin: 0;
+      margin-bottom: 18px;
+      margin-top: 5px;
+   }
+   .body {
+      font-size: 26px;
+      padding: 5px 20px;
+
+      span {
+         margin-bottom: 30px;
+      }
+   }
+
+   .closeButton {
+      font-size: 26px;
+      padding: 10px 20px;
+   }
+
+   .chapterButtonsContainer {
+      bottom: 20px;
+   }
+}
+
+.TextPanel.large {
+   .closeButton {
+      font-size: 24px;
+      padding: 8px 16px;
+   }
+   h1 {
+      font-size: 33px;
+      margin: 0;
+      margin-bottom: 18px;
+      margin-top: 5px;
+   }
+   .body {
+      font-size: 22px;
+      padding: 5px 20px;
+
+      span {
+         margin-bottom: 20px;
+      }
+   }
+
+   .chapterButtonsContainer {
+      bottom: 15px;
+   }
+}
+
+.TextPanel.medium {
+   h1 {
+      font-size: 25px;
+   }
+
+   .body {
+      font-size: 20px;
+      padding: 0px 12px;
+      span {
+         margin-bottom: 12px;
+      }
+   }
+}
+
+.TextPanel.small {
+   h1 {
+      font-size: 22px;
+      margin-top: 6px;
+   }
+
+   .body {
+      font-size: 18px;
+      padding: 5px 10px;
+      line-height: 21px;
+   }
+
+   .body span {
+      margin-bottom: 12px;
+   }
+}
+
+.TextPanel.extrasmall {
+   h1 {
+      font-size: 18px;
+      margin-bottom: 20px;
+   }
+
+   .body {
+      font-size: 16px;
+      line-height: 18px;
+      padding: 0px 8px;
+   }
+
+   .body span {
+      margin-bottom: 8px;
+   }
+}
+
+:global(.vertical) {
+   /* .TextPanel.small .closeButton, */
+   .TextPanel.extrasmall .closeButton {
+      transform: translateY(-100%);
+      border-bottom-left-radius: 0px;
+      border-top-left-radius: 8px;
+   }
 }
 
 .closeButton:hover {
    background-color: var(--button-purple-hover);
 }
 
-.body {
-   font-size: 20px;
-   padding: 5px 20px;
-}
-
-.body span {
-   display: block;
-   margin-bottom: 20px;
-}
-
-.body span:last-child {
-   margin-bottom: 0;
-}
-
-.chapterButtonsContainer {
-   margin-top: auto;
-   height: 50px;
-   width: 100%;
-   max-width: 500px;
-
-   max-width: 100%;
-   padding: 10px;
-   box-sizing: border-box;
-}
-
-:global(.vertical) .TextPanel h1 {
+/* :global(.vertical) .TextPanel h1 {
    margin-top: 15px;
-}
+} */
 
-@media screen and (max-width: 1200px) {
+/* @media screen and (max-width: 1200px) {
    .TextPanel h1 {
       font-size: 27px;
-      /* margin-top: 4px;
-      margin-bottom: 7px; */
-   }
+     
+   } 
    .body {
       font-size: 18px;
    }
@@ -133,9 +234,9 @@
    .body span {
       margin-bottom: 10px;
    }
-}
-/* 
-@media screen and (max-height: 600px) {
+} */
+
+/* @media screen and (max-height: 600px) {
    .TextPanel h1 {
       font-size: 20px;
       margin-top: 11px;
@@ -145,4 +246,4 @@
       font-size: 15px;
       line-height: 20px;
    }
-} */
+}  */
