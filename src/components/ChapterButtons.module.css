@@ -62,7 +62,7 @@
 
 .button.active {
    background-color: var(--button-purple);
-   border: none;
+   border: 3px solid var(--button-purple);
 }
 
 .button.active:hover {
