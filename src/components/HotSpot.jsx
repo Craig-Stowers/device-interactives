@@ -4,7 +4,7 @@ import Ring from "./Ring";
 import withSizeObserver from "../hoc/withSizeObserver";
 import { isMobile } from "react-device-detect";
 
-import { hotlinks } from "../data/imac";
+import { hotlinks } from "../../public/imac/imac";
 
 const defaultDimensions = { width: 800, height: 1080 };
 

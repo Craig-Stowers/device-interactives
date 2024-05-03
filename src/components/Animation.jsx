@@ -25,9 +25,11 @@ const Animation = ({ size, settings }) => {
    const link = settings?.link.replace("./", "/");
 
    useEffect(() => {
+      console.log("run loader delay");
       if (!loading) return;
       const timer = setTimeout(() => {
          if (!showLoading) {
+            //  console.log("change show loading");
             setShowLoading(true);
             return;
          }
@@ -36,15 +38,21 @@ const Animation = ({ size, settings }) => {
    }, [loading]);
 
    useEffect(() => {
-      if (!loading && !showLoading) return;
+      //   console.log("run loader interval");
+      if (!loading || !showLoading) return;
       const timer = setInterval(() => {
+         console.log("change cycle");
          setLoadingAnimationCycle((prev) => (prev + 1) % 4);
       }, 300);
       return () => clearInterval(timer);
    }, [loading, showLoading]);
 
    useEffect(() => {
-      console.log("change animation", settings);
+      console.log("settings changed");
+      if (settings.isImage) {
+         setLoading(false);
+         return;
+      }
       const controller = new AbortController();
       const signal = controller.signal;
 
@@ -73,26 +81,69 @@ const Animation = ({ size, settings }) => {
          clearTimeout(timer);
          clearTimeout(timer2);
       };
-   }, [link]);
-
-   const animationRatio = 800 / 1080;
-   const containerRatio = size.width / size.height;
+   }, [settings]);
 
    let animationWidth;
    let animationHeight;
    let left = 0;
    let top = 0;
 
-   if (containerRatio > animationRatio) {
-      animationWidth = size.width;
-      animationHeight = size.width / animationRatio;
-      top = (size.height - animationHeight) / 2;
+   //contain logic (WIP)
+
+   //cover logic here
+   if (settings.focusBox) {
+      const animationRatio = 800 / 1080;
+      const containerRatio = size.width / size.height;
+      const focusRatio = settings.focusBox.width / settings.focusBox.height;
+
+      const scaleType = settings.focusBox.scaleType || "contain";
+
+      if (scaleType === "cover") {
+         if (containerRatio > focusRatio) {
+            animationWidth = size.width / (settings.focusBox.width / 800);
+            animationHeight = animationWidth / animationRatio;
+
+            left = (size.width - animationWidth) / (800 / settings.focusBox.x);
+            top = (size.height - animationHeight) / (1080 / settings.focusBox.y);
+         } else {
+            animationHeight = size.height / (settings.focusBox.height / 1080);
+            animationWidth = animationHeight * animationRatio;
+            left = (size.width - animationWidth) / 2;
+            top = (size.height - animationHeight) / 2;
+         }
+      }
+      if (scaleType === "contain") {
+         if (containerRatio > focusRatio) {
+            animationHeight = size.height / (settings.focusBox.height / 1080);
+            animationWidth = animationHeight * animationRatio;
+
+            left = (size.width - animationWidth) / (800 / settings.focusBox.x);
+            top = (size.height - animationHeight) / (1080 / settings.focusBox.y);
+            console.log("size", size);
+            console.log(animationWidth, animationHeight, left, top);
+         } else {
+            console.log("contain it to width");
+            animationWidth = size.width / (settings.focusBox.width / 800);
+            animationHeight = animationWidth / animationRatio;
+            left = (size.width - animationWidth) / 2;
+            top = (size.height - animationHeight) / 2;
+         }
+      }
    } else {
-      animationHeight = size.height;
-      animationWidth = size.height * animationRatio;
-      left = (size.width - animationWidth) / 2;
+      const animationRatio = 800 / 1080;
+      const containerRatio = size.width / size.height;
+      if (containerRatio > animationRatio) {
+         animationWidth = size.width;
+         animationHeight = size.width / animationRatio;
+         top = (size.height - animationHeight) / 2;
+      } else {
+         animationHeight = size.height;
+         animationWidth = size.height * animationRatio;
+         left = (size.width - animationWidth) / 2;
+      }
    }
 
+   console.log("render Animation", animationHeight);
    return (
       <div
          style={{
@@ -103,10 +154,14 @@ const Animation = ({ size, settings }) => {
             position: "absolute",
          }}
       >
-         <div style={{ opacity: loading ? 0 : 1, transition: "opacity 0.30s" }}>
-            {/* <div style={{ width: "500px", height: "50px", backgroundColor: "red" }}>testing testing testing</div> */}
-            {animationData && <Lottie animationData={animationData} loop={settings.loop} />}
-         </div>
+         {settings.isImage ? (
+            <img src={settings.link} />
+         ) : (
+            <div style={{ opacity: loading ? 0 : 1, transition: "opacity 0.30s" }}>
+               {/* <div style={{ width: "500px", height: "50px", backgroundColor: "red" }}>testing testing testing</div> */}
+               {animationData && <Lottie animationData={animationData} loop={settings.loop} />}
+            </div>
+         )}
 
          {loading && (
             <div

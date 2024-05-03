@@ -44,9 +44,9 @@
 
 .altTitleContainer {
    /* display: none; */
-   position: absolute;
+   /* position: absolute;
    top: 0;
-   left: 0;
+   left: 0; */
    width: 100%;
    background-color: var(--background);
    z-index: 10;
@@ -67,6 +67,26 @@
    margin: 0;
 }
 
+.altTitleContainerHome {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   background-color: var(--background);
+   z-index: 10;
+   padding-top: 10px;
+   padding-bottom: 4px;
+
+   h1 {
+      margin: 0;
+      font-size: 24px;
+      color: var(--white);
+      text-align: center;
+      padding: 0;
+      margin: 0;
+   }
+}
+
 /* .altTitle {
    box-sizing: border-box;
    position: absolute;
@@ -80,8 +100,14 @@
 
 .animationContainer {
    position: relative;
+   display: flex;
+   flex-direction: column;
    width: 60%;
    overflow: hidden;
+}
+
+.animationInner {
+   flex-grow: 1;
 }
 
 .textPanelContainer {

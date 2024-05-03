@@ -5,7 +5,7 @@ import Animation from "./components/Animation";
 import useWindowSize from "./hooks/useWindowSize";
 import useURLSearchParams from "./hooks/useURLSearchParams";
 import TextPanel from "./components/TextPanel";
-import { animationsObject, panelContent, hotlinks, views, deviceTitle } from "./data/imac.js";
+import { animationsObject, panelContent, hotlinks, views, deviceTitle } from "../public/imac/imac.js";
 import HotSpot from "./components/HotSpot.jsx";
 import { BrowserView, MobileView, isBrowser, isMobile } from "react-device-detect";
 import backImage from "./images/device_back.svg";
@@ -13,9 +13,11 @@ import frontImage from "./images/device_front.svg";
 
 const images = { front: frontImage, back: backImage };
 
+const dataFolder = "imac";
+
 function App() {
    const [width, height] = useWindowSize();
-   const [topicId, setTopicId] = useState(0);
+   const [topicId, setTopicId] = useState(null);
    const [subTopicIndex, setSubTopicIndex] = useState(0);
    const [screen, setScreen] = useState("home");
    const [selectedImage, setSelectedImage] = useState(0);
@@ -39,24 +41,30 @@ function App() {
       setSubTopicIndex(0);
    };
 
+   console.log("render App.");
+
    const { title, text, animation, subTopicCount } = useMemo(() => {
+      console.log("calc values");
       let title = null;
       let text = null;
       let animation = null;
       let subTopicCount = null;
       if (!topicId) return { title, text, animation, subTopicCount };
 
-      console.log("calculating", topicId, subTopicIndex, panelContent[topicId]);
-
       const currContent = panelContent[topicId];
       title = currContent.title[subTopicIndex] || currContent?.title[0];
       text = currContent?.content[subTopicIndex];
-      animation = animationsObject[topicId][subTopicIndex];
+      animation = {
+         ...animationsObject[topicId][subTopicIndex],
+         link: `/${dataFolder}/` + animationsObject[topicId][subTopicIndex].link,
+      };
+
       subTopicCount = currContent?.content.length;
       console.log("animation", animation);
       return { title, text, animation, subTopicCount };
    }, [topicId, subTopicIndex]);
    // const newPanelContent = Object.entries(panelContent).map(([key, value]) => ({ key, ...value }));
+   console.log(animation);
 
    const hotSpotData = hotlinks.map((hotlink) => {
       return {
@@ -80,11 +88,6 @@ function App() {
                </div>
             )} */}
             <div className={styles.content}>
-               {screen === "home" && (
-                  <div className={styles.altTitleContainer}>
-                     <h1>iMac</h1>
-                  </div>
-               )}
                {screen === "info" && (
                   <>
                      <div className={styles.animationContainer}>
@@ -92,7 +95,9 @@ function App() {
                            <h1>iMac</h1>
                         </div>
 
-                        <Animation settings={animation} />
+                        <div className={styles.animationInner}>
+                           <Animation settings={animation} />
+                        </div>
                      </div>
                      <div className={styles.textPanelContainer}>
                         <TextPanel
@@ -109,6 +114,9 @@ function App() {
 
                {screen === "home" && (
                   <div style={{ width: "100%", height: "100%", position: "relative" }}>
+                     <div className={styles.altTitleContainerHome}>
+                        <h1>iMac</h1>
+                     </div>
                      <HotSpot hotSpotData={filteredHotSpotData} onLoadDetails={handleLoadDetails} image={image} />
                      <div
                         style={{
