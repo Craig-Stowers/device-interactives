@@ -64,7 +64,7 @@
 }
 
 :global(.vertical) .TextPanel h1 {
-   margin-top: 5px;
+   margin-top: 15px;
 }
 
 @media screen and (max-width: 1200px) {
@@ -109,9 +109,10 @@
 }
 
 @media screen and (max-height: 640px) {
+   :global(.vertical) .TextPanel h1,
    .TextPanel h1 {
       font-size: 20px;
-      margin-top: 10px;
+      margin-top: 18px;
       margin-bottom: 10px;
       display: inline-block;
    }
@@ -125,15 +126,15 @@
    }
 
    .TextPanel .body {
-      padding: 0px 6px;
-      font-size: 14px;
+      padding: 0px 9px;
+      font-size: 16px;
    }
 
    .body span {
-      margin-bottom: 4px;
+      margin-bottom: 10px;
    }
 }
-
+/* 
 @media screen and (max-height: 600px) {
    .TextPanel h1 {
       font-size: 20px;
@@ -144,4 +145,4 @@
       font-size: 15px;
       line-height: 20px;
    }
-}
+} */

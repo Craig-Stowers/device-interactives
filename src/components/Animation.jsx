@@ -44,6 +44,7 @@ const Animation = ({ size, settings }) => {
    }, [loading, showLoading]);
 
    useEffect(() => {
+      console.log("change animation", settings);
       const controller = new AbortController();
       const signal = controller.signal;
 
@@ -104,7 +105,7 @@ const Animation = ({ size, settings }) => {
       >
          <div style={{ opacity: loading ? 0 : 1, transition: "opacity 0.30s" }}>
             {/* <div style={{ width: "500px", height: "50px", backgroundColor: "red" }}>testing testing testing</div> */}
-            {animationData && <Lottie animationData={animationData} loop={true} />}
+            {animationData && <Lottie animationData={animationData} loop={settings.loop} />}
          </div>
 
          {loading && (

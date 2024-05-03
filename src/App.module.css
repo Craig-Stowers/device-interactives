@@ -144,10 +144,10 @@
 @media screen and (max-height: 700px) {
    :global(.vertical) {
       .textPanelContainer {
-         height: 45%;
+         height: 40%;
       }
       .animationContainer {
-         height: 55%;
+         height: 60%;
       }
    }
 }
@@ -155,10 +155,10 @@
 @media screen and (max-height: 600px) {
    :global(.vertical) {
       .textPanelContainer {
-         height: 50%;
+         height: 45%;
       }
       .animationContainer {
-         height: 50%;
+         height: 55%;
       }
    }
 }
