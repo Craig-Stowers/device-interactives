@@ -84,6 +84,16 @@
    }
 }
 
+@media screen and (max-width: 800px) {
+   .altTitleContainerHome {
+      padding-top: 6px;
+      padding-bottom: 6px;
+      h1 {
+         font-size: 20px;
+      }
+   }
+}
+
 /* .altTitle {
    box-sizing: border-box;
    position: absolute;

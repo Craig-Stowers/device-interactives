@@ -64,7 +64,7 @@ const HotSpot = ({ hotSpotData, onLoadDetails, imageSettings, size }) => {
    const newRatio = newDimensions.width / newDimensions.height;
    const containerRatio = size.width / size.height;
 
-   console.log("containerRatio", containerRatio, "newRatio", newRatio);
+   // console.log("containerRatio", containerRatio, "newRatio", newRatio);
 
    const [newWidth, newHeight] = useMemo(() => {
       let width = 0;
@@ -107,11 +107,13 @@ const HotSpot = ({ hotSpotData, onLoadDetails, imageSettings, size }) => {
 
    const transforms = [rotationTransform, scaleTransform].join(" ");
 
-   const scaleValue = newHeight / size.height;
+   // console.log("scale", scaleValue);
+   const scale = newWidth / defaultDimensions.width;
 
-   console.log("scale", scaleValue);
-
-   //  console.log("transforms", transforms);
+   const newScale = useMemo(() => {
+      console.log("new scale", scale);
+      return scale;
+   }, [scale]);
 
    return (
       <div
@@ -157,6 +159,11 @@ const HotSpot = ({ hotSpotData, onLoadDetails, imageSettings, size }) => {
             }}
          >
             {hotSpotData.map((hotlink, i) => {
+               const highlightWidth = Math.max(150 * scale, 100);
+
+               const pulseBase = Math.max(50 * scale, 20);
+               const pulseWidth = pulseBase + circleWidth * scale * 0.7;
+
                const x = (hotlink.x / 80) * 100;
                const y = (hotlink.y / 108) * 100;
                const props = {
@@ -164,8 +171,8 @@ const HotSpot = ({ hotSpotData, onLoadDetails, imageSettings, size }) => {
                   top: `${y}%`,
                   text: hotlink.title,
                   tabIndex: i,
-                  width: circleWidth * (newWidth / defaultDimensions.width),
-                  highlightWidth: 140 * (newWidth / defaultDimensions.width) + 15,
+                  width: pulseWidth,
+                  highlightWidth: highlightWidth,
                   onSelected: () => handleSelected(hotlink.id),
                   onUnselect: () => handleUnselected(hotlink.id),
                   selected: selectedIndex === hotlink.id,
