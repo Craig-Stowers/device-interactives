@@ -107,7 +107,7 @@ const HotSpot = ({ hotSpotData, onLoadDetails, imageSettings, size }) => {
    const transforms = [rotationTransform, scaleTransform].join(" ");
 
    // console.log("scale", scaleValue);
-   const scale = newWidth / defaultDimensions.width;
+   const scale = size.width / defaultDimensions.width;
 
    const newScale = useMemo(() => {
       console.log("new scale", scale);
@@ -158,10 +158,10 @@ const HotSpot = ({ hotSpotData, onLoadDetails, imageSettings, size }) => {
             }}
          >
             {hotSpotData.map((hotlink, i) => {
-               const highlightWidth = Math.max(150 * scale, 100);
+               const highlightWidth = Math.min(Math.max(130 * scale, 100), 140);
 
                const pulseBase = Math.max(50 * scale, 20);
-               const pulseWidth = pulseBase + circleWidth * scale * 0.7;
+               const pulseWidth = highlightWidth * 0.15 + circleWidth * 0.34;
 
                const x = (hotlink.x / 80) * 100;
                const y = (hotlink.y / 108) * 100;

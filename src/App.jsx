@@ -26,10 +26,10 @@ const options = [
    { value: "ipad", disabled: true },
    { value: "iphone", disabled: true },
    { value: "laptop", disabled: true },
-   { value: "macbook", disabled: true },
+   { value: "macbook", disabled: false },
 ];
 
-const defaultDeviceKey = "imac";
+const defaultDeviceKey = "macbook";
 
 function App() {
    const [width, height] = useWindowSize();
@@ -39,7 +39,7 @@ function App() {
    const [selectedImage, setSelectedImage] = useState(0);
    const [viewIndex, setViewIndex] = useState(0);
 
-   const [adminDeviceKey, setAdminDeviceKey] = useState("imac");
+   const [adminDeviceKey, setAdminDeviceKey] = useState(defaultDeviceKey);
 
    const deviceKey = adminMode && adminDeviceKey ? adminDeviceKey : defaultDeviceKey;
 
