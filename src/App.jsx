@@ -37,7 +37,7 @@ function App() {
    const [subTopicIndex, setSubTopicIndex] = useState(0);
    const [screen, setScreen] = useState("home");
    const [selectedImage, setSelectedImage] = useState(0);
-   const [viewIndex, setViewIndex] = useState(0);
+   const [viewIndex, setViewIndex] = useState(null);
 
    const [adminDeviceKey, setAdminDeviceKey] = useState(defaultDeviceKey);
 
@@ -67,9 +67,8 @@ function App() {
 
    useEffect(() => {
       if (!deviceData) return;
-      if (deviceData.initialViewIndex) {
-         setViewIndex(deviceData.initialViewIndex);
-      }
+
+      setViewIndex(deviceData.initialViewIndex || 0);
    }, [deviceData]);
 
    const { title, text, animation, subTopicCount, status } = useMemo(() => {
@@ -105,6 +104,11 @@ function App() {
 
    if (status) if (!deviceData) return null;
 
+   if (viewIndex == null) {
+      console.log("aborting viewIndex", viewIndex, deviceData.views[0]);
+      return null;
+   }
+
    const hotSpotData = deviceData.hotlinks.map((hotlink) => {
       return {
          id: hotlink.id,
@@ -124,7 +128,7 @@ function App() {
 
    const handleDeviceSelect = (option) => {
       setAdminDeviceKey(option);
-      // setViewIndex(index);
+      setViewIndex(null);
    };
    return (
       <div className={`${styles.app} ${vertical ? "vertical" : "horizontal"} ${removeWrapper ? "nowrapper" : ""}`}>
