@@ -51,38 +51,37 @@ const HotSpot = ({ hotSpotData, onLoadDetails, imageSettings, size }) => {
       };
    }, [selectedIndex]);
 
-   const newDimensions = { ...defaultDimensions };
-
-   if (imageSettings.bracketHeight) {
-      newDimensions.height = defaultDimensions.height * imageSettings.bracketHeight;
-   }
-   if (imageSettings.bracketWidth) {
-      newDimensions.width = defaultDimensions.width * imageSettings.bracketWidth;
-   }
-
-   const originalRatio = defaultDimensions.width / defaultDimensions.height;
-   const newRatio = newDimensions.width / newDimensions.height;
-   const containerRatio = size.width / size.height;
-
    // console.log("containerRatio", containerRatio, "newRatio", newRatio);
 
    const [newWidth, newHeight] = useMemo(() => {
       let width = 0;
       let height = 0;
 
+      console.log("change image scale");
+
+      const newDimensions = { ...defaultDimensions };
+
+      if (imageSettings.bracketHeight) {
+         newDimensions.height = defaultDimensions.height * imageSettings.bracketHeight;
+      }
+      if (imageSettings.bracketWidth) {
+         newDimensions.width = defaultDimensions.width * imageSettings.bracketWidth;
+      }
+
+      const originalRatio = defaultDimensions.width / defaultDimensions.height;
+      const newRatio = newDimensions.width / newDimensions.height;
+      const containerRatio = size.width / size.height;
+
       if (containerRatio > newRatio) {
          height = size.height * (defaultDimensions.height / newDimensions.height);
          width = height * originalRatio;
-
-         console.log("best fit the height");
       } else {
-         console.log("fit width");
          width = size.width * (defaultDimensions.width / newDimensions.width);
          height = width / originalRatio;
       }
 
       return [width, height];
-   }, [size]);
+   }, [size, imageSettings]);
 
    const handleSelected = (i) => {
       setSelectedIndex(i);

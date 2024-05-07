@@ -4,7 +4,7 @@
    "viewButtons": ["View iMac front", "View iMac back"],
    "viewImages": [
       { "link": "/images/device_front.svg", "bracketHeight": 0.8, "bracketWidth": 1.14 },
-      { "link": "/images/device_back.svg" }
+      { "link": "/images/device_back.svg", "bracketHeight": 0.6, "bracketWidth": 1.05 }
    ],
    "hotlinks": [
       { "id": "AppleMenu", "x": 12, "y": 20.1 },
