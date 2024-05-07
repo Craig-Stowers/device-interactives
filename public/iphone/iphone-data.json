@@ -1,91 +1,99 @@
 {
    "title": "iPad",
    "views": ["front", "back"],
+   "initialViewIndex": 0,
    "viewButtons": ["View iPad front", "View iPad back"],
-   "viewImages": [{ "link": "/images/device_front.svg" }, { "link": "/images/device_back.svg" }],
+   "viewImages": [
+      { "link": "/images/device_front.svg", "bracketHeight": 1.2 },
+      { "link": "/images/device_back.svg", "bracketHeight": 1.2 }
+   ],
    "hotlinks": [
       {
          "id": "FrontCamera",
-         "x": 28,
-         "y": 1
+         "x": 33,
+         "y": 7
       },
       {
          "id": "StatusSymbols",
-         "x": 48,
-         "y": 1
+         "x": 55,
+         "y": 8
+      },
+
+      {
+         "id": "VolumeButtons",
+         "x": 15,
+         "y": 37
       },
       {
          "id": "PowerButton",
-         "x": 58,
-         "y": 29
-      },
-      {
-         "id": "VolumeButtons",
-         "x": 10,
-         "y": 29
+         "x": 66,
+         "y": 38
       },
       {
          "id": "SIMCard",
-         "x": 10,
-         "y": 50
+         "x": 15,
+         "y": 56
       },
       {
          "id": "HomeScreenAndApps",
-         "x": 34,
-         "y": 50
-      },
-      {
-         "id": "ChargingAndHeadphones",
-         "x": 34,
-         "y": 93
-      },
-      {
-         "id": "Microphone",
-         "x": 21,
-         "y": 93
+         "x": 40,
+         "y": 56
       },
       {
          "id": "HomeSwipe",
-         "x": 34,
-         "y": 85
+         "x": 40,
+         "y": 94
       },
       {
+         "id": "Microphone",
+         "x": 25,
+         "y": 106
+      },
+
+      {
+         "id": "ChargingAndHeadphones",
+         "x": 40,
+         "y": 106
+      },
+
+      {
          "id": "RearCamera",
-         "x": 22,
-         "y": 8
+         "x": 27.6,
+         "y": 15,
+         "view": "back"
       }
    ],
    "panelContent": {
       "FrontCamera": {
          "title": ["Front camera"],
          "content": [
-            "<span>The front-facing camera is \n        often used for taking self-portraits \n        (also known as <strong>selfies</strong>), \n        FaceTime and video chats</span> "
+            "<span>The front-facing camera is often used for taking self-portraits (also known as <strong>selfies</strong>), FaceTime and video chats</span> "
          ]
       },
       "StatusSymbols": {
          "title": ["Status symbols"],
          "content": [
-            "<span>The icons displayed on the screen \n        provide important at-a-glance \n        information, such as:</span>\n      <span><strong>Battery:</strong> \n      Indicates current battery level.</span>\n      ",
-            "<span><strong>Reception bars:</strong> \n        Indicates the strength of the mobile network's \n        signal. The more solid bars, the \n        better the signal.</span>\n      ",
-            "<span><strong>Network provider:</strong> \n        You will see your mobile phone network provider's name here.</span>",
-            "<span><strong>3G/4G/5G/LTE:</strong> \n        Indicates which mobile data type your phone is \n        connected to. These can change automatically \n        depending on your location.</span> ",
-            "<span><strong>Wi-Fi:</strong> \n        Indicates your phone is \n        connected to Wi-Fi , and not using \n        your mobile data.</span>",
-            "<span><strong>Date and time:</strong> \n        When your phone is locked, the date and time will display.</span>"
+            "<span>The icons displayed on the screen provide important at-a-glance information, such as:</span><span><strong>Battery:</strong> Indicates current battery level.</span>",
+            "<span><strong>Reception bars:</strong> Indicates the strength of the mobile network's signal. The more solid bars, the better the signal.</span>",
+            "<span><strong>Network provider:</strong> You will see your mobile phone network provider's name here.</span>",
+            "<span><strong>3G/4G/5G/LTE:</strong> Indicates which mobile data type your phone is connected to. These can change automatically depending on your location.</span> ",
+            "<span><strong>Wi-Fi:</strong> Indicates your phone is connected to Wi-Fi , and not using your mobile data.</span>",
+            "<span><strong>Date and time:</strong> When your phone is locked, the date and time will display.</span>"
          ]
       },
       "PowerButton": {
          "title": ["Power button"],
          "content": [
-            "<span>To turn your phone on, press and hold \n        the power button until the Apple logo appears.</span>",
-            "<span>To turn your phone off, \n        hold this button down and \n        press the up or down \n        volume button on the left \n        until the <strong>slide to power</strong> \n        off message appears, then\n        slide your finger across \n        the message from the left.</span>",
-            "<span>To save battery, you can \n        put your phone into <strong>sleep mode</strong>  \n        with a short, single \n        press of the power button. \n        Wake your phone up again\n        with another short, single \n        press of the power button.</span>"
+            "<span>To turn your phone on, press and hold the power button until the Apple logo appears.</span>",
+            "<span>To turn your phone off, hold this button down and press the up or down volume button on the left until the <strong>slide to power</strong> off message appears, thenslide your finger across the message from the left.</span>",
+            "<span>To save battery, you can put your phone into <strong>sleep mode</strong>  with a short, single press of the power button. Wake your phone up againwith another short, single press of the power button.</span>"
          ]
       },
       "VolumeButtons": {
          "title": ["Volume buttons"],
          "content": [
-            "<span>These buttons allow you to adjust the volume of phone \n        calls or sound, such as music, on your phone. \n        The top button turns the volume up, and the bottom one turns it down.</span>",
-            "<span>Press once for a small increase or decrease in volume. \n        Press and hold for a bigger volume increase or decrease. \n        You will see the change in volume on the screen.</span>"
+            "<span>These buttons allow you to adjust the volume of phone calls or sound, such as music, on your phone. The top button turns the volume up, and the bottom one turns it down.</span>",
+            "<span>Press once for a small increase or decrease in volume. Press and hold for a bigger volume increase or decrease. You will see the change in volume on the screen.</span>"
          ]
       },
       "SIMCard": {
@@ -99,45 +107,45 @@
             "Insert SIM card"
          ],
          "content": [
-            "<span>A SIM card is a small piece of plastic that contains the\n        data needed for a mobile phone number. \n        Your phone needs a SIM card to make and receive calls.</span>",
-            "<span>Your SIM card will come in a plastic template. \n        To identify which size SIM card to remove from the \n        template, you first need to find and open your \n        phone's <strong>SIM Tray</strong></span>",
+            "<span>A SIM card is a small piece of plastic that contains thedata needed for a mobile phone number. Your phone needs a SIM card to make and receive calls.</span>",
+            "<span>Your SIM card will come in a plastic template. To identify which size SIM card to remove from the template, you first need to find and open your phone's <strong>SIM Tray</strong></span>",
             "<span>The SIM Tray is a small drawer that slots into the side of the phone and is designed to hold your SIM card.</span>",
-            "<span>Using the <strong>SIM Ejector Tool</strong> that comes \n        with your phone, push the fine needle point gently into \n        the hole on the side of the phone. The tray will pop out.</span>",
-            "<span>Look at the tray and see which size SIM card fits, \n        then carefully push the correct one out of the template. \n        Try not to touch the gold side of the SIM card.</span>",
-            "<span>Place your SIM card carefully into the SIM Tray.\n        It should sit snugly in the SIM Tray, with the gold \n        side facing up.</span>",
-            "<span>With your SIM card loaded, gently push the SIM Tray \n        back into your phone. If the tray resists, don't \n        force it. Check the SIM card is placed correctly \n        and try again</span>"
+            "<span>Using the <strong>SIM Ejector Tool</strong> that comes with your phone, push the fine needle point gently into the hole on the side of the phone. The tray will pop out.</span>",
+            "<span>Look at the tray and see which size SIM card fits, then carefully push the correct one out of the template. Try not to touch the gold side of the SIM card.</span>",
+            "<span>Place your SIM card carefully into the SIM Tray.It should sit snugly in the SIM Tray, with the gold side facing up.</span>",
+            "<span>With your SIM card loaded, gently push the SIM Tray back into your phone. If the tray resists, don't force it. Check the SIM card is placed correctly and try again</span>"
          ]
       },
       "HomeScreenAndApps": {
          "title": ["Home screen and apps"],
          "content": [
-            "<span>The <strong>Home screen</strong> is the main screen on your phone. \n        It shows icons for some of the installed apps, including:</span>\n        <span><strong>Phone:</strong> Used to make phone calls.</span>",
+            "<span>The <strong>Home screen</strong> is the main screen on your phone. It shows icons for some of the installed apps, including:</span><span><strong>Phone:</strong> Used to make phone calls.</span>",
             "<span><strong>Safari:</strong> For browsing the internet.</span>",
             "<span><strong>Messages:</strong> For sending text and picture messages to friends and family.</span>",
             "<span><strong>Camera:</strong> Used for taking photos and videos.</span>",
             "<span><strong>Mail:</strong> For reading and sending emails.</span>",
             "<span><strong>Weather:</strong> To check today's weather and the weekly forecast.</span>",
-            "<span>If all of your apps do not fit on one Home screen, \n        your phone will create another screen automatically. \n        To see them, swipe your finger left or right on the \n        screen.</span>"
+            "<span>If all of your apps do not fit on one Home screen, your phone will create another screen automatically. To see them, swipe your finger left or right on the screen.</span>"
          ]
       },
       "HomeSwipe": {
          "title": ["Return to Home screen"],
          "content": [
-            "<span>Swipe your finger up from the bottom edge of the \n        screen to return to the <strong>Home screen</strong>.\n        If your phone has a physical Home button, you\n        can press it instead.</span>"
+            "<span>Swipe your finger up from the bottom edge of the screen to return to the <strong>Home screen</strong>.If your phone has a physical Home button, youcan press it instead.</span>"
          ]
       },
       "Microphone": {
          "title": ["Microphone"],
          "content": [
-            "<span>This is where the phone's microphone is located and is \n        sensitive enough to pick up your voice when you make a phone call.</span>"
+            "<span>This is where the phone's microphone is located and is sensitive enough to pick up your voice when you make a phone call.</span>"
          ]
       },
       "ChargingAndHeadphones": {
          "title": ["Charging port", "Charging port", "Headphone socket"],
          "content": [
-            "<span>This small gap in the base of the phone is where you insert one \n        end of the cable to recharge your phone.</span>",
-            "<span>The other end of the cable connects to the mains \n        socket via the phone's AC adaptor, or into your computer. \n        Once both ends are connected your phone will start charging.</span>",
-            "<span>This port is also where you can plug in your headphones. \n        You can use your headphones to listen to music, hear alerts or make phone calls.</span>"
+            "<span>This small gap in the base of the phone is where you insert one end of the cable to recharge your phone.</span>",
+            "<span>The other end of the cable connects to the mains socket via the phone's AC adaptor, or into your computer. Once both ends are connected your phone will start charging.</span>",
+            "<span>This port is also where you can plug in your headphones. You can use your headphones to listen to music, hear alerts or make phone calls.</span>"
          ]
       },
       "RearCamera": {
@@ -180,6 +188,7 @@
             "class": "mobileShrinkedNormalScaling"
          },
          {
+            "focusBox": { "x": 0, "y": -40, "width": 800, "height": 800, "scaleType": "cover" },
             "link": "./animations/02_StatusSymbols/04/data.json",
             "loop": false,
             "static": true,
@@ -187,6 +196,7 @@
             "class": "mobileShrinkedNormalScaling"
          },
          {
+            "focusBox": { "x": 0, "y": -40, "width": 800, "height": 800, "scaleType": "cover" },
             "link": "./animations/02_StatusSymbols/05/data.json",
             "loop": false,
             "static": true,
@@ -203,6 +213,7 @@
       ],
       "PowerButton": [
          {
+            "focusBox": { "x": 0, "y": 0, "width": 500, "height": 580, "scaleType": "contain" },
             "link": "./animations/03_PowerButton/01/data.json",
             "loop": true,
             "static": false,
@@ -210,6 +221,7 @@
             "class": "mobileShrinkedNormalScaling"
          },
          {
+            "focusBox": { "x": 0, "y": 0, "width": 500, "height": 580, "scaleType": "contain" },
             "link": "./animations/03_PowerButton/02/data.json",
             "loop": true,
             "static": false,
@@ -217,6 +229,7 @@
             "class": "mobileShrinkedNormalScaling"
          },
          {
+            "focusBox": { "x": 0, "y": 0, "width": 500, "height": 580, "scaleType": "contain" },
             "link": "./animations/03_PowerButton/03/data.json",
             "loop": true,
             "static": false,
@@ -226,6 +239,7 @@
       ],
       "VolumeButtons": [
          {
+            "focusBox": { "x": 70, "y": 20, "width": 800, "height": 1000, "scaleType": "cover" },
             "link": "./animations/04_VolumeButtons/01/data.json",
             "loop": true,
             "static": false,
@@ -233,6 +247,7 @@
             "class": "mobileShrinkedLessScaling"
          },
          {
+            "focusBox": { "x": 70, "y": 20, "width": 800, "height": 1000, "scaleType": "cover" },
             "link": "./animations/04_VolumeButtons/02/data.json",
             "loop": true,
             "static": false,
@@ -242,6 +257,7 @@
       ],
       "SIMCard": [
          {
+            "focusBox": { "x": 5, "y": -145, "width": 1100, "height": 500, "scaleType": "contain" },
             "link": "./animations/05_SIMCard/01/01_SIMCard.svg",
             "loop": false,
             "static": true,
@@ -249,6 +265,7 @@
             "class": "mobileImg"
          },
          {
+            "focusBox": { "x": 0, "y": -20, "width": 720, "height": 680, "scaleType": "contain" },
             "link": "./animations/05_SIMCard/02/data.json",
             "loop": true,
             "static": false,
@@ -293,6 +310,7 @@
       ],
       "HomeScreenAndApps": [
          {
+            "focusBox": { "x": 0, "y": 0, "width": 400, "height": 560, "scaleType": "contain" },
             "link": "./animations/06_HomeScreenAndApps/01/data.json",
             "loop": false,
             "static": true,
@@ -300,6 +318,7 @@
             "class": "mobileHomeScreen"
          },
          {
+            "focusBox": { "x": 0, "y": 0, "width": 400, "height": 1080, "scaleType": "contain" },
             "link": "./animations/06_HomeScreenAndApps/02/data.json",
             "loop": false,
             "static": true,
@@ -307,6 +326,7 @@
             "class": "mobileLastRow"
          },
          {
+            "focusBox": { "x": 0, "y": 0, "width": 400, "height": 1080, "scaleType": "contain" },
             "link": "./animations/06_HomeScreenAndApps/03/data.json",
             "loop": false,
             "static": true,
@@ -314,6 +334,7 @@
             "class": "mobileLastRow"
          },
          {
+            "focusBox": { "x": 0, "y": 0, "width": 400, "height": 1080, "scaleType": "contain" },
             "link": "./animations/06_HomeScreenAndApps/04/data.json",
             "loop": false,
             "static": true,
@@ -321,6 +342,7 @@
             "class": "mobileNormalScaling"
          },
          {
+            "focusBox": { "x": 0, "y": 0, "width": 400, "height": 1080, "scaleType": "contain" },
             "link": "./animations/06_HomeScreenAndApps/05/data.json",
             "loop": false,
             "static": true,
@@ -328,6 +350,7 @@
             "class": "mobileNormalScaling"
          },
          {
+            "focusBox": { "x": 0, "y": 0, "width": 400, "height": 1080, "scaleType": "contain" },
             "link": "./animations/06_HomeScreenAndApps/06/data.json",
             "loop": false,
             "static": true,
@@ -335,6 +358,7 @@
             "class": "mobileNormalScaling"
          },
          {
+            "focusBox": { "x": 0, "y": 30, "width": 400, "height": 640, "scaleType": "contain" },
             "link": "./animations/06_HomeScreenAndApps/07/data.json",
             "loop": false,
             "static": true,
@@ -344,6 +368,7 @@
       ],
       "HomeSwipe": [
          {
+            "focusBox": { "x": 0, "y": 30, "width": 400, "height": 680, "scaleType": "contain" },
             "link": "./animations/07_HomeSwipe/01/data.json",
             "loop": true,
             "static": false,
@@ -353,6 +378,7 @@
       ],
       "Microphone": [
          {
+            "focusBox": { "x": 0, "y": -40, "width": 340, "height": 560, "scaleType": "contain" },
             "link": "./animations/08_Microphone/01/data.json",
             "loop": true,
             "static": false,
@@ -385,6 +411,8 @@
       ],
       "RearCamera": [
          {
+            "focusBox": { "x": -100, "y": -220, "width": 1000, "height": 1000, "scaleType": "cover" },
+            "mode": "forceFitHeightAlignRight",
             "link": "./animations/10_RearCamera/01/data.json",
             "loop": false,
             "static": false,

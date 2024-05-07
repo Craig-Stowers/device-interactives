@@ -103,13 +103,13 @@ const Animation = ({ size, settings }) => {
             animationWidth = size.width / (settings.focusBox.width / 800);
             animationHeight = animationWidth / animationRatio;
 
-            left = (size.width - animationWidth) / (800 / settings.focusBox.x);
-            top = (size.height - animationHeight) / (1080 / settings.focusBox.y);
+            left = (size.width - animationWidth) / 2 - (settings.focusBox.x / 800) * animationWidth;
+            top = (size.height - animationHeight) / 2 - (settings.focusBox.y / 1080) * animationHeight;
          } else {
             animationHeight = size.height / (settings.focusBox.height / 1080);
             animationWidth = animationHeight * animationRatio;
-            left = (size.width - animationWidth) / 2;
-            top = (size.height - animationHeight) / 2;
+            left = (size.width - animationWidth) / 2 - (settings.focusBox.x / 800) * animationWidth;
+            top = (size.height - animationHeight) / 2 - (settings.focusBox.y / 1080) * animationHeight;
          }
       }
       if (scaleType === "contain") {
@@ -117,18 +117,20 @@ const Animation = ({ size, settings }) => {
             animationHeight = size.height / (settings.focusBox.height / 1080);
             animationWidth = animationHeight * animationRatio;
 
-            left = (size.width - animationWidth) / (800 / settings.focusBox.x);
-            top = (size.height - animationHeight) / (1080 / settings.focusBox.y);
-            console.log("size", size);
+            left = (size.width - animationWidth) / 2 - (settings.focusBox.x / 800) * animationWidth;
+            top = (size.height - animationHeight) / 2 - (settings.focusBox.y / 1080) * animationHeight;
+
             console.log(animationWidth, animationHeight, left, top);
          } else {
-            console.log("contain it to width");
             animationWidth = size.width / (settings.focusBox.width / 800);
             animationHeight = animationWidth / animationRatio;
-            left = (size.width - animationWidth) / 2;
-            top = (size.height - animationHeight) / 2;
+            left = (size.width - animationWidth) / 2 - (settings.focusBox.x / 800) * animationWidth;
+            top = (size.height - animationHeight) / 2 - (settings.focusBox.y / 1080) * animationHeight;
          }
       }
+
+      // left += (settings.focusBox.x / settings.focusBox.width) * size.width;
+      // top += (settings.focusBox.y / settings.focusBox.height) * size.height;
    } else {
       const animationRatio = 800 / 1080;
       const containerRatio = size.width / size.height;

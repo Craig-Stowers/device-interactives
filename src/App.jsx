@@ -24,12 +24,12 @@ const options = [
    { value: "desktop", disabled: true },
    { value: "imac", disabled: false },
    { value: "ipad", disabled: true },
-   { value: "iphone", disabled: true },
+   { value: "iphone", disabled: false },
    { value: "laptop", disabled: true },
    { value: "macbook", disabled: false },
 ];
 
-const defaultDeviceKey = "macbook";
+const defaultDeviceKey = "iphone";
 
 function App() {
    const [width, height] = useWindowSize();
