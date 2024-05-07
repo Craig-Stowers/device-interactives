@@ -2,7 +2,7 @@
    "title": "iMac",
    "views": ["front", "back"],
    "viewButtons": ["View iMac front", "View iMac back"],
-   "viewImages": [{ "link": "/images/device_front.svg" }, { "link": "/images/device_back.svg" }],
+   "viewImages": [{ "link": "/images/device_front.svg", "heightViewArea": 0.5 }, { "link": "/images/device_back.svg" }],
    "hotlinks": [
       { "id": "AppleMenu", "x": 12, "y": 20.1 },
       { "id": "Webcam", "x": 40, "y": 18.7 },
@@ -12,6 +12,7 @@
       { "id": "Dock", "x": 40, "y": 54 },
       { "id": "HeadphonePort", "x": 9.2, "y": 61 },
       { "id": "Keyboard", "x": 34, "y": 81.5 },
+      { "id": "Mouse", "x": 70, "y": 79 },
       { "id": "RearPorts", "x": 16.5, "y": 70.3, "view": "back" },
       { "id": "RearPowerButton", "x": 68.89, "y": 71.3, "view": "back" }
    ],
@@ -38,8 +39,7 @@
       "AppleMenu": {
          "title": ["Apple Menu"],
          "content": [
-            "<span>The <strong>Apple Menu</strong> contains a list of important functions and settings, including:</span>",
-            "<span><strong>System Settings:</strong> For accessing features and menus that let you set up your iMac the way you like.</span>",
+            "<span>The <strong>Apple Menu</strong> contains a list of important functions and settings, including:</span><span><strong>System Settings:</strong> For features and menus that let you set up your iMac the way you like.</span>",
             "<span><strong>Sleep:</strong> For saving power when you're not using your iMac. To wake up your iMac, press any key on your keyboard or click your mouse.</span>",
             "<span><strong>Shut Down:</strong> For turning off your iMac to stop it from using power. To turn your iMac back on, press and hold the power button behind the screen on the left.</span>"
          ]
@@ -47,18 +47,16 @@
       "StatusSymbols": {
          "title": ["Status symbols"],
          "content": [
-            "<span>The icons displayed on the top right of the screen provide useful information and tools, such as:</span>",
-            "<span><strong>Wi-Fi:</strong> Indicates if your iMac is connected to Wi-Fi and the internet.</span>",
+            "<span>The icons displayed on the top right of the screen provide useful information and tools, such as:</span><span><strong>Wi-Fi:</strong> Indicates if your iMac is connected to Wi-Fi and the internet.</span>",
             "<span><strong>Spotlight:</strong> Find files and applications on your iMac by typing into a search field then choosing from the list of results.</span>",
             "<span><strong>Control Centre:</strong> Lets you adjust common settings such as volume, screen brightness and wireless connections.</span>",
-            "<span><strong>Date and time:</strong> The current date and time are displayed here. You can click it to open the <strong>Notification Centre</strong> and view messages and updates you might have missed.</span>"
+            "<span><strong>Date and time:</strong> The current date and time are displayed here.</span>"
          ]
       },
       "Dock": {
          "title": ["Dock"],
          "content": [
-            "<span>The <strong>Dock</strong> lets you quickly access frequently used applications, including:</span>",
-            "<span><strong>Finder:</strong> For locating documents, downloads, and applications installed on your iMac.</span>",
+            "<span>The <strong>Dock</strong> lets you quickly access frequently used applications, including:</span><span><strong>Finder:</strong> For locating documents, downloads, and applications installed on your iMac.</span>",
             "<span><strong>Safari:</strong> For browsing the internet.</span>",
             "<span><strong>Mail:</strong> For reading and sending emails.</span>",
             "<span><strong>FaceTime:</strong> For making video calls.</span>",
@@ -66,7 +64,7 @@
          ]
       },
       "HeadphonePort": {
-         "title": ["Headphone Port"],
+         "title": ["Headphone port"],
          "content": ["<span>This lets you connect cabled headphones or an additional speaker to your iMac.</span>"]
       },
       "Mouse": {

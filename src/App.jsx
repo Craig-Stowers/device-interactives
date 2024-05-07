@@ -8,6 +8,7 @@ import TextPanel from "./components/TextPanel";
 import { animationsObject, panelContent, hotlinks, views, deviceTitle } from "../public/imac/imac.js";
 import HotSpot from "./components/HotSpot.jsx";
 import { BrowserView, MobileView, isBrowser, isMobile } from "react-device-detect";
+import DropdownMenu from "./components/DropdownMenu";
 
 import useTextFileLoader from "./hooks/useTextFileLoader.js";
 
@@ -15,7 +16,20 @@ import printObject from "../public/macbook/macbook.js";
 
 console.log(JSON.stringify(printObject, null, 4));
 
-const deviceKey = "macbook";
+const adminMode = true;
+
+const options = [
+   { value: "android", disabled: true },
+   { value: "androidtablet", disabled: true },
+   { value: "desktop", disabled: true },
+   { value: "imac", disabled: false },
+   { value: "ipad", disabled: true },
+   { value: "iphone", disabled: true },
+   { value: "laptop", disabled: true },
+   { value: "macbook", disabled: true },
+];
+
+const defaultDeviceKey = "imac";
 
 function App() {
    const [width, height] = useWindowSize();
@@ -24,6 +38,10 @@ function App() {
    const [screen, setScreen] = useState("home");
    const [selectedImage, setSelectedImage] = useState(0);
    const [viewIndex, setViewIndex] = useState(0);
+
+   const [adminDeviceKey, setAdminDeviceKey] = useState("imac");
+
+   const deviceKey = adminMode && adminDeviceKey ? adminDeviceKey : defaultDeviceKey;
 
    const deviceData = useTextFileLoader(`${deviceKey}/${deviceKey}-data.json`);
 
@@ -82,7 +100,7 @@ function App() {
       subTopicCount = currContent?.content.length;
 
       return { title, text, animation, subTopicCount, status };
-   }, [topicId, subTopicIndex, deviceData]);
+   }, [topicId, subTopicIndex, deviceData, deviceKey]);
    // const newPanelContent = Object.entries(panelContent).map(([key, value]) => ({ key, ...value }));
 
    if (status) if (!deviceData) return null;
@@ -104,7 +122,10 @@ function App() {
       link: deviceKey + deviceData.viewImages[viewIndex].link,
    };
 
-   console.log("image daettings", imageSettings);
+   const handleDeviceSelect = (option) => {
+      setAdminDeviceKey(option);
+      // setViewIndex(index);
+   };
    return (
       <div className={`${styles.app} ${vertical ? "vertical" : "horizontal"} ${removeWrapper ? "nowrapper" : ""}`}>
          <div className={styles.fullScreen}>
@@ -117,9 +138,9 @@ function App() {
                {screen === "info" && (
                   <>
                      <div className={styles.animationContainer}>
-                        <div className={styles.altTitleContainer}>
+                        {/* <div className={styles.altTitleContainer}>
                            <h1>{deviceData.title}</h1>
-                        </div>
+                        </div> */}
 
                         <div className={styles.animationInner}>
                            <Animation settings={animation} />
@@ -139,30 +160,24 @@ function App() {
                )}
 
                {screen === "home" && (
-                  <div style={{ width: "100%", height: "100%", position: "relative", overflow: "hidden" }}>
+                  <div className={styles.hotSpotContainer}>
                      <div className={styles.altTitleContainerHome}>
                         <h1>{deviceData.title}</h1>
                      </div>
-                     <HotSpot
-                        hotSpotData={filteredHotSpotData}
-                        onLoadDetails={handleLoadDetails}
-                        imageSettings={imageSettings}
-                     />
-                     <div
-                        style={{
-                           position: "absolute",
-                           bottom: "0px",
-                           paddingBottom: "10px",
-                           left: "50%",
-                           transform: "translateX(-50%)",
+                     <div className={styles.hotSpotInner}>
+                        <HotSpot
+                           hotSpotData={filteredHotSpotData}
+                           onLoadDetails={handleLoadDetails}
+                           imageSettings={imageSettings}
+                        />
+                     </div>
 
-                           display: "flex",
-                        }}
-                     >
+                     <div className={styles.viewButtonsContainer}>
                         {deviceData.views.map((view, i) => {
                            const disabled = i === viewIndex;
                            return (
                               <button
+                                 key={"viewbtn" + i}
                                  disabled={disabled}
                                  className={`${styles.viewButton}`}
                                  onClick={() => setViewIndex(i)}
@@ -172,24 +187,6 @@ function App() {
                               </button>
                            );
                         })}
-                        {/* {view !== "back" && (
-                           <button
-                              className={basicStyles.basicButton}
-                              onClick={() => setView("back")}
-                              style={{ marginLeft: "auto", marginRight: "auto" }}
-                           >
-                              View iMac back
-                           </button>
-                        )}
-                        {view !== "front" && (
-                           <button
-                              className={basicStyles.basicButton}
-                              onClick={() => setViewIndex("front")}
-                              style={{ marginLeft: "auto", marginRight: "auto" }}
-                           >
-                              View iMac front
-                           </button>
-                        )} */}
                      </div>
                   </div>
                )}
@@ -209,6 +206,10 @@ function App() {
                   </div>
                </div>
             )}
+         </div>
+
+         <div style={{ position: "absolute", top: "0px", left: "0px" }}>
+            <DropdownMenu label="device" options={options} onSelect={handleDeviceSelect} selectedOption={deviceKey} />
          </div>
       </div>
    );

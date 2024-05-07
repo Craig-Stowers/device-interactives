@@ -55,9 +55,10 @@
    font-weight: bold;
    font-size: 18px;
    user-select: none;
-
    /* word-wrap: break-word;
-   hyphens: auto; */
+   overflow-wrap: break-word; */
+   hyphenate-character: "—";
+   hyphens: manual; /* Insert hyphens to indicate word breaks */
 }
 
 .Ring.hovering .text {

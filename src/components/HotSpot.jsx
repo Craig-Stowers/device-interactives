@@ -51,16 +51,20 @@ const HotSpot = ({ hotSpotData, onLoadDetails, imageSettings, size }) => {
       };
    }, [selectedIndex]);
 
+   const newDimensions = { ...defaultDimensions };
+
+   //newDimensions.height = defaultDimensions.height * 0.4;
+
    const [newWidth, newHeight] = useMemo(() => {
       let width = 0;
       let height = 0;
 
-      if (size.width / size.height > defaultDimensions.width / defaultDimensions.height) {
-         width = size.height * (defaultDimensions.width / defaultDimensions.height);
+      if (size.width / size.height > newDimensions.width / newDimensions.height) {
+         width = size.height * (newDimensions.width / newDimensions.height);
          height = size.height;
       } else {
          width = size.width;
-         height = size.width * (defaultDimensions.height / defaultDimensions.width);
+         height = size.width * (newDimensions.height / newDimensions.width);
       }
 
       return [width, height];
@@ -71,7 +75,7 @@ const HotSpot = ({ hotSpotData, onLoadDetails, imageSettings, size }) => {
    };
 
    const handleUnselected = (i) => {
-      setSelectedIndex(null);
+      // setSelectedIndex(null);
    };
 
    const handleFocusEnter = () => {
@@ -102,6 +106,7 @@ const HotSpot = ({ hotSpotData, onLoadDetails, imageSettings, size }) => {
             top: "50%",
             transform: "translate(-50%, -50%)",
             transformOrigin: "center",
+            pointerEvents: "none",
 
             // border: "1px solid red",
          }}
@@ -111,6 +116,7 @@ const HotSpot = ({ hotSpotData, onLoadDetails, imageSettings, size }) => {
             width={"100%"}
             height={"100%"}
             style={{
+               pointerEvents: "none",
                position: "absolute",
                left: "0px",
                top: "0px",
