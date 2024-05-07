@@ -1,0 +1,394 @@
+{
+   "title": "Apple Macbook",
+   "initialViewIndex": 1,
+   "views": ["left", "front", "right"],
+   "viewButtons": ["View left", "View front", "View right"],
+   "viewImages": [
+      { "link": "/images/device_left.svg" },
+      { "link": "/images/device_front.svg", "rotation": 0, "scale": 1.1 },
+      { "link": "/images/device_right.svg" }
+   ],
+   "hotlinks": [
+      {
+         "id": "AppleMenu",
+         "x": 16,
+         "y": 29.5
+      },
+      {
+         "id": "Webcam",
+         "x": 40.3,
+         "y": 28.2
+      },
+      {
+         "id": "StatusSymbols",
+         "x": 57,
+         "y": 29.5
+      },
+      {
+         "id": "Monitor",
+         "x": 26,
+         "y": 45
+      },
+      {
+         "id": "Desktop",
+         "x": 55,
+         "y": 45
+      },
+
+      {
+         "id": "Dock",
+         "x": 40.3,
+         "y": 59
+      },
+      {
+         "id": "PowerButton",
+         "x": 66,
+         "y": 62.5
+      },
+
+      {
+         "id": "Keyboard",
+         "x": 40.3,
+         "y": 68
+      },
+      {
+         "id": "Trackpad",
+         "x": 40.3,
+         "y": 76.5
+      },
+
+      {
+         "id": "LeftConnectorPorts",
+         "x": 20,
+         "y": 84,
+         "view": "left"
+      },
+      {
+         "id": "RightChargingPort",
+         "x": 60.6,
+         "y": 84,
+         "view": "right"
+      }
+   ],
+   "panelContent": {
+      "Monitor": {
+         "title": ["Monitor"],
+         "content": [
+            "<span>The <strong>monitor</strong>, or screen, lets you see what's happening on your MacBook.</span> "
+         ]
+      },
+      "Webcam": {
+         "title": ["Webcam"],
+         "content": [
+            "<span>Your MacBook has a camera at the top of the monitor called a <strong>webcam</strong>. \n      It's used for making FaceTime and video calls and automatically turns on when you need it.</span>",
+            "<span>A small light may be visible when the webcam is in use.</span>"
+         ]
+      },
+      "Desktop": {
+         "title": ["Desktop"],
+         "content": [
+            "<span>The <strong>desktop</strong> is the main screen on your MacBook. \n      It's a quick way to find the apps, functions, files and folders.</span>"
+         ]
+      },
+      "AppleMenu": {
+         "title": ["Apple Menu"],
+         "content": [
+            "<span>The <strong>Apple Menu</strong> contains important functions and settings, including:</span>\n      <span><strong>System Settings:</strong> For accessing features and menus that let you set up your MacBook the way you like.</span>",
+            "<span><strong>Sleep:</strong>  For saving power when you're not using your MacBook. \n        To wake up your MacBook, press any key on the keyboard or click the trackpad. </span>",
+            "<span><strong>Shut Down:</strong> For turning off your MacBook to stop it from using power. \n        To turn your MacBook back on, press and hold the power button at the top right of the keyboard.</span>"
+         ]
+      },
+      "StatusSymbols": {
+         "title": ["Status symbols"],
+         "content": [
+            "<span>The icons on the top right of the screen provide useful information and tools, such as:</span>\n      <span><strong>Battery:</strong> Indicates the amount of charge in your MacBook's battery.</span>\n      ",
+            "<span><strong>Wi-Fi:</strong> Indicates if your MacBook is connected to Wi-Fi and the internet.</span>",
+            "<span><strong>Spotlight:</strong> Find files and applications on your MacBook by typing into the search \n      field then choosing from the list of results.</span>",
+            "<span><strong>Control Centre:</strong> Lets you adjust common settings such as volume, screen brightness and wireless connections.</span>",
+            "<span><strong>Date and time:</strong> The current date and time are displayed here."
+         ]
+      },
+      "Dock": {
+         "title": ["Dock"],
+         "content": [
+            "<span>The <strong>Dock</strong> lets you quickly access frequently used applications, including:</span>\n      <span><strong>Finder:</strong> For locating documents, downloads, and applications installed on your MacBook.</span>\n      ",
+            "<span><strong>Safari:</strong> For browsing the internet.</span>",
+            "<span><strong>Mail:</strong> For reading and sending emails.</span>",
+            "<span><strong>FaceTime:</strong> For making video calls.</span>",
+            "<span><strong>Calendar:</strong> For making and keeping track of appointments.</span>"
+         ]
+      },
+      "PowerButton": {
+         "title": ["Power Button"],
+         "content": [
+            "<span>To turn your MacBook on, press and hold the power button at the top right of the keyboard. \n        An Apple logo will appear on the screen, and you might also hear a chime.</span>",
+            "<span>To turn your MacBook off, save and close any files and applications you have open, \n        then press and hold the power button.</span>"
+         ]
+      },
+      "Trackpad": {
+         "title": ["Trackpad", "Trackpad", "Left click", "Right click", "Scroll"],
+         "content": [
+            "<span>The <strong>trackpad</strong>, or touchpad, does the same job as a mouse. It lets you select and open items on the screen. \n        If you prefer, you can use a mouse with your MacBook instead.</span>",
+            "<span>When you slide your finger along the trackpad, the <strong>pointer</strong> will move in the same direction on the screen. \n        The pointer can also be called a <strong>cursor</strong>.</span>",
+            "<span>To select an item,  move the pointer over it then use one finger to press on the trackpad. \n        This is called a <strong>left click</strong>. To open the item, press twice quickly. This is called a <strong>double click</strong>.</span>",
+            "<span>To see more options for an item, \n        move the pointer over it then use two fingers to tap on the touchpad. \n        This opens a menu and is called a <strong>right click.</strong>\n        Use one finger to select from the list, or left click outside the menu to close it.</span>",
+            "<span>To scroll a document or web page, slide two fingers up or down the trackpad. </span>"
+         ]
+      },
+      "Keyboard": {
+         "title": ["Keyboard"],
+         "content": [
+            "<span>The keyboard lets you type letters, numbers and symbols. \n      It also lets you adjust volume, sound and many other settings.</span>"
+         ]
+      },
+      "LeftConnectorPorts": {
+         "title": ["Connector ports", "USB ports", "Headphone socket"],
+         "content": [
+            "<span>Your MacBook has sockets, or ports, for connecting devices, such as a camera, mouse, keyboard, monitor, or memory stick for saving and sharing files. \n        The ports can be on one or both sides of your MacBook.</span>",
+            "<span>Devices connect  to the ports on your MacBook via USB cables. There are different types of USB cables, \n      and you may need an adapter to match the port on your MacBook.</span>",
+            "<span>This is where you can connect your cabled headphones or an additional speaker to your MacBook.</span>"
+         ]
+      },
+      "RightChargingPort": {
+         "title": ["Charging Port"],
+         "content": [
+            "<span>To recharge your MacBook's battery, connect its charger cable into this port and the other end to the mains socket. \n        The type and location of the port will differ depending on your MacBook model.</span>",
+            "<span>Once both ends are connected, your MacBook will start charging. \n        To avoid running out of battery, plug your MacBook into mains power while you are using it.</span>"
+         ]
+      }
+   },
+   "animationsObject": {
+      "Monitor": [
+         {
+            "link": "./animations/01_Monitor/01/data.json",
+            "loop": false,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShrinkedNormalScaling"
+         }
+      ],
+      "Webcam": [
+         {
+            "link": "./animations/02_Webcam/01/data.json",
+            "loop": false,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShrinkedNormalScaling"
+         },
+         {
+            "link": "./animations/02_Webcam/02/data.json",
+            "loop": false,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShrinkedNormalScaling"
+         }
+      ],
+      "Desktop": [
+         {
+            "link": "./animations/03_Desktop/01/data.json",
+            "loop": true,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShrinkedNormalScaling"
+         }
+      ],
+      "AppleMenu": [
+         {
+            "link": "./animations/04_AppleMenu/01/data.json",
+            "loop": false,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShrinkedNormalScaling"
+         },
+         {
+            "link": "./animations/04_AppleMenu/02/data.json",
+            "loop": false,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShrinkedNormalScaling"
+         },
+         {
+            "link": "./animations/04_AppleMenu/03/data.json",
+            "loop": false,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShrinkedNormalScaling"
+         }
+      ],
+      "StatusSymbols": [
+         {
+            "link": "./animations/05_StatusSymbols/01/data.json",
+            "loop": false,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShrinkedNormalScaling"
+         },
+         {
+            "link": "./animations/05_StatusSymbols/02/data.json",
+            "loop": false,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShrinkedNormalScaling"
+         },
+         {
+            "link": "./animations/05_StatusSymbols/03/data.json",
+            "loop": false,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShrinkedNormalScaling"
+         },
+         {
+            "link": "./animations/05_StatusSymbols/04/data.json",
+            "loop": false,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShrinkedNormalScaling"
+         },
+         {
+            "link": "./animations/05_StatusSymbols/05/data.json",
+            "loop": false,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShrinkedNormalScaling"
+         }
+      ],
+      "Dock": [
+         {
+            "link": "./animations/06_Dock/01/data.json",
+            "loop": false,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShrinkedNormalScaling"
+         },
+         {
+            "link": "./animations/06_Dock/02/data.json",
+            "loop": false,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShrinkedNormalScaling"
+         },
+         {
+            "link": "./animations/06_Dock/03/data.json",
+            "loop": false,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShrinkedNormalScaling"
+         },
+         {
+            "link": "./animations/06_Dock/04/data.json",
+            "loop": false,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShrinkedNormalScaling"
+         },
+         {
+            "link": "./animations/06_Dock/05/data.json",
+            "loop": false,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShrinkedNormalScaling"
+         }
+      ],
+      "PowerButton": [
+         {
+            "link": "./animations/07_PowerButton/01/data.json",
+            "loop": false,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShrinkedNormalScaling"
+         },
+         {
+            "link": "./animations/07_PowerButton/02/data.json",
+            "loop": false,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShrinkedNormalScaling"
+         }
+      ],
+      "Trackpad": [
+         {
+            "link": "./animations/08_Trackpad/01/data.json",
+            "loop": false,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShrinkedNormalScaling"
+         },
+         {
+            "link": "./animations/08_Trackpad/02/data.json",
+            "loop": true,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShrinkedNormalScaling"
+         },
+         {
+            "link": "./animations/08_Trackpad/03/data.json",
+            "loop": true,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShrinkedNormalScaling"
+         },
+         {
+            "link": "./animations/08_Trackpad/04/data.json",
+            "loop": true,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShinkedScrollScaling"
+         },
+         {
+            "link": "./animations/08_Trackpad/05/data.json",
+            "loop": true,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShinkedScrollScaling"
+         }
+      ],
+      "Keyboard": [
+         {
+            "link": "./animations/09_Keyboard/01/data.json",
+            "loop": false,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShrinkedNormalScaling"
+         }
+      ],
+      "LeftConnectorPorts": [
+         {
+            "link": "./animations/10_LeftPorts/01/data.json",
+            "loop": false,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShrinkedNormalScaling"
+         },
+         {
+            "link": "./animations/10_LeftPorts/02/data.json",
+            "loop": true,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShrinkedNormalScaling"
+         },
+         {
+            "link": "./animations/10_LeftPorts/03/data.json",
+            "loop": false,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShrinkedNormalScaling"
+         }
+      ],
+      "RightChargingPort": [
+         {
+            "link": "./animations/11_RightChargingPort/01/data.json",
+            "loop": true,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShrinkedNormalScaling"
+         },
+         {
+            "link": "./animations/11_RightChargingPort/02/data.json",
+            "loop": true,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShrinkedNormalScaling"
+         }
+      ]
+   }
+}

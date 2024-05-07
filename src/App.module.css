@@ -187,6 +187,79 @@
    }
 } */
 
+.viewButton {
+   font-family: "Roboto Slab", serif;
+   background-color: var(--button-purple);
+   color: var(--white);
+   border: none;
+   border-radius: 5px;
+   text-align: center;
+   text-decoration: none;
+   /* display: inline-block; */
+   font-size: 18px;
+   font-weight: bold;
+
+   cursor: pointer;
+
+   white-space: nowrap;
+   margin-left: 10px;
+   margin-right: 10px;
+   width: 140px;
+   height: 50px;
+   padding: 0px;
+}
+
+.viewButton:first-child {
+   margin-left: auto;
+}
+
+.viewButton:last-child {
+   margin-right: auto;
+}
+
+.viewButton:hover {
+   background-color: var(--button-purple-hover);
+}
+
+.viewButton:disabled {
+   opacity: 0.5;
+   cursor: not-allowed;
+   background-color: var(--button-purple);
+}
+@media screen and (max-width: 600px) {
+   .viewButton {
+      margin-left: 5px;
+      margin-right: 5px;
+      width: 115px;
+      height: 40px;
+      font-size: 15px;
+   }
+   .viewButton:first-child {
+      margin-left: auto;
+   }
+
+   .viewButton:last-child {
+      margin-right: auto;
+   }
+}
+
+@media screen and (max-width: 480px) {
+   .viewButton {
+      margin-left: 5px;
+      margin-right: 5px;
+      width: 105px;
+      height: 40px;
+      font-size: 14px;
+   }
+   .viewButton:first-child {
+      margin-left: auto;
+   }
+
+   .viewButton:last-child {
+      margin-right: auto;
+   }
+}
+
 @media screen and (max-width: 400px) {
    :global(.vertical) {
       .animationContainer {

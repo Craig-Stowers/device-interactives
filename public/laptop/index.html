@@ -1,0 +1,118 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <meta charset="UTF-8" />
+   <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"
+   />
+   <head>
+      <title>Device Interactive</title>
+      <link rel="stylesheet" href="../styles.css" />
+      <script type="text/javascript" src="//code.jquery.com/jquery-3.6.3.min.js"></script>
+      <script type="text/javascript" src="../main.js"></script>
+   </head>
+   <body>
+      <div class="home" id="home">
+         <div class="top" id="header">
+            <h1 class="top-title" id="index__title"></h1>
+         </div>
+         <div id="loader" class="loaderContainer"><p>Loading...</p></div>
+         <svg
+            version="1.1"
+            class="device-svg"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 0 80 100"
+            preserveAspectRatio="xMinYMin meet"
+            height="75%"
+            id="device__laptop"
+            overflow="visible"
+            title="laptop"
+         >
+            <image
+               width="100%"
+               height="100%"
+               href="./images/device_front.svg"
+               xlink:href="./images/device_front.svg"
+               id="laptop__front"
+               aria-label="laptop front view"
+               title="laptop front view"
+            />
+            <image
+               width="100%"
+               height="100%"
+               class="laptopBack"
+               href="./images/device_left.svg"
+               xlink:href="./images/device_left.svg"
+               id="laptop__left"
+               aria-label="laptop left view"
+               title="laptop left view"
+            />
+            <image
+               width="100%"
+               height="100%"
+               class="laptopBack"
+               href="./images/device_right.svg"
+               xlink:href="./images/device_right.svg"
+               id="laptop__right"
+               aria-label="laptop right view"
+               title="laptop right view"
+            />
+         </svg>
+         <div class="lottie" id="lottie"></div>
+         <div class="panel-container" id="panel__container">
+            <div class="panel">
+               <div>
+                  <div class="panel-closeBtn" id="btn__closePanel" role="button" tabindex="997">
+                     <span class="panel-closeBtn-regular" id="btn_closePanelCTAText"></span>
+                     <span class="panel-closeBtn-small" id="btn_closePanelCTATextSmall"></span>
+                  </div>
+                  <div class="panel-title" id="panel__title"></div>
+                  <div class="panel-descriptionContainer" id="panel__descriptionContainer">
+                     <div class="panel-description" id="panel__content"></div>
+                     <div class="panel-showMoreBtn" id="panel__showMoreBtn" role="button" tabindex="1001">
+                        <span id="panel__showMoreBtnCTA"></span>
+                     </div>
+                  </div>
+               </div>
+               <div class="panel-footer">
+                  <div
+                     class="arrow-container panelArrow-active"
+                     id="panel__leftArrow"
+                     role="button"
+                     tabindex="998"
+                  ></div>
+                  <div class="panel-paginator" id="panel__paginator"></div>
+                  <div
+                     class="arrow-container panelArrow-active"
+                     id="panel__rightArrow"
+                     role="button"
+                     tabindex="999"
+                  ></div>
+               </div>
+            </div>
+         </div>
+         <div class="footer" id="footer">
+            <div
+               class="footer-button"
+               id="btn__turnDeviceLeft"
+               role="button"
+               tabindex="1000"
+               style="width: max-content"
+            ></div>
+            <div
+               class="footer-button"
+               id="btn__turnDeviceRight"
+               role="button"
+               tabindex="1000"
+               style="width: max-content"
+            ></div>
+         </div>
+      </div>
+      <div id="landscapeError" class="landscapeError"></div>
+      <script type="text/javascript" src="./laptop.js"></script>
+      <script type="text/javascript" src="../index.js"></script>
+      <script>
+         DeviceInteractives.initDevice();
+      </script>
+   </body>
+</html>

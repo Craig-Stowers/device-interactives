@@ -57,15 +57,16 @@
    h1 {
       font-size: 34px;
       margin: 0;
-      margin-bottom: 18px;
+      margin-bottom: 30px;
       margin-top: 5px;
    }
+
    .body {
       font-size: 26px;
       padding: 5px 35px;
 
       span {
-         margin-bottom: 30px;
+         margin-bottom: 25px;
       }
    }
 
@@ -159,6 +160,11 @@
       border-bottom-left-radius: 0px;
       border-top-left-radius: 8px;
    }
+}
+
+:global(.vertical) .TextPanel.extralarge h1 {
+   margin-top: 30px;
+   margin-bottom: 30px;
 }
 
 .closeButton:hover {

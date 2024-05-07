@@ -8,7 +8,7 @@ import { hotlinks } from "../../public/imac/imac";
 
 const defaultDimensions = { width: 800, height: 1080 };
 
-const HotSpot = ({ hotSpotData, onLoadDetails, image, size }) => {
+const HotSpot = ({ hotSpotData, onLoadDetails, imageSettings, size }) => {
    const [circleWidth, setCircleWidth] = useState(50);
    const [selectedIndex, setSelectedIndex] = useState(null);
    const hitboxRefs = useRef({});
@@ -29,8 +29,6 @@ const HotSpot = ({ hotSpotData, onLoadDetails, image, size }) => {
       let clicks = 0;
 
       const mouseDown = (e) => {
-         console.log("selected index xxx", selectedIndex);
-         console.log("hitboxRefs", hitboxRefs.current);
          if (e.target === hitboxRefs.current[selectedIndex]) {
             if (isMobile) {
                clicks++;
@@ -69,7 +67,6 @@ const HotSpot = ({ hotSpotData, onLoadDetails, image, size }) => {
    }, [size]);
 
    const handleSelected = (i) => {
-      console.log("handle-selected", i);
       setSelectedIndex(i);
    };
 
@@ -83,6 +80,17 @@ const HotSpot = ({ hotSpotData, onLoadDetails, image, size }) => {
 
    //console.log("curr index", selectedIndex);
    // console.log("hot size", size);
+   // console.log("image settings", imageSettings);
+
+   const scalevValue = imageSettings.scale ? imageSettings.scale : 1;
+
+   const rotationTransform = imageSettings.rotation ? `rotate(${imageSettings.rotation}deg)` : null;
+   const scaleTransform = imageSettings.scale ? `scale(${imageSettings.scale})` : null;
+
+   const transforms = [rotationTransform, scaleTransform].join(" ");
+
+   //  console.log("transforms", transforms);
+
    return (
       <div
          style={{
@@ -93,9 +101,25 @@ const HotSpot = ({ hotSpotData, onLoadDetails, image, size }) => {
             left: "50%",
             top: "50%",
             transform: "translate(-50%, -50%)",
+            transformOrigin: "center",
+
+            // border: "1px solid red",
          }}
       >
-         <img src={image} width={"100%"} height={"100%"} style={{ position: "absolute", left: "0px", top: "0px" }} />
+         <img
+            src={imageSettings.link}
+            width={"100%"}
+            height={"100%"}
+            style={{
+               position: "absolute",
+               left: "0px",
+               top: "0px",
+               transform: transforms,
+               // border: "2px solid green",
+               // ...(imageSettings.rotation ? { transform: `rotate(${imageSettings.rotation}deg)` } : {}),
+               // ...(imageSettings.scale ? { transform: `rotate(${imageSettings.rotation}deg)` } : {}),
+            }}
+         />
 
          <div
             style={{
@@ -103,6 +127,7 @@ const HotSpot = ({ hotSpotData, onLoadDetails, image, size }) => {
                top: "0px",
                left: "0px",
                // backgroundColor: "rgba(200,0,0,0.2)",
+               transform: scaleTransform,
                width: "100%",
                height: "100%",
             }}
@@ -115,8 +140,8 @@ const HotSpot = ({ hotSpotData, onLoadDetails, image, size }) => {
                   top: `${y}%`,
                   text: hotlink.title,
                   tabIndex: i,
-                  width: circleWidth * (newWidth / defaultDimensions.width),
-                  highlightWidth: 140 * (newWidth / defaultDimensions.width) + 15,
+                  width: (circleWidth * (newWidth / defaultDimensions.width)) / scalevValue,
+                  highlightWidth: (140 * (newWidth / defaultDimensions.width) + 15) / scalevValue,
                   onSelected: () => handleSelected(hotlink.id),
                   onUnselect: () => handleUnselected(hotlink.id),
                   selected: selectedIndex === hotlink.id,
