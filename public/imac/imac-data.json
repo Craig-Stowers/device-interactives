@@ -2,7 +2,7 @@
    "title": "iMac",
    "views": ["front", "back"],
    "viewButtons": ["View iMac front", "View iMac back"],
-   "viewImages": [{ "link": "/images/device_front.svg", "heightViewArea": 0.5 }, { "link": "/images/device_back.svg" }],
+   "viewImages": [{ "link": "/images/device_front.svg", "bracketHeight": 0.5 }, { "link": "/images/device_back.svg" }],
    "hotlinks": [
       { "id": "AppleMenu", "x": 12, "y": 20.1 },
       { "id": "Webcam", "x": 40, "y": 18.7 },

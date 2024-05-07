@@ -53,18 +53,32 @@ const HotSpot = ({ hotSpotData, onLoadDetails, imageSettings, size }) => {
 
    const newDimensions = { ...defaultDimensions };
 
-   //newDimensions.height = defaultDimensions.height * 0.4;
+   if (imageSettings.bracketHeight) {
+      newDimensions.height = defaultDimensions.height * imageSettings.bracketHeight;
+   }
+   if (imageSettings.bracketWidth) {
+      newDimensions.width = defaultDimensions.width * imageSettings.bracketWidth;
+   }
+
+   const originalRatio = defaultDimensions.width / defaultDimensions.height;
+   const newRatio = newDimensions.width / newDimensions.height;
+   const containerRatio = size.width / size.height;
+
+   console.log("containerRatio", containerRatio, "newRatio", newRatio);
 
    const [newWidth, newHeight] = useMemo(() => {
       let width = 0;
       let height = 0;
 
-      if (size.width / size.height > newDimensions.width / newDimensions.height) {
-         width = size.height * (newDimensions.width / newDimensions.height);
-         height = size.height;
+      if (containerRatio > newRatio) {
+         height = size.height * (defaultDimensions.height / newDimensions.height);
+         width = height * originalRatio;
+
+         console.log("best fit the height");
       } else {
-         width = size.width;
-         height = size.width * (newDimensions.height / newDimensions.width);
+         console.log("fit width");
+         width = size.width * (defaultDimensions.width / newDimensions.width);
+         height = width / originalRatio;
       }
 
       return [width, height];
@@ -75,7 +89,7 @@ const HotSpot = ({ hotSpotData, onLoadDetails, imageSettings, size }) => {
    };
 
    const handleUnselected = (i) => {
-      // setSelectedIndex(null);
+      setSelectedIndex(null);
    };
 
    const handleFocusEnter = () => {
@@ -86,12 +100,16 @@ const HotSpot = ({ hotSpotData, onLoadDetails, imageSettings, size }) => {
    // console.log("hot size", size);
    // console.log("image settings", imageSettings);
 
-   const scalevValue = imageSettings.scale ? imageSettings.scale : 1;
+   // const scalevValue = imageSettings.scale ? imageSettings.scale : 1;
 
    const rotationTransform = imageSettings.rotation ? `rotate(${imageSettings.rotation}deg)` : null;
    const scaleTransform = imageSettings.scale ? `scale(${imageSettings.scale})` : null;
 
    const transforms = [rotationTransform, scaleTransform].join(" ");
+
+   const scaleValue = newHeight / size.height;
+
+   console.log("scale", scaleValue);
 
    //  console.log("transforms", transforms);
 
@@ -146,8 +164,8 @@ const HotSpot = ({ hotSpotData, onLoadDetails, imageSettings, size }) => {
                   top: `${y}%`,
                   text: hotlink.title,
                   tabIndex: i,
-                  width: (circleWidth * (newWidth / defaultDimensions.width)) / scalevValue,
-                  highlightWidth: (140 * (newWidth / defaultDimensions.width) + 15) / scalevValue,
+                  width: circleWidth * (newWidth / defaultDimensions.width),
+                  highlightWidth: 140 * (newWidth / defaultDimensions.width) + 15,
                   onSelected: () => handleSelected(hotlink.id),
                   onUnselect: () => handleUnselected(hotlink.id),
                   selected: selectedIndex === hotlink.id,

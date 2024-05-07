@@ -5,7 +5,7 @@
    "viewButtons": ["View left", "View front", "View right"],
    "viewImages": [
       { "link": "/images/device_left.svg" },
-      { "link": "/images/device_front.svg", "rotation": 0, "scale": 1.2 },
+      { "link": "/images/device_front.svg", "rotation": 0 },
       { "link": "/images/device_right.svg" }
    ],
    "hotlinks": [
