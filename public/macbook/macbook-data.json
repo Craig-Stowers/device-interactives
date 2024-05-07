@@ -4,9 +4,9 @@
    "views": ["left", "front", "right"],
    "viewButtons": ["View left", "View front", "View right"],
    "viewImages": [
-      { "link": "/images/device_left.svg", "bracketWidth": 0.8 },
+      { "link": "/images/device_left.svg", "bracketWidth": 0.97, "bracketHeight": 0.8 },
       { "link": "/images/device_front.svg", "bracketWidth": 0.97, "bracketHeight": 0.76 },
-      { "link": "/images/device_right.svg" }
+      { "link": "/images/device_right.svg", "bracketWidth": 0.97, "bracketHeight": 0.8 }
    ],
    "hotlinks": [
       {
