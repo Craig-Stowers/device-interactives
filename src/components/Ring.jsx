@@ -119,6 +119,8 @@ const Ring = forwardRef(
       const svgWidth = highlightWidth + 4; //account for border
       const offsetLeft = `-${svgWidth / 2}px`;
 
+      const hitBoxRadius = selected && isMobile ? svgWidth * 0.4 : svgWidth * 0.15;
+
       return (
          <div className={`${styles.Ring} ${selected ? styles.hovering : ""}`} style={{ top, left }}>
             {editMode && (
@@ -164,7 +166,7 @@ const Ring = forwardRef(
                      // ref={hitCircleRef}
                      cx={svgWidth / 2}
                      cy={svgWidth / 2}
-                     r={50}
+                     r={hitBoxRadius}
                      fill="rgba(255,255,0,0.0)"
                      // onClick={handleMouseClick}
                      ref={ref}

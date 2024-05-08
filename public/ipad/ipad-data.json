@@ -2,7 +2,10 @@
    "title": "iPad",
    "views": ["front", "back"],
    "viewButtons": ["View iPad front", "View iPad back"],
-   "viewImages": [{ "link": "/images/device_front.svg", "bracketHeight": 1.1 }, { "link": "/images/device_back.svg" }],
+   "viewImages": [
+      { "link": "/images/device_front.svg", "bracketHeight": 1.15, "bracketWidth": 1.18 },
+      { "link": "/images/device_back.svg" }
+   ],
    "hotlinks": [
       {
          "id": "FrontCamera",
@@ -66,6 +69,13 @@
          "y": 90.2999999999997,
          "title": "SIM card",
          "view": "front"
+      },
+      {
+         "id": "RearCamera",
+         "x": 11.8,
+         "y": 13,
+         "title": "Rear camera",
+         "view": "back"
       }
    ],
    "panelContent": {
@@ -348,6 +358,7 @@
       ],
       "SIMCard": [
          {
+            "focusBox": { "x": 5, "y": -145, "width": 1100, "height": 500, "scaleType": "contain" },
             "link": "animations/09_SIMCard/01/01_SIMCard.svg",
             "loop": false,
             "static": true,
@@ -355,6 +366,7 @@
             "class": "mobileImg"
          },
          {
+            "focusBox": { "x": 0, "y": -20, "width": 720, "height": 680, "scaleType": "contain" },
             "link": "animations/09_SIMCard/02/data.json",
             "loop": true,
             "static": false,

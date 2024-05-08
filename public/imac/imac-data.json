@@ -109,7 +109,7 @@
             "loop": false,
             "static": false,
             "isImage": false,
-            "focusBox": { "width": 440, "height": 420, "x": 400, "y": 520, "scaleType": "contain" },
+            "focusBox": { "width": 440, "height": 420, "x": 0, "y": 0, "scaleType": "contain" },
             "class": "mobileShrinkedNormalScaling"
          }
       ],
@@ -135,7 +135,7 @@
             "loop": true,
             "static": false,
             "isImage": false,
-            "focusBox": { "width": 440, "height": 420, "x": 400, "y": 520, "scaleType": "contain" },
+            "focusBox": { "width": 440, "height": 420, "x": 0, "y": 0, "scaleType": "contain" },
             "class": "mobileShrinkedNormalScaling"
          }
       ],

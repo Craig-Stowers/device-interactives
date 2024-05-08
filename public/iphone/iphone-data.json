@@ -311,7 +311,7 @@
       ],
       "HomeScreenAndApps": [
          {
-            "focusBox": { "x": 0, "y": 0, "width": 400, "height": 560, "scaleType": "contain" },
+            "focusBox": { "x": 0, "y": 0, "width": 360, "height": 560, "scaleType": "contain" },
             "link": "./animations/06_HomeScreenAndApps/01/data.json",
             "loop": false,
             "static": true,
@@ -319,7 +319,7 @@
             "class": "mobileHomeScreen"
          },
          {
-            "focusBox": { "x": 0, "y": 0, "width": 400, "height": 1080, "scaleType": "contain" },
+            "focusBox": { "x": 0, "y": 0, "width": 570, "height": 1180, "scaleType": "contain" },
             "link": "./animations/06_HomeScreenAndApps/02/data.json",
             "loop": false,
             "static": true,
@@ -327,7 +327,7 @@
             "class": "mobileLastRow"
          },
          {
-            "focusBox": { "x": 0, "y": 0, "width": 400, "height": 1080, "scaleType": "contain" },
+            "focusBox": { "x": 0, "y": 0, "width": 570, "height": 1180, "scaleType": "contain" },
             "link": "./animations/06_HomeScreenAndApps/03/data.json",
             "loop": false,
             "static": true,
@@ -335,7 +335,7 @@
             "class": "mobileLastRow"
          },
          {
-            "focusBox": { "x": 0, "y": 0, "width": 400, "height": 1080, "scaleType": "contain" },
+            "focusBox": { "x": 0, "y": 0, "width": 570, "height": 1180, "scaleType": "contain" },
             "link": "./animations/06_HomeScreenAndApps/04/data.json",
             "loop": false,
             "static": true,
@@ -343,7 +343,7 @@
             "class": "mobileNormalScaling"
          },
          {
-            "focusBox": { "x": 0, "y": 0, "width": 400, "height": 1080, "scaleType": "contain" },
+            "focusBox": { "x": 0, "y": 0, "width": 570, "height": 1180, "scaleType": "contain" },
             "link": "./animations/06_HomeScreenAndApps/05/data.json",
             "loop": false,
             "static": true,
@@ -351,7 +351,7 @@
             "class": "mobileNormalScaling"
          },
          {
-            "focusBox": { "x": 0, "y": 0, "width": 400, "height": 1080, "scaleType": "contain" },
+            "focusBox": { "x": 0, "y": 0, "width": 570, "height": 1180, "scaleType": "contain" },
             "link": "./animations/06_HomeScreenAndApps/06/data.json",
             "loop": false,
             "static": true,
@@ -359,7 +359,7 @@
             "class": "mobileNormalScaling"
          },
          {
-            "focusBox": { "x": 0, "y": 30, "width": 400, "height": 640, "scaleType": "contain" },
+            "focusBox": { "x": 0, "y": 70, "width": 570, "height": 750, "scaleType": "contain" },
             "link": "./animations/06_HomeScreenAndApps/07/data.json",
             "loop": false,
             "static": true,

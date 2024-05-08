@@ -12,9 +12,9 @@ import DropdownMenu from "./components/DropdownMenu";
 
 import useTextFileLoader from "./hooks/useTextFileLoader.js";
 
-import printObject from "../public/macbook/macbook.js";
+//import printObject from "../public/macbook/macbook.js";
 
-console.log(JSON.stringify(printObject, null, 4));
+//console.log(JSON.stringify(printObject, null, 4));
 
 const adminMode = true;
 const editMode = false;
@@ -30,7 +30,7 @@ const options = [
    { value: "macbook", disabled: false },
 ];
 
-const defaultDeviceKey = "macbook";
+const defaultDeviceKey = "ipad";
 
 function App() {
    const [width, height] = useWindowSize();
