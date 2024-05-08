@@ -3,7 +3,22 @@ import styles from "./Ring.module.css";
 import { isMobile } from "react-device-detect";
 
 const Ring = forwardRef(
-   ({ top, left, width, onSelected, onFocusEnter, onUnselect, selected, text, highlightWidth }, ref) => {
+   (
+      {
+         top,
+         left,
+         width,
+         onSelected,
+         onFocusEnter,
+         onUnselect,
+         selected,
+         text,
+         highlightWidth,
+         adminSelected,
+         editMode,
+      },
+      ref
+   ) => {
       // const [hovering, setHovering] = useState(false);
       const renderedWidthRef = useRef(width);
       const targetWidthRef = useRef(width);
@@ -106,6 +121,19 @@ const Ring = forwardRef(
 
       return (
          <div className={`${styles.Ring} ${selected ? styles.hovering : ""}`} style={{ top, left }}>
+            {editMode && (
+               <div
+                  style={{
+                     position: "absolute",
+                     color: "white",
+                     width: "200px",
+                     left: "50%",
+                     transform: "translateX(-50%)",
+                  }}
+               >
+                  {text}
+               </div>
+            )}
             <div className={styles.outline} style={{ position: "absolute", left: offsetLeft, top: offsetLeft }}>
                <svg width={svgWidth} height={svgWidth} viewBox={`0 0 ${svgWidth} ${svgWidth}`}>
                   <circle
@@ -126,7 +154,12 @@ const Ring = forwardRef(
                className={styles.hitbox}
                style={{ position: "absolute", left: offsetLeft, top: offsetLeft, height: svgWidth, width: svgWidth }}
             >
-               <svg width={svgWidth} height={svgWidth} viewBox={`0 0 ${svgWidth} ${svgWidth}`}>
+               <svg
+                  width={svgWidth}
+                  height={svgWidth}
+                  viewBox={`0 0 ${svgWidth} ${svgWidth}`}
+                  style={{ ...(adminSelected && editMode ? { outline: "3px solid green" } : {}) }}
+               >
                   <circle
                      // ref={hitCircleRef}
                      cx={svgWidth / 2}

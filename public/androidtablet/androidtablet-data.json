@@ -1,58 +1,77 @@
 {
    "title": "Android Tablet",
    "views": ["front", "back"],
-   "viewButtons": ["View iPad front", "View iPad back"],
+   "viewButtons": ["View tablet front", "View tablet back"],
    "viewImages": [{ "link": "/images/device_front.svg" }, { "link": "/images/device_back.svg", "rotation": 180 }],
    "hotlinks": [
       {
          "id": "FrontCamera",
-         "x": 62,
-         "y": 44
+         "x": 69.49999999999991,
+         "y": 54.1,
+         "title": "Front camera",
+         "view": "front"
       },
       {
          "id": "VolumeButton",
-         "x": 64,
-         "y": 27
+         "x": 71.79999999999995,
+         "y": 35.70000000000001,
+         "title": "Volume button",
+         "view": "front"
       },
       {
          "id": "PowerButton",
-         "x": 64,
-         "y": 15
+         "x": 71.80000000000001,
+         "y": 22.600000000000005,
+         "title": "Power button",
+         "view": "front"
       },
       {
          "id": "StatusSymbols",
-         "x": 56,
-         "y": 4
+         "x": 64,
+         "y": 10.200000000000003,
+         "title": "Status symbols",
+         "view": "front"
       },
       {
          "id": "ChargingAndHeadphones",
-         "x": 34,
-         "y": 89
+         "x": 39.699999999999996,
+         "y": 101.69999999999996,
+         "title": "Charging port",
+         "view": "front"
       },
       {
          "id": "Microphone",
-         "x": 18,
-         "y": 89
+         "x": 18.1,
+         "y": 101.9,
+         "title": "Microphone",
+         "view": "front"
       },
       {
          "id": "HomeScreenAndApps",
-         "x": 34,
-         "y": 50
+         "x": 40.39999999999999,
+         "y": 68.30000000000001,
+         "title": "Home screen and apps",
+         "view": "front"
       },
       {
          "id": "SIMCard",
-         "x": 64,
-         "y": 75
+         "x": 71.19999999999999,
+         "y": 90.7999999999999,
+         "title": "SIM card",
+         "view": "front"
       },
       {
          "id": "HomeButton",
-         "x": 34,
-         "y": 80
+         "x": 39.59999999999998,
+         "y": 93.59999999999991,
+         "title": "Home button",
+         "view": "front"
       },
       {
          "id": "RearCamera",
-         "x": 11,
-         "y": 8,
+         "x": 15,
+         "y": 15,
+         "title": "Rear camera",
          "view": "back"
       }
    ],

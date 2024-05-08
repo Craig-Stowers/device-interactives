@@ -2,57 +2,79 @@
    "title": "Android Phone",
    "views": ["front", "back"],
    "viewButtons": ["View iPad front", "View iPad back"],
-   "viewImages": [{ "link": "/images/device_front.svg" }, { "link": "/images/device_back.svg" }],
+   "viewImages": [
+      { "link": "/images/device_front.svg", "bracketHeight": 1.15 },
+      { "link": "/images/device_back.svg", "bracketHeight": 1.15 }
+   ],
    "hotlinks": [
       {
          "id": "StatusSymbols",
-         "x": 48,
-         "y": 1
+         "x": 54.70000000000001,
+         "y": 8.400000000000002,
+         "title": "Status symbols",
+         "view": "front"
       },
       {
          "id": "FrontCamera",
-         "x": 34,
-         "y": 1
+         "x": 39.900000000000055,
+         "y": 7.799999999999994,
+         "title": "Front camera",
+         "view": "front"
       },
       {
          "id": "PowerButton",
-         "x": 58,
-         "y": 35
+         "x": 64.40000000000003,
+         "y": 44.29999999999999,
+         "title": "Power button",
+         "view": "front"
       },
       {
          "id": "VolumeButtons",
-         "x": 58,
-         "y": 20
+         "x": 64.39999999999998,
+         "y": 28.500000000000007,
+         "title": "Volume buttons",
+         "view": "front"
       },
       {
          "id": "HomeScreenAndApps",
-         "x": 34,
-         "y": 50
+         "x": 40,
+         "y": 63.2,
+         "title": "Home screen and apps",
+         "view": "front"
       },
       {
          "id": "Microphone",
-         "x": 48,
-         "y": 91
+         "x": 55.70000000000007,
+         "y": 103.40000000000003,
+         "title": "Microphone",
+         "view": "front"
       },
       {
          "id": "ChargingAndHeadphones",
-         "x": 34,
-         "y": 91
+         "x": 40.1,
+         "y": 103.39999999999998,
+         "title": "Charging port",
+         "view": "front"
       },
       {
          "id": "SIMCard",
-         "x": 20,
-         "y": 91
+         "x": 23.500000000000007,
+         "y": 103.29999999999998,
+         "title": "SIM card",
+         "view": "front"
       },
       {
          "id": "HomeButton",
-         "x": 34,
-         "y": 80
+         "x": 40.09999999999999,
+         "y": 93.79999999999995,
+         "title": "Home button",
+         "view": "front"
       },
       {
          "id": "RearCamera",
-         "x": 20,
-         "y": 8,
+         "x": 24.4,
+         "y": 20.5,
+         "title": "Rear camera",
          "view": "back"
       }
    ],

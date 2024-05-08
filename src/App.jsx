@@ -17,19 +17,20 @@ import printObject from "../public/macbook/macbook.js";
 console.log(JSON.stringify(printObject, null, 4));
 
 const adminMode = true;
+const editMode = false;
 
 const options = [
-   { value: "android", disabled: true },
-   { value: "androidtablet", disabled: true },
-   { value: "desktop", disabled: true },
+   { value: "android", disabled: false },
+   { value: "androidtablet", disabled: false },
+   { value: "desktop", disabled: false },
    { value: "imac", disabled: false },
-   { value: "ipad", disabled: true },
+   { value: "ipad", disabled: false },
    { value: "iphone", disabled: false },
-   { value: "laptop", disabled: true },
+   { value: "laptop", disabled: false },
    { value: "macbook", disabled: false },
 ];
 
-const defaultDeviceKey = "iphone";
+const defaultDeviceKey = "laptop";
 
 function App() {
    const [width, height] = useWindowSize();
@@ -130,6 +131,23 @@ function App() {
       setAdminDeviceKey(option);
       setViewIndex(null);
    };
+
+   const handlePrintData = (newViewData) => {
+      console.log("print data");
+      const outputData = hotSpotData.map((item) => {
+         const object = { ...item };
+         for (let i = 0; i < newViewData.length; i++) {
+            if (newViewData[i].id === item.id) {
+               object.x = Math.round(newViewData[i].x * 100) / 100;
+               object.y = Math.round(newViewData[i].y * 100) / 100;
+            }
+         }
+         return object;
+      });
+
+      console.log("outputData", outputData);
+   };
+
    return (
       <div className={`${styles.app} ${vertical ? "vertical" : "horizontal"} ${removeWrapper ? "nowrapper" : ""}`}>
          <div className={styles.fullScreen}>
@@ -173,25 +191,29 @@ function App() {
                            hotSpotData={filteredHotSpotData}
                            onLoadDetails={handleLoadDetails}
                            imageSettings={imageSettings}
+                           onPrintData={handlePrintData}
+                           editMode={editMode}
                         />
                      </div>
 
-                     <div className={styles.viewButtonsContainer}>
-                        {deviceData.views.map((view, i) => {
-                           const disabled = i === viewIndex;
-                           return (
-                              <button
-                                 key={"viewbtn" + i}
-                                 disabled={disabled}
-                                 className={`${styles.viewButton}`}
-                                 onClick={() => setViewIndex(i)}
-                                 // style={{ opacity: disabled ? 0.5 : 1 }}
-                              >
-                                 {deviceData.viewButtons[i]}
-                              </button>
-                           );
-                        })}
-                     </div>
+                     {deviceData.views.length > 1 && (
+                        <div className={styles.viewButtonsContainer}>
+                           {deviceData.views.map((view, i) => {
+                              const disabled = i === viewIndex;
+                              return (
+                                 <button
+                                    key={"viewbtn" + i}
+                                    disabled={disabled}
+                                    className={`${styles.viewButton}`}
+                                    onClick={() => setViewIndex(i)}
+                                    // style={{ opacity: disabled ? 0.5 : 1 }}
+                                 >
+                                    {deviceData.viewButtons[i]}
+                                 </button>
+                              );
+                           })}
+                        </div>
+                     )}
                   </div>
                )}
             </div>

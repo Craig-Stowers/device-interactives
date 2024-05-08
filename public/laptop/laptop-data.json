@@ -1,62 +1,83 @@
 {
-   "title": "iPad",
-   "views": ["front", "left", "right"],
-   "viewButtons": ["View iPad front", "View iPad left", "View iPad back"],
+   "title": "Windows laptop",
+   "views": ["left", "front", "right"],
+   "initialViewIndex": 1,
+   "viewButtons": ["View left", "View front", "View right"],
    "viewImages": [
-      { "link": "/images/device_front.svg" },
-      { "link": "/images/device_left.svg" },
-      { "link": "/images/device_right.svg" }
+      { "link": "/images/device_left.svg", "bracketHeight": 0.75 },
+      { "link": "/images/device_front.svg", "bracketHeight": 0.75 },
+      { "link": "/images/device_right.svg", "bracketHeight": 0.75 }
    ],
    "hotlinks": [
       {
          "id": "Monitor",
-         "x": 23,
-         "y": 33
+         "x": 29.6,
+         "y": 44.2,
+         "title": "Monitor",
+         "view": "front"
       },
       {
          "id": "Desktop",
-         "x": 45,
-         "y": 33
+         "x": 50.5,
+         "y": 44.3,
+         "title": "Desktop",
+         "view": "front"
       },
       {
          "id": "StartMenu",
-         "x": 12,
-         "y": 49
+         "x": 15.8,
+         "y": 59.6,
+         "title": "Start menu",
+         "view": "front"
       },
       {
          "id": "PowerButton",
-         "x": 58,
-         "y": 51
+         "x": 65.8,
+         "y": 62.6,
+         "title": "Power button",
+         "view": "front"
       },
       {
          "id": "StatusSymbols",
-         "x": 50,
-         "y": 49
+         "x": 58.6,
+         "y": 59.6,
+         "title": "Status symbols",
+         "view": "front"
       },
       {
          "id": "Webcam",
-         "x": 34,
-         "y": 20
+         "x": 40.3,
+         "y": 28,
+         "title": "Webcam",
+         "view": "front"
       },
       {
          "id": "Touchpad",
-         "x": 34,
-         "y": 67
+         "x": 40.1,
+         "y": 76.7,
+         "title": "Touchpad",
+         "view": "front"
       },
       {
          "id": "Keyboard",
-         "x": 34,
-         "y": 54
+         "x": 40.1,
+         "y": 67.4,
+         "title": "Keyboard",
+         "view": "front"
       },
       {
          "id": "LeftPorts",
-         "x": 15,
-         "y": 71
+         "x": 22,
+         "y": 84.2,
+         "title": "Connector ports",
+         "view": "left"
       },
       {
          "id": "RightChargingPort",
-         "x": 53,
-         "y": 71
+         "x": 57,
+         "y": 84,
+         "title": "Charging Port",
+         "view": "right"
       }
    ],
    "panelContent": {
