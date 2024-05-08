@@ -30,7 +30,7 @@ const options = [
    { value: "laptop", disabled: false },
 ];
 
-const defaultDeviceKey = "androidtablet";
+const defaultDeviceKey = "imac";
 
 function App() {
    const [width, height] = useWindowSize();
