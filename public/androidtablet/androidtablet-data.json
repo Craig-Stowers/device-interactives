@@ -5,17 +5,10 @@
    "viewImages": [{ "link": "/images/device_front.svg" }, { "link": "/images/device_back.svg", "rotation": 180 }],
    "hotlinks": [
       {
-         "id": "FrontCamera",
-         "x": 69.49999999999991,
-         "y": 54.1,
-         "title": "Front camera",
-         "view": "front"
-      },
-      {
-         "id": "VolumeButton",
-         "x": 71.79999999999995,
-         "y": 35.70000000000001,
-         "title": "Volume button",
+         "id": "StatusSymbols",
+         "x": 64,
+         "y": 10.200000000000003,
+         "title": "Status symbols",
          "view": "front"
       },
       {
@@ -26,24 +19,17 @@
          "view": "front"
       },
       {
-         "id": "StatusSymbols",
-         "x": 64,
-         "y": 10.200000000000003,
-         "title": "Status symbols",
+         "id": "VolumeButton",
+         "x": 71.79999999999995,
+         "y": 35.70000000000001,
+         "title": "Volume button",
          "view": "front"
       },
       {
-         "id": "ChargingAndHeadphones",
-         "x": 39.699999999999996,
-         "y": 101.69999999999996,
-         "title": "Charging port",
-         "view": "front"
-      },
-      {
-         "id": "Microphone",
-         "x": 18.1,
-         "y": 101.9,
-         "title": "Microphone",
+         "id": "FrontCamera",
+         "x": 69.49999999999991,
+         "y": 54.1,
+         "title": "Front camera",
          "view": "front"
       },
       {
@@ -67,6 +53,22 @@
          "title": "Home button",
          "view": "front"
       },
+
+      {
+         "id": "ChargingAndHeadphones",
+         "x": 39.699999999999996,
+         "y": 101.69999999999996,
+         "title": "Charging port",
+         "view": "front"
+      },
+      {
+         "id": "Microphone",
+         "x": 18.1,
+         "y": 101.9,
+         "title": "Microphone",
+         "view": "front"
+      },
+
       {
          "id": "RearCamera",
          "x": 15,
