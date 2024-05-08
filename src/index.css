@@ -31,4 +31,9 @@ body {
    width: 100vw;
    height: calc(100 * var(--vh));
    font-family: "Open Sans", sans-serif;
+   touch-action: none;
+}
+
+html {
+   touch-action: none;
 }
