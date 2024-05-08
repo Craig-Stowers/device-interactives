@@ -56,14 +56,13 @@
          "id": "HomeSwipe",
          "x": 39.999999999999986,
          "y": 93.19999999999953,
-         "title": "Return to Home screen",
          "view": "front"
       },
       {
          "id": "ChargingAndHeadphones",
          "x": 40,
          "y": 101.59999999999991,
-         "title": "Charging port",
+         "title": "Charging & head-\nphones",
          "view": "front"
       },
 
@@ -90,7 +89,7 @@
          ]
       },
       "HomeSwipe": {
-         "title": ["Return to Home screen"],
+         "title": ["Home swipe"],
          "content": [
             "<span>Swipe your finger up from the bottom edge of the screen to return to the <strong>Home screen</strong>. If your iPad has a physical Home button, you can press it instead.</span>"
          ]
@@ -138,8 +137,7 @@
       "HomeScreenAndApps": {
          "title": ["Home screen and apps"],
          "content": [
-            "<span>The <strong>Home screen</strong> is the main screen on your iPad. It shows icons for some of the installed apps, including:</span>",
-            "<span><strong>Safari:</strong> For browsing the internet.</span>",
+            "<span>The <strong>Home screen</strong> is the main screen on your iPad. It shows icons for some of the installed apps, including:</span><span><strong>Safari:</strong> For browsing the internet.</span>",
             "<span><strong>Messages:</strong> For sending text and picture messages to friends and family.</span>",
             "<span><strong>FaceTime:</strong> Used to make video calls.</span>",
             "<span><strong>Camera:</strong> Used for taking photos and videos.</span>",
@@ -177,7 +175,7 @@
    "animationsObject": {
       "FrontCamera": [
          {
-            "focusBox": { "x": 0, "y": 200, "width": 800, "height": 900, "scaleType": "contain" },
+            "focusBox": { "x": 0, "y": 0, "width": 400, "height": 400, "scaleType": "contain" },
             "link": "animations/01_FrontCamera/01/data.json",
             "loop": false,
             "static": false,

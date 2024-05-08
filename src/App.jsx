@@ -30,7 +30,7 @@ const options = [
    { value: "laptop", disabled: false },
 ];
 
-const defaultDeviceKey = "imac";
+const defaultDeviceKey = "iphone";
 
 function App() {
    const [width, height] = useWindowSize();
@@ -123,11 +123,12 @@ function App() {
    }
 
    const hotSpotData = deviceData.hotlinks.map((hotlink) => {
+      console.log("create hot", hotlink.id, hotlink.title);
       return {
          id: hotlink.id,
          x: hotlink.x,
          y: hotlink.y,
-         title: deviceData.panelContent[hotlink.id].title[0],
+         title: hotlink.title || deviceData.panelContent[hotlink.id].title[0],
          view: hotlink.view || deviceData.views[0],
       };
    });

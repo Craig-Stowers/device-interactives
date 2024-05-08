@@ -53,7 +53,8 @@
       {
          "id": "ChargingAndHeadphones",
          "x": 40,
-         "y": 106
+         "y": 106,
+         "title": "Charging & head-\nphones"
       },
 
       {
@@ -129,7 +130,7 @@
          ]
       },
       "HomeSwipe": {
-         "title": ["Return to Home screen"],
+         "title": ["Home swipe"],
          "content": [
             "<span>Swipe your finger up from the bottom edge of the screen to return to the <strong>Home screen</strong>. If your phone has a physical Home button, you can press it instead.</span>"
          ]
