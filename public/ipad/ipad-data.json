@@ -72,7 +72,7 @@
       "FrontCamera": {
          "title": ["Front camera"],
          "content": [
-            "<span>The front-facing camera is often used for taking self-portraits (also known as <strong>selfies</strong>), FaceTime and video chats</span>"
+            "<span>The front-facing camera is often used for taking self-portraits (also known as <strong>selfies</strong>), FaceTime and video chats.</span>"
          ]
       },
       "HomeSwipe": {

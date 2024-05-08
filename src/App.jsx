@@ -30,7 +30,7 @@ const options = [
    { value: "macbook", disabled: false },
 ];
 
-const defaultDeviceKey = "laptop";
+const defaultDeviceKey = "iphone";
 
 function App() {
    const [width, height] = useWindowSize();
@@ -70,6 +70,7 @@ function App() {
       if (!deviceData) return;
 
       setViewIndex(deviceData.initialViewIndex || 0);
+      setScreen("home");
    }, [deviceData]);
 
    const { title, text, animation, subTopicCount, status } = useMemo(() => {
@@ -80,6 +81,17 @@ function App() {
       let status = "ok";
 
       if (!topicId || !deviceData) return { title, text, animation, subTopicCount, status };
+
+      console.log("test topic", topicId, deviceData.animationsObject[topicId]);
+      if (deviceData.animationsObject[topicId] === undefined) {
+         console.log("undefined");
+         return { title, text, animation, subTopicCount, status };
+      }
+
+      if (!deviceData.animationsObject[topicId] && !deviceData.animationsObject[topicId][subTopicIndex]) {
+         title, text, animation, subTopicCount, status;
+      }
+
       console.log("data", deviceData);
 
       const currContent = deviceData.panelContent[topicId];

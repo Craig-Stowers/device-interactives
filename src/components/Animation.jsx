@@ -92,6 +92,7 @@ const Animation = ({ size, settings }) => {
 
    //cover logic here
    if (settings.focusBox) {
+      console.log("has focus box ==============================");
       const animationRatio = 800 / 1080;
       const containerRatio = size.width / size.height;
       const focusRatio = settings.focusBox.width / settings.focusBox.height;
@@ -114,15 +115,17 @@ const Animation = ({ size, settings }) => {
       }
       if (scaleType === "contain") {
          if (containerRatio > focusRatio) {
-            animationHeight = size.height / (settings.focusBox.height / 1080);
+            console.log("focus box contain height");
+            animationHeight = size.height * (1080 / settings.focusBox.height);
             animationWidth = animationHeight * animationRatio;
 
             left = (size.width - animationWidth) / 2 - (settings.focusBox.x / 800) * animationWidth;
             top = (size.height - animationHeight) / 2 - (settings.focusBox.y / 1080) * animationHeight;
 
-            console.log(animationWidth, animationHeight, left, top);
+            console.log("NEW SIZE", animationWidth, animationHeight, left, top);
          } else {
-            animationWidth = size.width / (settings.focusBox.width / 800);
+            console.log("focus box contain width");
+            animationWidth = size.width * (800 / settings.focusBox.width);
             animationHeight = animationWidth / animationRatio;
             left = (size.width - animationWidth) / 2 - (settings.focusBox.x / 800) * animationWidth;
             top = (size.height - animationHeight) / 2 - (settings.focusBox.y / 1080) * animationHeight;
@@ -145,7 +148,7 @@ const Animation = ({ size, settings }) => {
       }
    }
 
-   console.log("render Animation", animationHeight);
+   console.log("render Animation xxx", settings);
    return (
       <div
          style={{
