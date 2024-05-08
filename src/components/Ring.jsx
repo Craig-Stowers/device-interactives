@@ -176,7 +176,7 @@ const Ring = forwardRef(
                   />
                </svg>
                <div
-                  style={{ fontSize: highlightWidth * 0.16 + "px", width: highlightWidth * 0.9 + "px" }}
+                  style={{ fontSize: Math.round(highlightWidth * 0.1565 * 10) / 10 + "px", width: "95%" }}
                   className={styles.text}
                >
                   {text}
