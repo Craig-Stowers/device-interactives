@@ -30,7 +30,7 @@ const options = [
    { value: "macbook", disabled: false },
 ];
 
-const defaultDeviceKey = "iphone";
+const defaultDeviceKey = "macbook";
 
 function App() {
    const [width, height] = useWindowSize();

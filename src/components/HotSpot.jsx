@@ -251,7 +251,7 @@ const HotSpot = ({ hotSpotData, onLoadDetails, imageSettings, size, onPrintData,
                const highlightWidth = Math.min(Math.max(130 * scale, 100), 140);
 
                const pulseBase = Math.max(50 * scale, 20);
-               const pulseWidth = highlightWidth * 0.1 + circleWidth * 0.3;
+               const pulseWidth = highlightWidth * 0.14 + circleWidth * 0.3;
 
                const x = (hotlink.x / 80) * 100;
                const y = (hotlink.y / 108) * 100;

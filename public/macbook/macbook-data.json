@@ -1,5 +1,5 @@
 {
-   "title": "Apple Macbook",
+   "title": "Macbook",
    "initialViewIndex": 1,
    "views": ["left", "front", "right"],
    "viewButtons": ["View left", "View front", "View right"],
@@ -160,6 +160,13 @@
    "animationsObject": {
       "Monitor": [
          {
+            "focusBox": {
+               "x": 0,
+               "y": -20,
+               "width": 550,
+               "height": 480,
+               "scaleType": "contain"
+            },
             "link": "./animations/01_Monitor/01/data.json",
             "loop": false,
             "static": false,
@@ -185,6 +192,13 @@
       ],
       "Desktop": [
          {
+            "focusBox": {
+               "x": 0,
+               "y": -20,
+               "width": 550,
+               "height": 480,
+               "scaleType": "contain"
+            },
             "link": "./animations/03_Desktop/01/data.json",
             "loop": true,
             "static": false,
@@ -307,6 +321,13 @@
       ],
       "Trackpad": [
          {
+            "focusBox": {
+               "x": 0,
+               "y": -140,
+               "width": 800,
+               "height": 690,
+               "scaleType": "contain"
+            },
             "link": "./animations/08_Trackpad/01/data.json",
             "loop": false,
             "static": false,
@@ -314,6 +335,13 @@
             "class": "mobileShrinkedNormalScaling"
          },
          {
+            "focusBox": {
+               "x": 0,
+               "y": -100,
+               "width": 800,
+               "height": 690,
+               "scaleType": "contain"
+            },
             "link": "./animations/08_Trackpad/02/data.json",
             "loop": true,
             "static": false,
@@ -321,6 +349,13 @@
             "class": "mobileShrinkedNormalScaling"
          },
          {
+            "focusBox": {
+               "x": 0,
+               "y": -100,
+               "width": 800,
+               "height": 690,
+               "scaleType": "contain"
+            },
             "link": "./animations/08_Trackpad/03/data.json",
             "loop": true,
             "static": false,
