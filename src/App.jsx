@@ -145,7 +145,6 @@ function App() {
    };
 
    const handlePrintData = (newViewData) => {
-      console.log("print data");
       const outputData = hotSpotData.map((item) => {
          const object = { ...item };
          for (let i = 0; i < newViewData.length; i++) {
@@ -160,14 +159,16 @@ function App() {
       console.log("outputData", outputData);
    };
 
+   const showTopBorder = !removeWrapper && !isMobile;
+
    return (
       <div className={`${styles.app} ${vertical ? "vertical" : "horizontal"} ${removeWrapper ? "nowrapper" : ""}`}>
          <div className={styles.fullScreen}>
-            {/* {!removeWrapper && (
+            {showTopBorder && (
                <div className={styles.title}>
                   <h1>{deviceTitle}</h1>
                </div>
-            )} */}
+            )}
             <div className={styles.content}>
                {screen === "info" && (
                   <>
@@ -195,9 +196,11 @@ function App() {
 
                {screen === "home" && (
                   <div className={styles.hotSpotContainer}>
-                     <div className={styles.altTitleContainerHome}>
-                        <h1>{deviceData.title}</h1>
-                     </div>
+                     {!showTopBorder && (
+                        <div className={styles.altTitleContainerHome}>
+                           <h1>{deviceData.title}</h1>
+                        </div>
+                     )}
                      <div className={styles.hotSpotInner}>
                         <HotSpot
                            hotSpotData={filteredHotSpotData}
