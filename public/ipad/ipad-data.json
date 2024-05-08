@@ -8,17 +8,10 @@
    ],
    "hotlinks": [
       {
-         "id": "FrontCamera",
-         "x": 72.80000000000001,
-         "y": 54,
-         "title": "Front camera",
-         "view": "front"
-      },
-      {
-         "id": "VolumeButtons",
-         "x": 75,
-         "y": 17.699999999999996,
-         "title": "Volume buttons",
+         "id": "PowerButton",
+         "x": 67.30000000000004,
+         "y": 5.1,
+         "title": "Power button",
          "view": "front"
       },
       {
@@ -29,19 +22,29 @@
          "view": "front"
       },
       {
-         "id": "PowerButton",
-         "x": 67.30000000000004,
-         "y": 5.1,
-         "title": "Power button",
+         "id": "VolumeButtons",
+         "x": 75,
+         "y": 17.699999999999996,
+         "title": "Volume buttons",
          "view": "front"
       },
+
       {
-         "id": "ChargingAndHeadphones",
+         "id": "HomeScreenAndApps",
          "x": 40,
-         "y": 101.59999999999991,
-         "title": "Charging port",
+         "y": 58.30000000000002,
+         "title": "Home screen and apps",
          "view": "front"
       },
+
+      {
+         "id": "FrontCamera",
+         "x": 72.80000000000001,
+         "y": 54,
+         "title": "Front camera",
+         "view": "front"
+      },
+
       {
          "id": "Microphone",
          "x": 18,
@@ -57,12 +60,13 @@
          "view": "front"
       },
       {
-         "id": "HomeScreenAndApps",
+         "id": "ChargingAndHeadphones",
          "x": 40,
-         "y": 58.30000000000002,
-         "title": "Home screen and apps",
+         "y": 101.59999999999991,
+         "title": "Charging port",
          "view": "front"
       },
+
       {
          "id": "SIMCard",
          "x": 74.39999999999998,

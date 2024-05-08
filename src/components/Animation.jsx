@@ -104,6 +104,8 @@ const Animation = ({ size, settings }) => {
             animationWidth = size.width / (settings.focusBox.width / 800);
             animationHeight = animationWidth / animationRatio;
 
+            console.log("fit width - cover");
+
             left = (size.width - animationWidth) / 2 - (settings.focusBox.x / 800) * animationWidth;
             top = (size.height - animationHeight) / 2 - (settings.focusBox.y / 1080) * animationHeight;
          } else {

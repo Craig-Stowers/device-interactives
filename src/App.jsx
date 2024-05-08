@@ -20,17 +20,17 @@ const adminMode = true;
 const editMode = false;
 
 const options = [
-   { value: "android", disabled: false },
-   { value: "androidtablet", disabled: false },
-   { value: "desktop", disabled: false },
    { value: "imac", disabled: false },
    { value: "ipad", disabled: false },
    { value: "iphone", disabled: false },
-   { value: "laptop", disabled: false },
    { value: "macbook", disabled: false },
+   { value: "android", disabled: false },
+   { value: "androidtablet", disabled: false },
+   { value: "desktop", disabled: false },
+   { value: "laptop", disabled: false },
 ];
 
-const defaultDeviceKey = "ipad";
+const defaultDeviceKey = "laptop";
 
 function App() {
    const [width, height] = useWindowSize();
