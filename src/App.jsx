@@ -5,7 +5,7 @@ import Animation from "./components/Animation";
 import useWindowSize from "./hooks/useWindowSize";
 import useURLSearchParams from "./hooks/useURLSearchParams";
 import TextPanel from "./components/TextPanel";
-import { animationsObject, panelContent, hotlinks, views, deviceTitle } from "../public/imac/imac.js";
+//import { animationsObject, panelContent, hotlinks, views, deviceTitle } from "../public/imac/imac.js";
 import HotSpot from "./components/HotSpot.jsx";
 import { BrowserView, MobileView, isBrowser, isMobile } from "react-device-detect";
 import DropdownMenu from "./components/DropdownMenu";
@@ -128,7 +128,7 @@ function App() {
          x: hotlink.x,
          y: hotlink.y,
          title: deviceData.panelContent[hotlink.id].title[0],
-         view: hotlink.view || views[0],
+         view: hotlink.view || deviceData.views[0],
       };
    });
 
@@ -166,7 +166,7 @@ function App() {
          <div className={styles.fullScreen}>
             {showTopBorder && (
                <div className={styles.title}>
-                  <h1>{deviceTitle}</h1>
+                  <h1>{deviceData.title}</h1>
                </div>
             )}
             <div className={styles.content}>
