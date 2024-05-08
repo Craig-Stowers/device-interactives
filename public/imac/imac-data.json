@@ -302,7 +302,7 @@
       ],
       "RearPowerButton": [
          {
-            "focusBox": { "width": 480, "height": 480, "x": 0, "y": 50, "scaleType": "contain" },
+            "focusBox": { "width": 450, "height": 450, "x": 0, "y": 30, "scaleType": "contain" },
             "link": "/animations/11_RearPowerButton/01/data.json",
             "loop": true,
             "static": false,
@@ -310,6 +310,7 @@
             "class": "mobileShrinkedNormalScaling"
          },
          {
+            "focusBox": { "width": 450, "height": 450, "x": 0, "y": 30, "scaleType": "contain" },
             "link": "/animations/11_RearPowerButton/02/data.json",
             "loop": true,
             "static": false,
