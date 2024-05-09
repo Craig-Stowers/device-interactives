@@ -112,15 +112,15 @@ const Animation = ({ size, settings }) => {
             position: "absolute",
          }}
       >
-         {settings.isImage && !loading && <img src={cachedData} />}
+         {settings.isImage && !loadingImage && <img src={cachedData} />}
 
-         {!settings.isImage && !loading && (
+         {!settings.isImage && !loadingImage && (
             <div>
                <Lottie animationData={cachedData} loop={settings.loop} />
             </div>
          )}
 
-         {loading && (
+         {loadingImage && (
             <div
                style={{
                   fontSize: "30px",
@@ -134,9 +134,10 @@ const Animation = ({ size, settings }) => {
                   transition: "opacity 0.3s",
                }}
             >
-               loading<span style={{ visibility: loadingAnimationCycle > 0 ? "visible" : "hidden" }}>.</span>
+               Loading
+               {/* loading<span style={{ visibility: loadingAnimationCycle > 0 ? "visible" : "hidden" }}>.</span>
                <span style={{ visibility: loadingAnimationCycle > 1 ? "visible" : "hidden" }}>.</span>
-               <span style={{ visibility: loadingAnimationCycle > 2 ? "visible" : "hidden" }}>.</span>
+               <span style={{ visibility: loadingAnimationCycle > 2 ? "visible" : "hidden" }}>.</span> */}
             </div>
          )}
       </div>
