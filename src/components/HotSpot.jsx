@@ -158,13 +158,22 @@ const HotSpot = ({ hotSpotData, onLoadDetails, imageSettings, size, onPrintData,
 
       const originalRatio = defaultDimensions.width / defaultDimensions.height;
       const newRatio = newDimensions.width / newDimensions.height;
-      const containerRatio = size.width / size.height;
+
+      const newSize = { ...size };
+      if (imageSettings.paddingX) {
+         newSize.width -= imageSettings.paddingX * 2;
+      }
+      if (imageSettings.paddingY) {
+         newSize.height -= imageSettings.paddingY * 2;
+      }
+
+      const containerRatio = newSize.width / newSize.height;
 
       if (containerRatio > newRatio) {
-         height = size.height * (defaultDimensions.height / newDimensions.height);
+         height = newSize.height * (defaultDimensions.height / newDimensions.height);
          width = height * originalRatio;
       } else {
-         width = size.width * (defaultDimensions.width / newDimensions.width);
+         width = newSize.width * (defaultDimensions.width / newDimensions.width);
          height = width / originalRatio;
       }
 

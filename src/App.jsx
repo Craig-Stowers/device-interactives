@@ -32,7 +32,7 @@ const options = [
    { value: "laptop", disabled: false },
 ];
 
-const defaultDeviceKey = "iphone";
+const defaultDeviceKey = "laptop";
 
 function App() {
    const [width, height] = useWindowSize();
@@ -49,8 +49,6 @@ function App() {
    const deviceKey = adminMode && adminDeviceKey ? adminDeviceKey : defaultDeviceKey;
 
    const deviceData = useTextFileLoader(`${deviceKey}/${deviceKey}-data.json`);
-
-   console.log("deviceData", deviceData);
 
    const vertical = width / height < 1.15;
    const removeWrapper = useURLSearchParams("removewrapper") === "true";
@@ -180,6 +178,7 @@ function App() {
    }, [topicId, subTopicIndex, deviceData, deviceKey]);
    // const newPanelContent = Object.entries(panelContent).map(([key, value]) => ({ key, ...value }));
 
+   if (!deviceData || deviceKey !== deviceData.key) return null;
    if (status) if (!deviceData) return null;
 
    if (viewIndex == null) {
@@ -207,6 +206,7 @@ function App() {
 
    const handleDeviceSelect = (option) => {
       setIsDeviceSwitching(true);
+      setViewIndex(0);
       setAdminDeviceKey(option);
       //setNewDeviceKey(option);
    };

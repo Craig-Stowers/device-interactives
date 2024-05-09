@@ -1,5 +1,6 @@
 {
    "title": "iPhone",
+   "key": "iphone",
    "views": ["front", "back"],
    "initialViewIndex": 0,
    "viewButtons": ["View phone front", "View phone back"],
@@ -54,7 +55,7 @@
          "id": "ChargingAndHeadphones",
          "x": 40,
          "y": 106,
-         "title": "Charging & head-\nphones"
+         "title": "Charging & head-<br>phones"
       },
 
       {

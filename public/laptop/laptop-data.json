@@ -1,6 +1,7 @@
 {
    "title": "Windows laptop",
    "views": ["left", "front", "right"],
+   "key": "laptop",
    "initialViewIndex": 1,
    "viewButtons": ["View left", "View front", "View right"],
    "viewImages": [
@@ -126,7 +127,7 @@
          "title": ["Power button"],
          "content": [
             "<span>To turn your computer on, press and hold the power button. When your computer is on, the monitor will show something on the screen.</span>",
-            "<span>To put your computer to sleep, press the power button once. <strong>Sleep mode</strong> saves power, so you can use it when away from your computer for short time.</span>",
+            "<span>To put your computer to sleep, press the power button once. <strong>Sleep mode</strong> saves power, so you can use it when away from your computer for a short time.</span>",
             "<span>To wake your computer from sleep, press the power button once.</span>",
             "<span>To turn your computer off, save and close any files and applications you have open, then briefly press and hold the power button until the screen becomes black.</span>"
          ]
@@ -137,7 +138,7 @@
             "<span>The <strong>touchpad</strong>, or trackpad, does the same job as a mouse. It lets you select and open items on the screen. If you prefer, you can use a mouse with your computer instead.</span>",
             "<span>When you slide your finger along the touchpad, the <strong>pointer</strong> will move in the same direction on the screen. The pointer can also be called a <strong>cursor</strong>.</span>",
             "<span>To select an item,  move the pointer over it then use one finger to tap on the touchpad. This is called a <strong>left click</strong>. To open the item, tap twice quickly. This is called a <strong>double click</strong>.</span>",
-            "<span>To see more options for an item, move the pointer over it then use two fingers to tap on the touchpad. This opens a menu and is called a <strong>right click.</strong>Use one finger to select from the list, or left click outside the menu to close it.</span>",
+            "<span>To see more options for an item, move the pointer over it then use two fingers to tap on the touchpad. This opens a menu and is called a <strong>right click</strong>. Use one finger to select from the list, or left click outside the menu to close it.</span>",
             "<span>To scroll a document or web page, slide two fingers up or down the touchpad. </span>"
          ]
       },
@@ -167,9 +168,19 @@
    "animationsObject": {
       "Monitor": [
          {
-            "focusBox": { "width": 440, "height": 420, "x": 0, "y": 0, "scaleType": "contain" },
+            "focusBox": { "width": 380, "height": 380, "x": 0, "y": -22, "scaleType": "contain" },
             "link": "animations/01_Monitor/01/data.json",
             "loop": false,
+            "static": false,
+            "isImage": false,
+            "class": "mobileShrinkedNormalScaling"
+         }
+      ],
+      "Desktop": [
+         {
+            "focusBox": { "width": 440, "height": 400, "x": 0, "y": -22, "scaleType": "contain" },
+            "link": "animations/03_Desktop/01/data.json",
+            "loop": true,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
@@ -193,16 +204,7 @@
             "class": "mobileShrinkedNormalScaling"
          }
       ],
-      "Desktop": [
-         {
-            "focusBox": { "width": 440, "height": 420, "x": 0, "y": 0, "scaleType": "contain" },
-            "link": "animations/03_Desktop/01/data.json",
-            "loop": true,
-            "static": false,
-            "isImage": false,
-            "class": "mobileShrinkedNormalScaling"
-         }
-      ],
+
       "StartMenu": [
          {
             "link": "animations/04_StartMenu/01/data.json",

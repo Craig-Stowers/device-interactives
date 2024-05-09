@@ -1,8 +1,12 @@
 {
-   "title": "Android Tablet",
+   "key": "androidtablet",
+   "title": "Android tablet",
    "views": ["front", "back"],
    "viewButtons": ["View tablet front", "View tablet back"],
-   "viewImages": [{ "link": "/images/device_front.svg" }, { "link": "/images/device_back.svg", "rotation": 180 }],
+   "viewImages": [
+      { "link": "/images/device_front.svg", "bracketHeight": 1.12, "paddingX": 27 },
+      { "link": "/images/device_back.svg", "bracketHeight": 1.12, "paddingX": 27, "rotation": 180 }
+   ],
    "hotlinks": [
       {
          "id": "StatusSymbols",
@@ -58,7 +62,7 @@
          "id": "ChargingAndHeadphones",
          "x": 39.699999999999996,
          "y": 101.69999999999996,
-         "title": "Charging port",
+         "title": "Charging & head-<br>phones",
          "view": "front"
       },
       {
@@ -105,7 +109,8 @@
          "title": ["Power button"],
          "content": [
             "<span>To turn your tablet on, press and hold the power button until the manufacturer's name appears. Depending on the model, you may need to press the volume and power buttons at the same time.</span>",
-            "<span>To turn your tablet off, hold this button down for a few secondsuntil the <strong>Power off</strong> icon appears. Tap the icon to turn off your tablet.</span>",
+
+            "<span>To turn your phone off, hold this button down until the <strong>Power off</strong> icon appears. Tap to select it, then tap it again.</span>",
             "<span>To save battery, you can put your tablet into <strong>sleep mode</strong>  with a short, single press of the power button. Wake your tablet up again with another short, single press of the power button.</span>"
          ]
       },
@@ -171,6 +176,7 @@
    "animationsObject": {
       "FrontCamera": [
          {
+            "focusBox": { "width": 400, "height": 400, "x": 0, "y": 0, "scaleType": "contain" },
             "link": "animations/01_FrontCamera/01/data.json",
             "loop": false,
             "static": false,

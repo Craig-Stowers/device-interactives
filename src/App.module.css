@@ -89,7 +89,17 @@
       padding-top: 6px;
       padding-bottom: 6px;
       h1 {
-         font-size: 20px;
+         font-size: 24px;
+      }
+   }
+}
+
+@media screen and (max-width: 450px) {
+   .altTitleContainerHome {
+      padding-top: 6px;
+      padding-bottom: 6px;
+      h1 {
+         font-size: 22px;
       }
    }
 }
@@ -268,7 +278,7 @@
       margin-right: 5px;
       min-width: 115px;
       height: 40px;
-      font-size: 15px;
+      font-size: 16px;
    }
    .viewButton:first-child {
       margin-left: auto;
@@ -285,7 +295,6 @@
       margin-right: 5px;
       min-width: 105px;
       height: 40px;
-      font-size: 14px;
    }
    .viewButton:first-child {
       margin-left: auto;
@@ -357,9 +366,9 @@
 
 @media screen and (max-width: 400px) {
    .title {
-      padding: 0px;
+      padding: 5px;
    }
    .title h1 {
-      font-size: 18px;
+      font-size: 20px;
    }
 }

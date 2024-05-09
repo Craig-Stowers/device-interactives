@@ -178,9 +178,8 @@ const Ring = forwardRef(
                <div
                   style={{ fontSize: Math.round(highlightWidth * 0.1565 * 10) / 10 + "px", width: "95%" }}
                   className={styles.text}
-               >
-                  {text}
-               </div>
+                  dangerouslySetInnerHTML={{ __html: text }}
+               />
             </div>
 
             {/* <div className={styles.outline} style={{ width: newWidth + "px", height: newWidth + "px" }}></div> */}

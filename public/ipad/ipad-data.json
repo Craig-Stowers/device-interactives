@@ -1,10 +1,11 @@
 {
    "title": "iPad",
+   "key": "ipad",
    "views": ["front", "back"],
    "viewButtons": ["View iPad front", "View iPad back"],
    "viewImages": [
-      { "link": "/images/device_front.svg", "bracketHeight": 1.15, "bracketWidth": 1.18 },
-      { "link": "/images/device_back.svg" }
+      { "link": "/images/device_front.svg", "bracketHeight": 1.22, "paddingX": 39 },
+      { "link": "/images/device_back.svg", "bracketHeight": 1.22, "paddingX": 39 }
    ],
    "hotlinks": [
       {
@@ -62,7 +63,7 @@
          "id": "ChargingAndHeadphones",
          "x": 40,
          "y": 101.59999999999991,
-         "title": "Charging & head-\nphones",
+         "title": "Charging & head-<br>phones",
          "view": "front"
       },
 

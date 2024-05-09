@@ -5,6 +5,7 @@ function useTextFileLoader(filePath) {
 
    useEffect(() => {
       if (!filePath) return;
+      setFileContent(null);
       fetch(filePath)
          .then((response) => response.text())
          .then((contents) => {

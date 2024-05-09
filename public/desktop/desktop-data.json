@@ -1,12 +1,10 @@
 {
    "title": "Windows desktop",
+   "key": "desktop",
    "views": ["front"],
    "viewButtons": ["View Desktop front"],
    "initialViewIndex": 0,
-   "viewImages": [
-      { "link": "/images/device_front.svg", "bracketHeight": 0.68, "bracketWidth": 1.17 },
-      { "link": "/images/device_tower.svg" }
-   ],
+   "viewImages": [{ "link": "/images/device_front.svg", "bracketHeight": 0.68, "paddingX": 47 }],
    "hotlinks": [
       {
          "id": "Monitor",
@@ -59,7 +57,7 @@
       },
       {
          "id": "PowerCable",
-         "x": 77,
+         "x": 74.5,
          "y": 61.9,
          "title": "Power cable",
          "view": "front"
@@ -159,9 +157,9 @@
          "title": ["Power button"],
          "content": [
             "<span>To turn your computer on, briefly press and hold the power button. It should be marked with the power symbol. When your computer is on, the monitor will show something on the screen.</span>",
-            "<span>To put your computer to sleep, press the power button once. <strong>Sleep mode</strong> saves power, so you can use it when away from your computer for short time.</span>",
-            "<span>To wake your computer from sleep, press the power button once. </span>",
-            "<span>To turn your computer off, save and close any files and applications you have open, then briefly press and hold the power button until the screen goes black</span>"
+            "<span>To put your computer to sleep, press the power button once. <strong>Sleep mode</strong> saves power, so you can use it when away from your computer for a short time.</span>",
+            "<span>To wake your computer from sleep, press the power button once.</span>",
+            "<span>To turn your computer off, save and close any files and applications you have open, then briefly press and hold the power button until the screen goes black.</span>"
          ]
       },
       "PowerCable": {
@@ -174,6 +172,7 @@
    "animationsObject": {
       "Monitor": [
          {
+            "focusBox": { "height": 360, "width": 400, "x": 0, "y": -20, "scaleType": "contain" },
             "link": "animations/01_Monitor/01/data.json",
             "loop": false,
             "static": false,
@@ -199,6 +198,7 @@
       ],
       "Desktop": [
          {
+            "focusBox": { "height": 360, "width": 400, "x": 0, "y": -20, "scaleType": "contain" },
             "link": "animations/03_Desktop/01/data.json",
             "loop": true,
             "static": false,
@@ -305,6 +305,7 @@
       ],
       "Keyboard": [
          {
+            "focusBox": { "width": 400, "height": 400, "scaleType": "contain", "x": -18, "y": 20 },
             "link": "animations/07_Keyboard/01/data.json",
             "loop": false,
             "static": false,

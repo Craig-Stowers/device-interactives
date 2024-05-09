@@ -1,5 +1,6 @@
 {
    "title": "MacBook",
+   "key": "macbook",
    "initialViewIndex": 1,
    "views": ["left", "front", "right"],
    "viewButtons": ["View left", "View front", "View right"],
