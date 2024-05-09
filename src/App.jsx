@@ -12,7 +12,7 @@ import DropdownMenu from "./components/DropdownMenu";
 
 import useTextFileLoader from "./hooks/useTextFileLoader.js";
 
-import { loadAsset, unloadAll, unloadAllBut } from "./helpers/FileCache";
+import { cache, loadAsset, unloadAll, unloadAllBut, unloadAsset } from "./helpers/FileCache";
 
 //import printObject from "../public/macbook/macbook.js";
 
@@ -69,12 +69,19 @@ function App() {
       setSubTopicIndex(0);
       setViewIndex(deviceData.initialViewIndex || 0);
 
-      // const keepCacheKeys = [];
-      // for (let i = 0; i < deviceData.viewImages.length; i++) {
-      //    const key = deviceKey + "-view-" + deviceData.views[i];
-      //    keepCacheKeys.push(key);
-      // }
-      // unloadAllBut(keepCacheKeys);
+      setTimeout(() => {
+         const keepCacheKeys = [];
+         Object.keys(deviceData.animationsObject).forEach((key) => {
+            const cacheKey = deviceKey + "-" + key + "-0";
+            keepCacheKeys.push(cacheKey);
+         });
+         for (let i = 0; i < deviceData.viewImages.length; i++) {
+            const cacheKey = deviceKey + "-view-" + deviceData.views[i];
+            keepCacheKeys.push(cacheKey);
+         }
+         unloadAllBut(keepCacheKeys);
+         console.log("cleared cache", cache);
+      }, 10);
    };
 
    const cacheAnimation = (deviceKey, topicKey, subIndex) => {
@@ -109,7 +116,7 @@ function App() {
       for (let i = 0; i < deviceData.viewImages.length; i++) {
          const url = "/" + deviceKey + deviceData.viewImages[i].link;
          const key = deviceKey + "-view-" + deviceData.views[i];
-         console.log("LOADING VIEW", key, url);
+
          loadAsset(key, url);
       }
 
@@ -121,6 +128,13 @@ function App() {
 
    useEffect(() => {
       if (!deviceData) return;
+
+      const previous = subTopicIndex - 1;
+      if (previous >= 0) {
+         for (let i = 0; i <= previous; i++) {
+            unloadAsset(deviceKey + "-" + topicId + "-" + i);
+         }
+      }
 
       cacheAnimation(deviceKey, topicId, subTopicIndex);
       cacheAnimation(deviceKey, topicId, subTopicIndex + 1);

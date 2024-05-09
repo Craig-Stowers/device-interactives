@@ -47,6 +47,7 @@ const fetchJSON = (key, path) => {
 
 // Function to unload or delete animation data
 const unloadAsset = (key) => {
+   console.log("unload asset", key);
    if (fetchControllers[key]) {
       fetchControllers[key].abort(); // Abort the fetch
       delete fetchControllers[key]; // Remove controller reference
