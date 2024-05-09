@@ -52,6 +52,7 @@ function App() {
 
    const vertical = width / height < 1.15;
    const removeWrapper = useURLSearchParams("removewrapper") === "true";
+   const topBorder = useURLSearchParams("topborder") === "true";
 
    const handleChapterChange = (i) => {
       setSubTopicIndex(i);
@@ -224,7 +225,7 @@ function App() {
       });
    };
 
-   const showTopBorder = !removeWrapper && !isMobile;
+   const showTopBorder = !removeWrapper && topBorder;
 
    if (isDeviceSwitching) {
       return null;
