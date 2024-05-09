@@ -4,10 +4,9 @@ const onLoadCallbacks = {}; // Store callbacks for when data is loaded
 
 // Function to load animation data
 const fetchJSON = (key, path) => {
-   // console.log("Attempting to fetch JSON data", key, path);
+   console.log("Attempting to fetch JSON data", key, path);
 
    if (!cache[key]) {
-      console.log("FETCHING NEW");
       const controller = new AbortController();
       fetchControllers[key] = controller; // Store the controller
       const { signal } = controller;
@@ -24,7 +23,6 @@ const fetchJSON = (key, path) => {
             console.log(`JSON data processed for ${key}`);
             cache[key] = jsonData; // Cache the actual JSON data
             if (onLoadCallbacks[key]) {
-               console.log("TEST callback");
                onLoadCallbacks[key].forEach((callback) => callback(jsonData));
                onLoadCallbacks[key] = null; // Clear the callback
             }
@@ -76,7 +74,6 @@ const fetchImageAsDataURL = (key, path) => {
    //  console.log("Attempting to fetch image as data URL", key, path);
 
    if (!cache[key]) {
-      console.log("FETCHING NEW");
       const controller = new AbortController();
       fetchControllers[key] = controller; // Store the controller
       const { signal } = controller;
@@ -96,19 +93,16 @@ const fetchImageAsDataURL = (key, path) => {
             return new Promise((resolve, reject) => {
                const reader = new FileReader();
                reader.onloadend = () => {
-                  console.log(`Image data URL processed for ${key}`);
                   cache[key] = reader.result;
                   resolve(reader.result);
                };
                reader.onerror = () => {
-                  console.error(`FileReader error for ${key}`);
                   reject(new Error("Failed to read blob as data URL"));
                };
                reader.readAsDataURL(blob);
             });
          })
          .catch((error) => {
-            console.error("Error processing image data URL:", error);
             delete cache[key]; // Ensure cleanup on error
             delete fetchControllers[key]; // Clean up controller reference
             throw error;

@@ -174,7 +174,7 @@
                "height": 330,
                "scaleType": "contain"
             },
-            "link": "/animations/01_Monitor/01/data.json",
+            "link": "animations/01_Monitor/01/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
@@ -183,14 +183,14 @@
       ],
       "Webcam": [
          {
-            "link": "/animations/02_Webcam/01/data.json",
+            "link": "animations/02_Webcam/01/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/02_Webcam/02/data.json",
+            "link": "animations/02_Webcam/02/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
@@ -206,7 +206,7 @@
                "height": 330,
                "scaleType": "contain"
             },
-            "link": "/animations/03_Desktop/01/data.json",
+            "link": "animations/03_Desktop/01/data.json",
             "loop": true,
             "static": false,
             "isImage": false,
@@ -215,21 +215,21 @@
       ],
       "AppleMenu": [
          {
-            "link": "/animations/04_AppleMenu/01/data.json",
+            "link": "animations/04_AppleMenu/01/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/04_AppleMenu/02/data.json",
+            "link": "animations/04_AppleMenu/02/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/04_AppleMenu/03/data.json",
+            "link": "animations/04_AppleMenu/03/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
@@ -238,35 +238,35 @@
       ],
       "StatusSymbols": [
          {
-            "link": "/animations/05_StatusSymbols/01/data.json",
+            "link": "animations/05_StatusSymbols/01/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/05_StatusSymbols/02/data.json",
+            "link": "animations/05_StatusSymbols/02/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/05_StatusSymbols/03/data.json",
+            "link": "animations/05_StatusSymbols/03/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/05_StatusSymbols/04/data.json",
+            "link": "animations/05_StatusSymbols/04/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/05_StatusSymbols/05/data.json",
+            "link": "animations/05_StatusSymbols/05/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
@@ -275,35 +275,35 @@
       ],
       "Dock": [
          {
-            "link": "/animations/06_Dock/01/data.json",
+            "link": "animations/06_Dock/01/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/06_Dock/02/data.json",
+            "link": "animations/06_Dock/02/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/06_Dock/03/data.json",
+            "link": "animations/06_Dock/03/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/06_Dock/04/data.json",
+            "link": "animations/06_Dock/04/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/06_Dock/05/data.json",
+            "link": "animations/06_Dock/05/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
@@ -312,14 +312,14 @@
       ],
       "PowerButton": [
          {
-            "link": "/animations/07_PowerButton/01/data.json",
+            "link": "animations/07_PowerButton/01/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/07_PowerButton/02/data.json",
+            "link": "animations/07_PowerButton/02/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
@@ -335,7 +335,7 @@
                "height": 690,
                "scaleType": "contain"
             },
-            "link": "/animations/08_Trackpad/01/data.json",
+            "link": "animations/08_Trackpad/01/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
@@ -349,7 +349,7 @@
                "height": 690,
                "scaleType": "contain"
             },
-            "link": "/animations/08_Trackpad/02/data.json",
+            "link": "animations/08_Trackpad/02/data.json",
             "loop": true,
             "static": false,
             "isImage": false,
@@ -363,21 +363,21 @@
                "height": 690,
                "scaleType": "contain"
             },
-            "link": "/animations/08_Trackpad/03/data.json",
+            "link": "animations/08_Trackpad/03/data.json",
             "loop": true,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/08_Trackpad/04/data.json",
+            "link": "animations/08_Trackpad/04/data.json",
             "loop": true,
             "static": false,
             "isImage": false,
             "class": "mobileShinkedScrollScaling"
          },
          {
-            "link": "/animations/08_Trackpad/05/data.json",
+            "link": "animations/08_Trackpad/05/data.json",
             "loop": true,
             "static": false,
             "isImage": false,
@@ -393,7 +393,7 @@
                "height": 400,
                "scaleType": "contain"
             },
-            "link": "/animations/09_Keyboard/01/data.json",
+            "link": "animations/09_Keyboard/01/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
@@ -402,21 +402,21 @@
       ],
       "LeftConnectorPorts": [
          {
-            "link": "/animations/10_LeftPorts/01/data.json",
+            "link": "animations/10_LeftPorts/01/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/10_LeftPorts/02/data.json",
+            "link": "animations/10_LeftPorts/02/data.json",
             "loop": true,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/10_LeftPorts/03/data.json",
+            "link": "animations/10_LeftPorts/03/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
@@ -425,14 +425,14 @@
       ],
       "RightChargingPort": [
          {
-            "link": "/animations/11_RightChargingPort/01/data.json",
+            "link": "animations/11_RightChargingPort/01/data.json",
             "loop": true,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/11_RightChargingPort/02/data.json",
+            "link": "animations/11_RightChargingPort/02/data.json",
             "loop": true,
             "static": false,
             "isImage": false,

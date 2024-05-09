@@ -169,7 +169,7 @@
       "FrontCamera": [
          {
             "focusBox": { "x": 0, "y": 0, "width": 400, "height": 580, "scaleType": "contain" },
-            "link": "/animations/01_FrontCamera/01/data.json",
+            "link": "animations/01_FrontCamera/01/data.json",
             "loop": false,
             "static": true,
             "isImage": false
@@ -177,42 +177,42 @@
       ],
       "StatusSymbols": [
          {
-            "link": "/animations/02_StatusSymbols/01/data.json",
+            "link": "animations/02_StatusSymbols/01/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/02_StatusSymbols/02/data.json",
+            "link": "animations/02_StatusSymbols/02/data.json",
             "loop": false,
             "static": true,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/02_StatusSymbols/03/data.json",
+            "link": "animations/02_StatusSymbols/03/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/02_StatusSymbols/04/data.json",
+            "link": "animations/02_StatusSymbols/04/data.json",
             "loop": false,
             "static": true,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/02_StatusSymbols/05/data.json",
+            "link": "animations/02_StatusSymbols/05/data.json",
             "loop": false,
             "static": true,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/02_StatusSymbols/06/data.json",
+            "link": "animations/02_StatusSymbols/06/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
@@ -221,21 +221,21 @@
       ],
       "PowerButton": [
          {
-            "link": "/animations/03_PowerButton/01/data.json",
+            "link": "animations/03_PowerButton/01/data.json",
             "loop": true,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/03_PowerButton/02/data.json",
+            "link": "animations/03_PowerButton/02/data.json",
             "loop": true,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/03_PowerButton/03/data.json",
+            "link": "animations/03_PowerButton/03/data.json",
             "loop": true,
             "static": false,
             "isImage": false,
@@ -244,14 +244,14 @@
       ],
       "VolumeButtons": [
          {
-            "link": "/animations/04_VolumeButtons/01/data.json",
+            "link": "animations/04_VolumeButtons/01/data.json",
             "loop": true,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedLessScaling"
          },
          {
-            "link": "/animations/04_VolumeButtons/02/data.json",
+            "link": "animations/04_VolumeButtons/02/data.json",
             "loop": true,
             "static": false,
             "isImage": false,
@@ -261,38 +261,38 @@
       "SIMCard": [
          {
             "focusBox": { "x": 5, "y": -145, "width": 1100, "height": 500, "scaleType": "contain" },
-            "link": "/animations/05_SIMCard/01/01_SIMCard.svg",
+            "link": "animations/05_SIMCard/01/01_SIMCard.svg",
             "loop": false,
             "static": true,
             "isImage": true
          },
          {
             "focusBox": { "x": 0, "y": 40, "width": 400, "height": 400, "scaleType": "contain" },
-            "link": "/animations/05_SIMCard/02/data.json",
+            "link": "animations/05_SIMCard/02/data.json",
             "loop": true,
             "static": false,
             "isImage": false
          },
          {
-            "link": "/animations/05_SIMCard/03/data.json",
+            "link": "animations/05_SIMCard/03/data.json",
             "loop": true,
             "static": false,
             "isImage": false
          },
          {
-            "link": "/animations/05_SIMCard/04/data.json",
+            "link": "animations/05_SIMCard/04/data.json",
             "loop": true,
             "static": false,
             "isImage": false
          },
          {
-            "link": "/animations/05_SIMCard/05/data.json",
+            "link": "animations/05_SIMCard/05/data.json",
             "loop": true,
             "static": false,
             "isImage": false
          },
          {
-            "link": "/animations/05_SIMCard/06/data.json",
+            "link": "animations/05_SIMCard/06/data.json",
             "loop": true,
             "static": false,
             "isImage": false
@@ -300,49 +300,49 @@
       ],
       "HomeScreenAndApps": [
          {
-            "link": "/animations/06_HomeScreenAndApps/01/data.json",
+            "link": "animations/06_HomeScreenAndApps/01/data.json",
             "loop": false,
             "static": true,
             "isImage": false,
             "class": "mobileHomeScreen"
          },
          {
-            "link": "/animations/06_HomeScreenAndApps/02/data.json",
+            "link": "animations/06_HomeScreenAndApps/02/data.json",
             "loop": false,
             "static": true,
             "isImage": false,
             "class": "mobileShrinkedNormalScalingTopRow"
          },
          {
-            "link": "/animations/06_HomeScreenAndApps/03/data.json",
+            "link": "animations/06_HomeScreenAndApps/03/data.json",
             "loop": false,
             "static": true,
             "isImage": false,
             "class": "mobileShrinkedNormalScalingTopRow"
          },
          {
-            "link": "/animations/06_HomeScreenAndApps/04/data.json",
+            "link": "animations/06_HomeScreenAndApps/04/data.json",
             "loop": false,
             "static": true,
             "isImage": false,
             "class": "mobileShrinkedNormalScalingTopRow"
          },
          {
-            "link": "/animations/06_HomeScreenAndApps/05/data.json",
+            "link": "animations/06_HomeScreenAndApps/05/data.json",
             "loop": false,
             "static": true,
             "isImage": false,
             "class": "mobileShrinkedNormalScalingTopRow"
          },
          {
-            "link": "/animations/06_HomeScreenAndApps/06/data.json",
+            "link": "animations/06_HomeScreenAndApps/06/data.json",
             "loop": false,
             "static": true,
             "isImage": false,
             "class": "mobileShrinkedNormalScalingTopRow"
          },
          {
-            "link": "/animations/06_HomeScreenAndApps/07/data.json",
+            "link": "animations/06_HomeScreenAndApps/07/data.json",
             "loop": false,
             "static": true,
             "isImage": false,
@@ -351,7 +351,7 @@
       ],
       "HomeButton": [
          {
-            "link": "/animations/07_HomeButton/01/data.json",
+            "link": "animations/07_HomeButton/01/data.json",
             "loop": true,
             "static": false,
             "isImage": false,
@@ -360,7 +360,7 @@
       ],
       "Microphone": [
          {
-            "link": "/animations/08_Microphone/01/data.json",
+            "link": "animations/08_Microphone/01/data.json",
             "loop": true,
             "static": false,
             "isImage": false,
@@ -369,21 +369,21 @@
       ],
       "ChargingAndHeadphones": [
          {
-            "link": "/animations/09_ChargingAndHeadphones/01/data.json",
+            "link": "animations/09_ChargingAndHeadphones/01/data.json",
             "loop": true,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/09_ChargingAndHeadphones/02/data.json",
+            "link": "animations/09_ChargingAndHeadphones/02/data.json",
             "loop": true,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/09_ChargingAndHeadphones/03/data.json",
+            "link": "animations/09_ChargingAndHeadphones/03/data.json",
             "loop": true,
             "static": false,
             "isImage": false,
@@ -392,7 +392,7 @@
       ],
       "RearCamera": [
          {
-            "link": "/animations/10_RearCamera/01/data.json",
+            "link": "animations/10_RearCamera/01/data.json",
             "loop": false,
             "static": false,
             "isImage": false,

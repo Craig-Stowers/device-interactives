@@ -174,7 +174,7 @@
    "animationsObject": {
       "Monitor": [
          {
-            "link": "/animations/01_Monitor/01/data.json",
+            "link": "animations/01_Monitor/01/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
@@ -183,14 +183,14 @@
       ],
       "Webcam": [
          {
-            "link": "/animations/02_Webcam/01/data.json",
+            "link": "animations/02_Webcam/01/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/02_Webcam/02/data.json",
+            "link": "animations/02_Webcam/02/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
@@ -199,7 +199,7 @@
       ],
       "Desktop": [
          {
-            "link": "/animations/03_Desktop/01/data.json",
+            "link": "animations/03_Desktop/01/data.json",
             "loop": true,
             "static": false,
             "isImage": false,
@@ -208,35 +208,35 @@
       ],
       "StartMenu": [
          {
-            "link": "/animations/04_StartMenu/01/data.json",
+            "link": "animations/04_StartMenu/01/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/04_StartMenu/02/data.json",
+            "link": "animations/04_StartMenu/02/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/04_StartMenu/03/data.json",
+            "link": "animations/04_StartMenu/03/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/04_StartMenu/04/data.json",
+            "link": "animations/04_StartMenu/04/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/04_StartMenu/05/data.json",
+            "link": "animations/04_StartMenu/05/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
@@ -245,28 +245,28 @@
       ],
       "StatusSymbols": [
          {
-            "link": "/animations/05_StatusSymbols/01/data.json",
+            "link": "animations/05_StatusSymbols/01/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/05_StatusSymbols/02/data.json",
+            "link": "animations/05_StatusSymbols/02/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/05_StatusSymbols/03/data.json",
+            "link": "animations/05_StatusSymbols/03/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/05_StatusSymbols/04/data.json",
+            "link": "animations/05_StatusSymbols/04/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
@@ -275,28 +275,28 @@
       ],
       "Mouse": [
          {
-            "link": "/animations/06_Mouse/01/data.json",
+            "link": "animations/06_Mouse/01/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/06_Mouse/02/data.json",
+            "link": "animations/06_Mouse/02/data.json",
             "loop": true,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/06_Mouse/03/data.json",
+            "link": "animations/06_Mouse/03/data.json",
             "loop": true,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/06_Mouse/04/data.json",
+            "link": "animations/06_Mouse/04/data.json",
             "loop": true,
             "static": false,
             "isImage": false,
@@ -305,7 +305,7 @@
       ],
       "Keyboard": [
          {
-            "link": "/animations/07_Keyboard/01/data.json",
+            "link": "animations/07_Keyboard/01/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
@@ -314,7 +314,7 @@
       ],
       "Case": [
          {
-            "link": "/animations/08_Case/01/data.json",
+            "link": "animations/08_Case/01/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
@@ -323,28 +323,28 @@
       ],
       "Ports": [
          {
-            "link": "/animations/09_Ports/01/data.json",
+            "link": "animations/09_Ports/01/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/09_Ports/02/data.json",
+            "link": "animations/09_Ports/02/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/09_Ports/03/data.json",
+            "link": "animations/09_Ports/03/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/09_Ports/04/data.json",
+            "link": "animations/09_Ports/04/data.json",
             "loop": false,
             "static": false,
             "isImage": false,
@@ -353,28 +353,28 @@
       ],
       "PowerButton": [
          {
-            "link": "/animations/10_PowerButton/01/data.json",
+            "link": "animations/10_PowerButton/01/data.json",
             "loop": true,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/10_PowerButton/02/data.json",
+            "link": "animations/10_PowerButton/02/data.json",
             "loop": true,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/10_PowerButton/03/data.json",
+            "link": "animations/10_PowerButton/03/data.json",
             "loop": true,
             "static": false,
             "isImage": false,
             "class": "mobileShrinkedNormalScaling"
          },
          {
-            "link": "/animations/10_PowerButton/04/data.json",
+            "link": "animations/10_PowerButton/04/data.json",
             "loop": true,
             "static": false,
             "isImage": false,
@@ -383,7 +383,7 @@
       ],
       "PowerCable": [
          {
-            "link": "/animations/11_PowerCable/01/data.json",
+            "link": "animations/11_PowerCable/01/data.json",
             "loop": false,
             "static": false,
             "isImage": false,

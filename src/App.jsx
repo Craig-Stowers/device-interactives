@@ -32,7 +32,7 @@ const options = [
    { value: "laptop", disabled: false },
 ];
 
-const defaultDeviceKey = "laptop";
+const defaultDeviceKey = "iphone";
 
 function App() {
    const [width, height] = useWindowSize();
@@ -41,7 +41,8 @@ function App() {
    const [screen, setScreen] = useState("home");
    const [selectedImage, setSelectedImage] = useState(0);
    const [viewIndex, setViewIndex] = useState(null);
-   const [isDeviceSwitching, setIsDeviceSwitching] = useState(false);
+   const [isDeviceSwitching, setIsDeviceSwitching] = useState(true);
+   const [newDeviceKey, setNewDeviceKey] = useState(null);
 
    const [adminDeviceKey, setAdminDeviceKey] = useState(defaultDeviceKey);
 
@@ -69,54 +70,53 @@ function App() {
       setSubTopicIndex(0);
       setViewIndex(deviceData.initialViewIndex || 0);
 
-      setTimeout(() => {
-         const keepCacheKeys = [];
-         Object.keys(deviceData.animationsObject).forEach((key) => {
-            const cacheKey = deviceKey + "-" + key + "-0";
-            keepCacheKeys.push(cacheKey);
-         });
-         for (let i = 0; i < deviceData.viewImages.length; i++) {
-            const cacheKey = deviceKey + "-view-" + deviceData.views[i];
-            keepCacheKeys.push(cacheKey);
-         }
-         unloadAllBut(keepCacheKeys);
-         console.log("cleared cache", cache);
-      }, 10);
+      const keepCacheKeys = [];
+      Object.keys(deviceData.animationsObject).forEach((key) => {
+         const cacheKey = deviceKey + "-" + key + "-0";
+         keepCacheKeys.push(cacheKey);
+      });
+      for (let i = 0; i < deviceData.viewImages.length; i++) {
+         const cacheKey = deviceKey + "-view-" + deviceData.views[i];
+         keepCacheKeys.push(cacheKey);
+      }
+      unloadAllBut(keepCacheKeys);
    };
 
    const cacheAnimation = (deviceKey, topicKey, subIndex) => {
       if (!deviceData) return;
       if (!deviceData.animationsObject[topicKey]) return;
       if (!deviceData.animationsObject[topicKey][subIndex]) return;
-      const url = "/" + deviceKey + deviceData.animationsObject[topicKey][subIndex].link;
+      const url = "/" + deviceKey + "/" + deviceData.animationsObject[topicKey][subIndex].link;
       const cacheKey = deviceKey + "-" + topicKey + "-" + subIndex;
-
-      console.log("TEST LOAD", cacheKey, url);
 
       loadAsset(cacheKey, url);
    };
 
    useEffect(() => {
-      //preload views and first animations
       if (!deviceData) return;
 
-      //    const prefix = deviceKey;
-      //    Object.keys(cache).forEach(key => {
-      //       if (key.startsWith(prefix)) {
-      //           delete cache[key];
-      //           console.log(`Cache entry with key '${key}' has been removed.`);
-      //       }
-      //   });
+      console.log("init for new device", deviceKey);
+      //preload views and first animations
 
       setScreen("home");
+      setViewIndex(deviceData.initialViewIndex || 0);
       setTopicId(null);
       setSubTopicIndex(0);
-      setViewIndex(deviceData.initialViewIndex || 0);
+      unloadAll();
 
+      const timer = setTimeout(() => {
+         initCache();
+         setIsDeviceSwitching(false);
+      }, 90);
+
+      return () => clearTimeout(timer);
+   }, [deviceData]);
+
+   const initCache = () => {
+      console.log("init cache");
       for (let i = 0; i < deviceData.viewImages.length; i++) {
          const url = "/" + deviceKey + deviceData.viewImages[i].link;
          const key = deviceKey + "-view-" + deviceData.views[i];
-
          loadAsset(key, url);
       }
 
@@ -124,7 +124,7 @@ function App() {
          //  console.log("TEST PRELOAD ANIMATIONS", deviceKey);
          cacheAnimation(deviceKey, key, 0);
       });
-   }, [deviceData]);
+   };
 
    useEffect(() => {
       if (!deviceData) return;
@@ -132,7 +132,7 @@ function App() {
       const previous = subTopicIndex - 1;
       if (previous >= 0) {
          for (let i = 0; i <= previous; i++) {
-            unloadAsset(deviceKey + "-" + topicId + "-" + i);
+            //unloadAsset(deviceKey + "-" + topicId + "-" + i);
          }
       }
 
@@ -140,13 +140,6 @@ function App() {
       cacheAnimation(deviceKey, topicId, subTopicIndex + 1);
       //console.log("TEST key url", cacheKey, url);
    }, [deviceKey, deviceData, topicId, subTopicIndex]);
-
-   useEffect(() => {
-      unloadAll();
-      if (isDeviceSwitching) {
-         setIsDeviceSwitching(false);
-      }
-   }, [isDeviceSwitching]);
 
    const { title, text, animation, subTopicCount, status } = useMemo(() => {
       let title = null;
@@ -213,10 +206,9 @@ function App() {
    };
 
    const handleDeviceSelect = (option) => {
-      setScreen("home");
-      setAdminDeviceKey(option);
-      setViewIndex(null);
       setIsDeviceSwitching(true);
+      setAdminDeviceKey(option);
+      //setNewDeviceKey(option);
    };
 
    const handlePrintData = (newViewData) => {
@@ -236,7 +228,9 @@ function App() {
 
    console.log("xx subTopic", subTopicIndex);
 
-   if (isDeviceSwitching) return;
+   if (isDeviceSwitching) {
+      return <div>switching</div>;
+   }
 
    return (
       <div className={`${styles.app} ${vertical ? "vertical" : "horizontal"} ${removeWrapper ? "nowrapper" : ""}`}>
