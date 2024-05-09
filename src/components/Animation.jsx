@@ -2,13 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import Lottie from "lottie-react";
 import withSizeObserver from "../hoc/withSizeObserver";
-
-const animationUrls = [
-   "/animations/headphones.json",
-   "/animations/homescreen.json",
-   "/animations/test2.json",
-   "/animations/imac.json",
-];
+import { cache } from "../helpers/FileCache";
 
 const Animation = ({ size, settings }) => {
    //const { isLoading } = useAnimationLoader();
@@ -25,7 +19,7 @@ const Animation = ({ size, settings }) => {
    const link = settings?.link.replace("./", "/");
 
    useEffect(() => {
-      console.log("run loader delay");
+      console.log("run loader delay", cache);
       if (!loading) return;
       const timer = setTimeout(() => {
          if (!showLoading) {
@@ -38,10 +32,26 @@ const Animation = ({ size, settings }) => {
    }, [loading]);
 
    useEffect(() => {
+      const waitForImage = async (key) => {
+         if (cache[key]) {
+            console.log("FETCHING DATA");
+            try {
+               const data = await cache[key];
+               console.log("FOUND DATA", data);
+               return data;
+            } catch (error) {
+               console.error("Error fetching data:", error);
+            }
+         } else {
+            console.error("No data found for key:", key);
+         }
+      };
+      waitForImage("view-front");
+   }, []);
+   useEffect(() => {
       //   console.log("run loader interval");
       if (!loading || !showLoading) return;
       const timer = setInterval(() => {
-         console.log("change cycle");
          setLoadingAnimationCycle((prev) => (prev + 1) % 4);
       }, 300);
       return () => clearInterval(timer);
@@ -62,6 +72,8 @@ const Animation = ({ size, settings }) => {
 
       let timer = null;
       let timer2 = null;
+
+      console.log("OLD FETCHING LINK", link);
 
       fetch(link)
          .then((response) => response.json())
@@ -101,10 +113,8 @@ const Animation = ({ size, settings }) => {
 
       if (scaleType === "cover") {
          if (containerRatio > focusRatio) {
-            animationWidth = size.width / (settings.focusBox.width / 800);
+            animationWidth = size.width * (800 / settings.focusBox.width);
             animationHeight = animationWidth / animationRatio;
-
-            console.log("fit width - cover");
 
             left = (size.width - animationWidth) / 2 - (settings.focusBox.x / 800) * animationWidth;
             top = (size.height - animationHeight) / 2 - (settings.focusBox.y / 1080) * animationHeight;
@@ -117,16 +127,12 @@ const Animation = ({ size, settings }) => {
       }
       if (scaleType === "contain") {
          if (containerRatio > focusRatio) {
-            console.log("focus box contain height");
             animationHeight = size.height * (1080 / settings.focusBox.height);
             animationWidth = animationHeight * animationRatio;
 
             left = (size.width - animationWidth) / 2 - (settings.focusBox.x / 800) * animationWidth;
             top = (size.height - animationHeight) / 2 - (settings.focusBox.y / 1080) * animationHeight;
-
-            console.log("NEW SIZE", animationWidth, animationHeight, left, top);
          } else {
-            console.log("focus box contain width");
             animationWidth = size.width * (800 / settings.focusBox.width);
             animationHeight = animationWidth / animationRatio;
             left = (size.width - animationWidth) / 2 - (settings.focusBox.x / 800) * animationWidth;
@@ -150,7 +156,6 @@ const Animation = ({ size, settings }) => {
       }
    }
 
-   console.log("render Animation xxx", settings);
    return (
       <div
          style={{

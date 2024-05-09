@@ -12,6 +12,8 @@ import DropdownMenu from "./components/DropdownMenu";
 
 import useTextFileLoader from "./hooks/useTextFileLoader.js";
 
+import { cache, loadAsset, unloadAsset } from "./helpers/FileCache";
+
 //import printObject from "../public/macbook/macbook.js";
 
 //console.log(JSON.stringify(printObject, null, 4));
@@ -67,6 +69,38 @@ function App() {
    };
 
    useEffect(() => {
+      //preload first animation of each topic
+      if (!deviceData) return;
+
+      // const getAsset = async (key, url) => {
+      //    const fetchImage = await loadAsset(key, url);
+      // };
+
+      for (let i = 0; i < deviceData.viewImages.length; i++) {
+         const url = "/" + deviceKey + "basxxssdlink" + deviceData.viewImages[i].link;
+         const key = "view-" + deviceData.views[i];
+         loadAsset(key, url);
+         // console.log("image promise?", image);
+      }
+
+      // console.log("curr cache", cache);
+      // const fetchAnimationData = async (key, url) => {
+      //    const data = await fetchImageAsDataURL(key, url);
+      // };
+
+      // // fetchAnimationData("largeAnimation1").then(() => {
+      // //    unloadAnimationData("largeAnimation1");
+      // // });
+
+      // const topic = deviceData.hotlinks[0].id;
+      // const link = deviceData.animationsObject[topic][0].link;
+      // const url = "/" + deviceKey + link;
+
+      // fetchAnimationData(topic, url);
+      // console.log("PRE CACHE", cache);
+   }, [deviceData]);
+
+   useEffect(() => {
       if (!deviceData) return;
 
       setViewIndex(deviceData.initialViewIndex || 0);
@@ -91,8 +125,6 @@ function App() {
       if (!deviceData.animationsObject[topicId] && !deviceData.animationsObject[topicId][subTopicIndex]) {
          title, text, animation, subTopicCount, status;
       }
-
-      console.log("data", deviceData);
 
       const currContent = deviceData.panelContent[topicId];
 
@@ -123,7 +155,6 @@ function App() {
    }
 
    const hotSpotData = deviceData.hotlinks.map((hotlink) => {
-      console.log("create hot", hotlink.id, hotlink.title);
       return {
          id: hotlink.id,
          x: hotlink.x,
