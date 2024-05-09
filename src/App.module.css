@@ -269,7 +269,8 @@
 
 .viewButton:disabled {
    opacity: 0.5;
-   cursor: not-allowed;
+   cursor: default;
+   /* cursor: not-allowed; */
    background-color: var(--button-purple);
 }
 @media screen and (max-width: 600px) {
