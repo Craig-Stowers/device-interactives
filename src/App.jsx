@@ -226,10 +226,8 @@ function App() {
 
    const showTopBorder = !removeWrapper && !isMobile;
 
-   console.log("xx subTopic", subTopicIndex);
-
    if (isDeviceSwitching) {
-      return <div>switching</div>;
+      return null;
    }
 
    return (
