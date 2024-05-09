@@ -291,10 +291,12 @@
 
 @media screen and (max-width: 480px) {
    .viewButton {
-      margin-left: 5px;
-      margin-right: 5px;
+      margin-left: 3px;
+      margin-right: 3px;
       min-width: 105px;
       height: 40px;
+      padding: 0;
+      width: 116px;
    }
    .viewButton:first-child {
       margin-left: auto;

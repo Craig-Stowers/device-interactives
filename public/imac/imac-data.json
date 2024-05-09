@@ -2,7 +2,7 @@
    "title": "iMac",
    "key": "imac",
    "views": ["front", "back"],
-   "viewButtons": ["View iMac front", "View iMac back"],
+   "viewButtons": ["View front", "View back"],
    "initialViewIndex": 0,
    "viewImages": [
       { "link": "/images/device_front.svg", "bracketHeight": 0.8, "bracketWidth": 1.14 },

@@ -2,7 +2,7 @@
    "title": "Windows desktop",
    "key": "desktop",
    "views": ["front"],
-   "viewButtons": ["View Desktop front"],
+   "viewButtons": ["View front"],
    "initialViewIndex": 0,
    "viewImages": [{ "link": "/images/device_front.svg", "bracketHeight": 0.68, "paddingX": 47 }],
    "hotlinks": [

@@ -2,7 +2,7 @@
    "key": "androidtablet",
    "title": "Android tablet",
    "views": ["front", "back"],
-   "viewButtons": ["View tablet front", "View tablet back"],
+   "viewButtons": ["View front", "View back"],
    "viewImages": [
       { "link": "/images/device_front.svg", "bracketHeight": 1.12, "paddingX": 27 },
       { "link": "/images/device_back.svg", "bracketHeight": 1.12, "paddingX": 27, "rotation": 180 }

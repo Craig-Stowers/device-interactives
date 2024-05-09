@@ -2,7 +2,7 @@
    "title": "iPad",
    "key": "ipad",
    "views": ["front", "back"],
-   "viewButtons": ["View iPad front", "View iPad back"],
+   "viewButtons": ["View front", "View back"],
    "viewImages": [
       { "link": "/images/device_front.svg", "bracketHeight": 1.22, "paddingX": 39 },
       { "link": "/images/device_back.svg", "bracketHeight": 1.22, "paddingX": 39 }

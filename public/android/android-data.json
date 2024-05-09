@@ -2,7 +2,7 @@
    "title": "Android phone",
    "key": "android",
    "views": ["front", "back"],
-   "viewButtons": ["View phone front", "View phone back"],
+   "viewButtons": ["View front", "View back"],
    "viewImages": [
       { "link": "/images/device_front.svg", "bracketHeight": 1.15 },
       { "link": "/images/device_back.svg", "bracketHeight": 1.15 }

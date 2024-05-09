@@ -3,7 +3,7 @@
    "key": "iphone",
    "views": ["front", "back"],
    "initialViewIndex": 0,
-   "viewButtons": ["View phone front", "View phone back"],
+   "viewButtons": ["View front", "View back"],
    "viewImages": [
       { "link": "/images/device_front.svg", "bracketHeight": 1.2 },
       { "link": "/images/device_back.svg", "bracketHeight": 1.2 }
