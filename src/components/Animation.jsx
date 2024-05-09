@@ -112,12 +112,11 @@ const Animation = ({ size, settings }) => {
             position: "absolute",
          }}
       >
-         {settings.isImage ? (
-            <img src={cachedData} />
-         ) : (
+         {settings.isImage && !loading && <img src={cachedData} />}
+
+         {!settings.isImage && !loading && (
             <div>
-               {/* <div style={{ width: "500px", height: "50px", backgroundColor: "red" }}>testing testing testing</div> */}
-               {<Lottie animationData={cachedData} loop={settings.loop} />}
+               <Lottie animationData={cachedData} loop={settings.loop} />
             </div>
          )}
 
