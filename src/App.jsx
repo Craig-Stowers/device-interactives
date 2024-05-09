@@ -225,7 +225,7 @@ function App() {
       });
    };
 
-   const showTopBorder = !removeWrapper && topBorder;
+   const showTopBorder = topBorder;
 
    if (isDeviceSwitching) {
       return null;
