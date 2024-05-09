@@ -51,7 +51,7 @@ export default function ChapterButtons({ count, ...props }) {
             className={styles.arrow}
             style={{ visibility: props.chapterIndex > 0 ? "visible" : "hidden" }}
             role="button"
-            tabindex="999"
+            tabIndex="999"
             onClick={handlePrevious}
          >
             {"<"}
@@ -73,7 +73,7 @@ export default function ChapterButtons({ count, ...props }) {
             className={styles.arrow}
             style={{ visibility: props.chapterIndex < count - 1 ? "visible" : "hidden" }}
             role="button"
-            tabindex="999"
+            tabIndex="999"
             onClick={handleNext}
          >
             {">"}

@@ -12,7 +12,7 @@ import DropdownMenu from "./components/DropdownMenu";
 
 import useTextFileLoader from "./hooks/useTextFileLoader.js";
 
-import { cache, loadAsset, unloadAsset } from "./helpers/FileCache";
+import { loadAsset, unloadAll, unloadAllBut } from "./helpers/FileCache";
 
 //import printObject from "../public/macbook/macbook.js";
 
@@ -32,7 +32,7 @@ const options = [
    { value: "laptop", disabled: false },
 ];
 
-const defaultDeviceKey = "iphone";
+const defaultDeviceKey = "laptop";
 
 function App() {
    const [width, height] = useWindowSize();
@@ -41,6 +41,7 @@ function App() {
    const [screen, setScreen] = useState("home");
    const [selectedImage, setSelectedImage] = useState(0);
    const [viewIndex, setViewIndex] = useState(null);
+   const [isDeviceSwitching, setIsDeviceSwitching] = useState(false);
 
    const [adminDeviceKey, setAdminDeviceKey] = useState(defaultDeviceKey);
 
@@ -66,46 +67,72 @@ function App() {
       setScreen("home");
       setTopicId(null);
       setSubTopicIndex(0);
+      setViewIndex(deviceData.initialViewIndex || 0);
+
+      // const keepCacheKeys = [];
+      // for (let i = 0; i < deviceData.viewImages.length; i++) {
+      //    const key = deviceKey + "-view-" + deviceData.views[i];
+      //    keepCacheKeys.push(key);
+      // }
+      // unloadAllBut(keepCacheKeys);
+   };
+
+   const cacheAnimation = (deviceKey, topicKey, subIndex) => {
+      if (!deviceData) return;
+      if (!deviceData.animationsObject[topicKey]) return;
+      if (!deviceData.animationsObject[topicKey][subIndex]) return;
+      const url = "/" + deviceKey + deviceData.animationsObject[topicKey][subIndex].link;
+      const cacheKey = deviceKey + "-" + topicKey + "-" + subIndex;
+
+      console.log("TEST LOAD", cacheKey, url);
+
+      loadAsset(cacheKey, url);
    };
 
    useEffect(() => {
-      //preload first animation of each topic
+      //preload views and first animations
       if (!deviceData) return;
 
-      // const getAsset = async (key, url) => {
-      //    const fetchImage = await loadAsset(key, url);
-      // };
+      //    const prefix = deviceKey;
+      //    Object.keys(cache).forEach(key => {
+      //       if (key.startsWith(prefix)) {
+      //           delete cache[key];
+      //           console.log(`Cache entry with key '${key}' has been removed.`);
+      //       }
+      //   });
+
+      setScreen("home");
+      setTopicId(null);
+      setSubTopicIndex(0);
+      setViewIndex(deviceData.initialViewIndex || 0);
 
       for (let i = 0; i < deviceData.viewImages.length; i++) {
-         const url = "/" + deviceKey + "basxxssdlink" + deviceData.viewImages[i].link;
-         const key = "view-" + deviceData.views[i];
+         const url = "/" + deviceKey + deviceData.viewImages[i].link;
+         const key = deviceKey + "-view-" + deviceData.views[i];
+         console.log("LOADING VIEW", key, url);
          loadAsset(key, url);
-         // console.log("image promise?", image);
       }
 
-      // console.log("curr cache", cache);
-      // const fetchAnimationData = async (key, url) => {
-      //    const data = await fetchImageAsDataURL(key, url);
-      // };
-
-      // // fetchAnimationData("largeAnimation1").then(() => {
-      // //    unloadAnimationData("largeAnimation1");
-      // // });
-
-      // const topic = deviceData.hotlinks[0].id;
-      // const link = deviceData.animationsObject[topic][0].link;
-      // const url = "/" + deviceKey + link;
-
-      // fetchAnimationData(topic, url);
-      // console.log("PRE CACHE", cache);
+      Object.keys(deviceData.animationsObject).forEach((key) => {
+         //  console.log("TEST PRELOAD ANIMATIONS", deviceKey);
+         cacheAnimation(deviceKey, key, 0);
+      });
    }, [deviceData]);
 
    useEffect(() => {
       if (!deviceData) return;
 
-      setViewIndex(deviceData.initialViewIndex || 0);
-      setScreen("home");
-   }, [deviceData]);
+      cacheAnimation(deviceKey, topicId, subTopicIndex);
+      cacheAnimation(deviceKey, topicId, subTopicIndex + 1);
+      //console.log("TEST key url", cacheKey, url);
+   }, [deviceKey, deviceData, topicId, subTopicIndex]);
+
+   useEffect(() => {
+      unloadAll();
+      if (isDeviceSwitching) {
+         setIsDeviceSwitching(false);
+      }
+   }, [isDeviceSwitching]);
 
    const { title, text, animation, subTopicCount, status } = useMemo(() => {
       let title = null;
@@ -116,9 +143,7 @@ function App() {
 
       if (!topicId || !deviceData) return { title, text, animation, subTopicCount, status };
 
-      console.log("test topic", topicId, deviceData.animationsObject[topicId]);
       if (deviceData.animationsObject[topicId] === undefined) {
-         console.log("undefined");
          return { title, text, animation, subTopicCount, status };
       }
 
@@ -134,6 +159,7 @@ function App() {
       animation = {
          ...deviceData.animationsObject[topicId][subTopicIndex],
          link,
+         cacheKey: deviceKey + "-" + topicId + "-" + subTopicIndex,
       };
 
       if (!link) status = "error";
@@ -165,15 +191,18 @@ function App() {
    });
 
    const filteredHotSpotData = hotSpotData.filter((hotlink) => hotlink.view === deviceData.views[viewIndex]);
-   console.log("pre image view", deviceData.viewImages[viewIndex]);
+
    const imageSettings = {
       ...deviceData.viewImages[viewIndex],
       link: deviceKey + deviceData.viewImages[viewIndex].link,
+      cacheKey: deviceKey + "-view-" + deviceData.views[viewIndex],
    };
 
    const handleDeviceSelect = (option) => {
+      setScreen("home");
       setAdminDeviceKey(option);
       setViewIndex(null);
+      setIsDeviceSwitching(true);
    };
 
    const handlePrintData = (newViewData) => {
@@ -187,11 +216,13 @@ function App() {
          }
          return object;
       });
-
-      console.log("outputData", outputData);
    };
 
    const showTopBorder = !removeWrapper && !isMobile;
+
+   console.log("xx subTopic", subTopicIndex);
+
+   if (isDeviceSwitching) return;
 
    return (
       <div className={`${styles.app} ${vertical ? "vertical" : "horizontal"} ${removeWrapper ? "nowrapper" : ""}`}>

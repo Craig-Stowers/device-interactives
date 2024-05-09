@@ -5,6 +5,7 @@ import withSizeObserver from "../hoc/withSizeObserver";
 import { isMobile } from "react-device-detect";
 
 import { hotlinks } from "../../public/imac/imac";
+import { cache, loadAsset } from "../helpers/FileCache";
 
 const defaultDimensions = { width: 800, height: 1080 };
 
@@ -16,6 +17,8 @@ const HotSpot = ({ hotSpotData, onLoadDetails, imageSettings, size, onPrintData,
    const [localHotSpotData, setLocalHotSpotData] = useState([...hotSpotData]);
    const [editIndex, setEditIndex] = useState(0);
    const [modAmount, setModAmount] = useState(1);
+
+   const [cacheExists, setCacheExists] = useState(false);
 
    useEffect(() => {
       setLocalHotSpotData(hotSpotData);
@@ -204,6 +207,11 @@ const HotSpot = ({ hotSpotData, onLoadDetails, imageSettings, size, onPrintData,
    //    return null;
    // }
 
+   let loadingImage = false;
+   const cachedData = cache[imageSettings.cacheKey];
+   if (!cachedData) loadingImage = true;
+   if (cachedData && cachedData instanceof Promise) loadingImage = true;
+
    return (
       <div
          style={{
@@ -220,60 +228,65 @@ const HotSpot = ({ hotSpotData, onLoadDetails, imageSettings, size, onPrintData,
             // border: "1px solid red",
          }}
       >
-         <img
-            src={imageSettings.link}
-            width={"100%"}
-            height={"100%"}
-            style={{
-               pointerEvents: "none",
-               position: "absolute",
-               left: "0px",
-               top: "0px",
-               transform: transforms,
-               // border: "2px solid green",
-               // ...(imageSettings.rotation ? { transform: `rotate(${imageSettings.rotation}deg)` } : {}),
-               // ...(imageSettings.scale ? { transform: `rotate(${imageSettings.rotation}deg)` } : {}),
-            }}
-         />
+         {loadingImage && <div>Loading...</div>}
+         {!loadingImage && (
+            <>
+               <img
+                  src={cachedData}
+                  width={"100%"}
+                  height={"100%"}
+                  style={{
+                     pointerEvents: "none",
+                     position: "absolute",
+                     left: "0px",
+                     top: "0px",
+                     transform: transforms,
+                     // border: "2px solid green",
+                     // ...(imageSettings.rotation ? { transform: `rotate(${imageSettings.rotation}deg)` } : {}),
+                     // ...(imageSettings.scale ? { transform: `rotate(${imageSettings.rotation}deg)` } : {}),
+                  }}
+               />
 
-         <div
-            style={{
-               position: "absolute",
-               top: "0px",
-               left: "0px",
-               // backgroundColor: "rgba(200,0,0,0.2)",
-               transform: scaleTransform,
-               width: "100%",
-               height: "100%",
-            }}
-         >
-            {localHotSpotData.map((hotlink, i) => {
-               const highlightWidth = Math.min(Math.max(130 * scale, 115), 140);
+               <div
+                  style={{
+                     position: "absolute",
+                     top: "0px",
+                     left: "0px",
+                     // backgroundColor: "rgba(200,0,0,0.2)",
+                     transform: scaleTransform,
+                     width: "100%",
+                     height: "100%",
+                  }}
+               >
+                  {localHotSpotData.map((hotlink, i) => {
+                     const highlightWidth = Math.min(Math.max(130 * scale, 115), 140);
 
-               const pulseBase = Math.max(50 * scale, 20);
-               const pulseWidth = highlightWidth * 0.14 + circleWidth * 0.3;
+                     const pulseBase = Math.max(50 * scale, 20);
+                     const pulseWidth = highlightWidth * 0.14 + circleWidth * 0.3;
 
-               const x = (hotlink.x / 80) * 100;
-               const y = (hotlink.y / 108) * 100;
-               const props = {
-                  left: `${x}%`,
-                  top: `${y}%`,
-                  text: hotlink.title,
-                  tabIndex: i,
-                  width: pulseWidth,
-                  highlightWidth: highlightWidth,
-                  adminSelected: editIndex === i,
-                  editMode,
-                  onSelected: () => handleSelected(hotlink.id),
-                  onUnselect: () => handleUnselected(hotlink.id),
-                  selected: selectedIndex === hotlink.id,
-                  onFocusEnter: handleFocusEnter,
-                  ref: (ref) => (hitboxRefs.current[hotlink.id] = ref),
-               };
+                     const x = (hotlink.x / 80) * 100;
+                     const y = (hotlink.y / 108) * 100;
+                     const props = {
+                        left: `${x}%`,
+                        top: `${y}%`,
+                        text: hotlink.title,
+                        tabIndex: i,
+                        width: pulseWidth,
+                        highlightWidth: highlightWidth,
+                        adminSelected: editIndex === i,
+                        editMode,
+                        onSelected: () => handleSelected(hotlink.id),
+                        onUnselect: () => handleUnselected(hotlink.id),
+                        selected: selectedIndex === hotlink.id,
+                        onFocusEnter: handleFocusEnter,
+                        ref: (ref) => (hitboxRefs.current[hotlink.id] = ref),
+                     };
 
-               return <Ring key={"ring-" + i} {...props} />;
-            })}
-         </div>
+                     return <Ring key={"ring-" + i} {...props} />;
+                  })}
+               </div>
+            </>
+         )}
       </div>
    );
 };

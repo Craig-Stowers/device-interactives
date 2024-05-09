@@ -2,103 +2,37 @@ import React, { useEffect, useState } from "react";
 
 import Lottie from "lottie-react";
 import withSizeObserver from "../hoc/withSizeObserver";
-import { cache } from "../helpers/FileCache";
+import { cache, loadAsset, onLoad } from "../helpers/FileCache";
 
 const Animation = ({ size, settings }) => {
    //const { isLoading } = useAnimationLoader();
 
    const [animationData, setAnimationData] = React.useState(null);
-   const [loading, setLoading] = React.useState(true);
+   const [loading, setLoading] = React.useState(false);
    const [showLoading, setShowLoading] = React.useState(false);
    const [loadingAnimationCycle, setLoadingAnimationCycle] = useState(0);
+   const [cacheUpdated, setCacheUpdated] = useState("");
    if (!settings) {
       console.error("No settings provided for Animation component");
       return null;
    }
 
-   const link = settings?.link.replace("./", "/");
-
-   useEffect(() => {
-      console.log("run loader delay", cache);
-      if (!loading) return;
-      const timer = setTimeout(() => {
-         if (!showLoading) {
-            //  console.log("change show loading");
-            setShowLoading(true);
-            return;
-         }
-      }, 400);
-      return () => clearTimeout(timer);
-   }, [loading]);
-
-   useEffect(() => {
-      const waitForImage = async (key) => {
-         if (cache[key]) {
-            console.log("FETCHING DATA");
-            try {
-               const data = await cache[key];
-               console.log("FOUND DATA", data);
-               return data;
-            } catch (error) {
-               console.error("Error fetching data:", error);
-            }
-         } else {
-            console.error("No data found for key:", key);
-         }
-      };
-      waitForImage("view-front");
-   }, []);
-   useEffect(() => {
-      //   console.log("run loader interval");
-      if (!loading || !showLoading) return;
-      const timer = setInterval(() => {
-         setLoadingAnimationCycle((prev) => (prev + 1) % 4);
-      }, 300);
-      return () => clearInterval(timer);
-   }, [loading, showLoading]);
-
-   useEffect(() => {
-      console.log("settings changed");
-      if (settings.isImage) {
-         setLoading(false);
-         return;
-      }
-      const controller = new AbortController();
-      const signal = controller.signal;
-
-      setLoading(true);
-      setShowLoading(false);
-      setLoadingAnimationCycle(0);
-
-      let timer = null;
-      let timer2 = null;
-
-      console.log("OLD FETCHING LINK", link);
-
-      fetch(link)
-         .then((response) => response.json())
-         .then((data) => {
-            //setLoading(false);
-            timer = setTimeout(() => {
-               setAnimationData(data);
-            }, 300);
-            timer2 = setTimeout(() => {
-               setLoading(false);
-            }, 400);
-         })
-         .catch((error) => console.error("Failed to load animation", error));
-
-      return () => {
-         controller.abort();
-         clearTimeout(timer);
-         clearTimeout(timer2);
-      };
-   }, [settings]);
-
    let animationWidth;
    let animationHeight;
    let left = 0;
    let top = 0;
+
+   useEffect(() => {
+      if (!settings.cacheKey) return;
+      const cachedData = cache[settings.cacheKey];
+      if (!cachedData || (cachedData && cachedData instanceof Promise)) {
+         console.log("TEST adding loader for", settings.cacheKey);
+         onLoad(() => {
+            console.log("TEST it loaded!");
+            setCacheUpdated(new Date().getTime());
+         }, settings.cacheKey);
+      }
+   }, [settings.cacheKey]);
 
    //contain logic (WIP)
 
@@ -156,6 +90,18 @@ const Animation = ({ size, settings }) => {
       }
    }
 
+   let loadingImage = false;
+   const cachedData = cache[settings.cacheKey];
+   console.log("TEST CACHE DATA", cachedData);
+   if (!cachedData) loadingImage = true;
+   if (cachedData && cachedData instanceof Promise) loadingImage = true;
+
+   if (loadingImage) {
+      console.log("still loading");
+   }
+
+   console.log("render animation", settings.cacheKey, cachedData);
+
    return (
       <div
          style={{
@@ -167,11 +113,11 @@ const Animation = ({ size, settings }) => {
          }}
       >
          {settings.isImage ? (
-            <img src={settings.link} />
+            <img src={cachedData} />
          ) : (
-            <div style={{ opacity: loading ? 0 : 1, transition: "opacity 0.30s" }}>
+            <div>
                {/* <div style={{ width: "500px", height: "50px", backgroundColor: "red" }}>testing testing testing</div> */}
-               {animationData && <Lottie animationData={animationData} loop={settings.loop} />}
+               {<Lottie animationData={cachedData} loop={settings.loop} />}
             </div>
          )}
 
