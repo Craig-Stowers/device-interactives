@@ -11,6 +11,7 @@ import { BrowserView, MobileView, isBrowser, isMobile } from "react-device-detec
 import DropdownMenu from "./components/DropdownMenu";
 
 import useTextFileLoader from "./hooks/useTextFileLoader.js";
+import _scorm from "./helpers/scorm.js";
 
 import { cache, loadAsset, unloadAll, unloadAllBut, unloadAsset } from "./helpers/FileCache";
 
@@ -18,7 +19,7 @@ import { cache, loadAsset, unloadAll, unloadAllBut, unloadAsset } from "./helper
 
 //console.log(JSON.stringify(printObject, null, 4));
 
-const adminMode = true;
+const adminMode = false;
 const editMode = false;
 
 const options = [
@@ -46,9 +47,11 @@ function App() {
 
    const [adminDeviceKey, setAdminDeviceKey] = useState(defaultDeviceKey);
 
-   const deviceKey = adminMode && adminDeviceKey ? adminDeviceKey : defaultDeviceKey;
+   const getKey = useTextFileLoader(`devicekey.json`)?.key;
+   const deviceKey = adminMode && adminDeviceKey ? adminDeviceKey : getKey;
+   const dataurl = deviceKey && `/${deviceKey}/${deviceKey}-data.json`;
 
-   const deviceData = useTextFileLoader(`${deviceKey}/${deviceKey}-data.json`);
+   const deviceData = useTextFileLoader(dataurl);
 
    const vertical = width / height < 1.15;
    const removeWrapper = useURLSearchParams("removewrapper") === "true";
@@ -80,6 +83,12 @@ function App() {
       }
       unloadAllBut(keepCacheKeys);
    };
+
+   useEffect(() => {
+      _scorm.initScorm();
+      _scorm.scormProcessSetValue("cmi.core.score.raw", "100");
+      _scorm.setLessonStatusComplete();
+   }, []);
 
    const cacheAnimation = (deviceKey, topicKey, subIndex) => {
       if (!deviceData) return;
@@ -319,9 +328,16 @@ function App() {
             )}
          </div>
 
-         <div style={{ position: "absolute", top: "0px", left: "0px" }}>
-            <DropdownMenu label="device" options={options} onSelect={handleDeviceSelect} selectedOption={deviceKey} />
-         </div>
+         {adminMode && (
+            <div style={{ position: "absolute", top: "0px", left: "0px" }}>
+               <DropdownMenu
+                  label="device"
+                  options={options}
+                  onSelect={handleDeviceSelect}
+                  selectedOption={deviceKey}
+               />
+            </div>
+         )}
       </div>
    );
 }

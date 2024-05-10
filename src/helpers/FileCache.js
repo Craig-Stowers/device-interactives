@@ -4,7 +4,7 @@ const onLoadCallbacks = {}; // Store callbacks for when data is loaded
 
 // Function to load animation data
 const fetchJSON = (key, path) => {
-   console.log("Attempting to fetch JSON data", key, path);
+   //  console.log("Attempting to fetch JSON data", key, path);
 
    if (!cache[key]) {
       const controller = new AbortController();
@@ -14,13 +14,13 @@ const fetchJSON = (key, path) => {
       cache[key] = fetch(path, { signal })
          .then((response) => {
             if (!response.ok) {
-               console.error(`HTTP error ${response.status} for ${path}`);
+               // console.error(`HTTP error ${response.status} for ${path}`);
                throw new Error(`HTTP error ${response.status}`);
             }
             return response.json(); // Process the response as JSON
          })
          .then((jsonData) => {
-            console.log(`JSON data processed for ${key}`);
+            // console.log(`JSON data processed for ${key}`);
             cache[key] = jsonData; // Cache the actual JSON data
             if (onLoadCallbacks[key]) {
                onLoadCallbacks[key].forEach((callback) => callback(jsonData));
@@ -30,7 +30,7 @@ const fetchJSON = (key, path) => {
             return jsonData;
          })
          .catch((error) => {
-            console.error("Error processing JSON data for key", key, error);
+            // console.error("Error processing JSON data for key", key, error);
             delete cache[key]; // Ensure cleanup on error
             delete fetchControllers[key]; // Clean up controller reference
             throw error;
@@ -45,7 +45,7 @@ const fetchJSON = (key, path) => {
 
 // Function to unload or delete animation data
 const unloadAsset = (key) => {
-   console.log("unload asset", key);
+   // console.log("unload asset", key);
    if (fetchControllers[key]) {
       fetchControllers[key].abort(); // Abort the fetch
       delete fetchControllers[key]; // Remove controller reference
@@ -83,13 +83,13 @@ const fetchImageAsDataURL = (key, path) => {
             //console.log("Received HTTP response for", response);
 
             if (!response.ok) {
-               console.error(`HTTP error ${response.status} for ${path}`);
+               // console.error(`HTTP error ${response.status} for ${path}`);
                throw new Error(`HTTP error ${response.status}`);
             }
             return response.blob();
          })
          .then((blob) => {
-            console.log(`Response Body: ${blob}`);
+            //  console.log(`Response Body: ${blob}`);
             return new Promise((resolve, reject) => {
                const reader = new FileReader();
                reader.onloadend = () => {
@@ -108,9 +108,9 @@ const fetchImageAsDataURL = (key, path) => {
             throw error;
          });
 
-      console.log("Cache entry (promise) stored for", path);
+      //  console.log("Cache entry (promise) stored for", path);
    } else {
-      console.log("Using existing cache entry for", path);
+      //  console.log("Using existing cache entry for", path);
    }
    return cache[key];
 };
@@ -149,7 +149,7 @@ const loadAsset = async (key, url = null) => {
       return fetchJSON(key, url);
    }
 
-   console.log("unhandled asset", assetType, key, url);
+   // console.log("unhandled asset", assetType, key, url);
 
    //console.log("key", key);
    //       if (asset.type === "json") {

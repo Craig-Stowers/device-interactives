@@ -10,6 +10,7 @@ lerna-debug.log*
 device-builds
 node_modules
 dist
+dist-all
 dist-ssr
 *.local
 
