@@ -20,7 +20,6 @@ const fetchJSON = (key, path) => {
             return response.json(); // Process the response as JSON
          })
          .then((jsonData) => {
-            // console.log(`JSON data processed for ${key}`);
             cache[key] = jsonData; // Cache the actual JSON data
             if (onLoadCallbacks[key]) {
                onLoadCallbacks[key].forEach((callback) => callback(jsonData));
@@ -52,7 +51,6 @@ const unloadAsset = (key) => {
    }
    if (cache[key]) {
       delete cache[key];
-      // console.log(`Cache entry and fetch for ${key} have been aborted and cleared.`);
    }
 };
 
@@ -135,7 +133,6 @@ const onLoad = (callback, key) => {
 const loadAsset = async (key, url = null) => {
    if (!url) {
       if (cache[key]) {
-         console.log("returning existing key data", key, cache[key]);
          return cache[key];
       }
    }

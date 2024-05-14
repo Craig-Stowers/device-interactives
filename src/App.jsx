@@ -15,11 +15,7 @@ import _scorm from "./helpers/scorm.js";
 
 import { cache, loadAsset, unloadAll, unloadAllBut, unloadAsset } from "./helpers/FileCache";
 
-//import printObject from "../public/macbook/macbook.js";
-
-//console.log(JSON.stringify(printObject, null, 4));
-
-const adminMode = false;
+const adminMode = true;
 const editMode = false;
 
 const options = [
@@ -47,9 +43,9 @@ function App() {
 
    const [adminDeviceKey, setAdminDeviceKey] = useState(defaultDeviceKey);
 
-   const getKey = useTextFileLoader(`devicekey.json`)?.key;
+   const getKey = useTextFileLoader(`./devicekey.json`)?.key;
    const deviceKey = adminMode && adminDeviceKey ? adminDeviceKey : getKey;
-   const dataurl = deviceKey && `/${deviceKey}/${deviceKey}-data.json`;
+   const dataurl = deviceKey && `./${deviceKey}/${deviceKey}-data.json`;
 
    const deviceData = useTextFileLoader(dataurl);
 
@@ -94,7 +90,7 @@ function App() {
       if (!deviceData) return;
       if (!deviceData.animationsObject[topicKey]) return;
       if (!deviceData.animationsObject[topicKey][subIndex]) return;
-      const url = "/" + deviceKey + "/" + deviceData.animationsObject[topicKey][subIndex].link;
+      const url = "./" + deviceKey + "/" + deviceData.animationsObject[topicKey][subIndex].link;
       const cacheKey = deviceKey + "-" + topicKey + "-" + subIndex;
 
       loadAsset(cacheKey, url);
@@ -102,9 +98,6 @@ function App() {
 
    useEffect(() => {
       if (!deviceData) return;
-
-      console.log("init for new device", deviceKey);
-      //preload views and first animations
 
       setScreen("home");
       setViewIndex(deviceData.initialViewIndex || 0);
@@ -123,7 +116,7 @@ function App() {
    const initCache = () => {
       console.log("init cache");
       for (let i = 0; i < deviceData.viewImages.length; i++) {
-         const url = "/" + deviceKey + deviceData.viewImages[i].link;
+         const url = "./" + deviceKey + deviceData.viewImages[i].link;
          const key = deviceKey + "-view-" + deviceData.views[i];
          loadAsset(key, url);
       }
@@ -192,7 +185,6 @@ function App() {
    if (status) if (!deviceData) return null;
 
    if (viewIndex == null) {
-      console.log("aborting viewIndex", viewIndex, deviceData.views[0]);
       return null;
    }
 
@@ -239,6 +231,21 @@ function App() {
    if (isDeviceSwitching) {
       return null;
    }
+
+   function appendParameter(param) {
+      const url = window.location.href;
+      // Check if the URL already has a '?' indicating a query string
+      if (url.includes("?")) {
+         // There is already a query string, so use '&'
+         return `${url}&${param}`;
+      } else {
+         // No query string, so start one with '?'
+         return `${url}?${param}`;
+      }
+   }
+
+   // Usage example
+   const fullscreenUrl = appendParameter("removewrapper=true");
 
    return (
       <div className={`${styles.app} ${vertical ? "vertical" : "horizontal"} ${removeWrapper ? "nowrapper" : ""}`}>
@@ -318,7 +325,7 @@ function App() {
                      <span>
                         You can also view the above interactive full screen in a <strong>new browser window</strong>.
                      </span>
-                     <a href="?removewrapper=true" target="_blank" className={styles.borderButton}>
+                     <a href={fullscreenUrl} target="_blank" className={styles.borderButton}>
                         <button>
                            <span>Launch </span>full screen <span>{">"}</span>
                         </button>

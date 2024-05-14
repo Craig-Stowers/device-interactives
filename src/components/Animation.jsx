@@ -26,9 +26,7 @@ const Animation = ({ size, settings }) => {
       if (!settings.cacheKey) return;
       const cachedData = cache[settings.cacheKey];
       if (!cachedData || (cachedData && cachedData instanceof Promise)) {
-         console.log("TEST adding loader for", settings.cacheKey);
          onLoad(() => {
-            console.log("TEST it loaded!");
             setCacheUpdated(new Date().getTime());
          }, settings.cacheKey);
       }
@@ -38,7 +36,6 @@ const Animation = ({ size, settings }) => {
 
    //cover logic here
    if (settings.focusBox) {
-      console.log("has focus box ==============================");
       const animationRatio = 800 / 1080;
       const containerRatio = size.width / size.height;
       const focusRatio = settings.focusBox.width / settings.focusBox.height;
@@ -92,15 +89,27 @@ const Animation = ({ size, settings }) => {
 
    let loadingImage = false;
    const cachedData = cache[settings.cacheKey];
-   console.log("TEST CACHE DATA", cachedData);
+
    if (!cachedData) loadingImage = true;
    if (cachedData && cachedData instanceof Promise) loadingImage = true;
 
    if (loadingImage) {
-      console.log("still loading");
+      return (
+         <div
+            style={{
+               position: "absolute",
+               left: "50%",
+               top: "50%",
+               color: "white",
+               transform: "translate(-50%, -50%)",
+               fontSize: "32px",
+               fontWeight: "bold",
+            }}
+         >
+            Loading...
+         </div>
+      );
    }
-
-   console.log("render animation", settings.cacheKey, cachedData);
 
    return (
       <div

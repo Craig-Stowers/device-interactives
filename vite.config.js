@@ -4,5 +4,6 @@ import svgr from "vite-plugin-svgr";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+   base: "./", // Sets the base path to be relative to the current directory
    plugins: [react(), svgr()],
 });

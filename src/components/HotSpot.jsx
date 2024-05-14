@@ -4,7 +4,6 @@ import Ring from "./Ring";
 import withSizeObserver from "../hoc/withSizeObserver";
 import { isMobile } from "react-device-detect";
 
-import { hotlinks } from "../../public/imac/imac";
 import { cache, loadAsset } from "../helpers/FileCache";
 
 const defaultDimensions = { width: 800, height: 1080 };
@@ -31,15 +30,15 @@ const HotSpot = ({ hotSpotData, onLoadDetails, imageSettings, size, onPrintData,
          switch (event.key) {
             case "ArrowUp":
                modifyLocalData(editIndex, 0, -modAmount);
-               console.log("Pressed UP");
+
                break;
             case "ArrowDown":
                modifyLocalData(editIndex, 0, modAmount);
-               console.log("Pressed DOWN");
+
                break;
             case "ArrowLeft":
                modifyLocalData(editIndex, -modAmount, 0);
-               console.log("Pressed LEFT");
+
                break;
             case "ArrowRight":
                modifyLocalData(editIndex, modAmount, 0);
@@ -70,12 +69,10 @@ const HotSpot = ({ hotSpotData, onLoadDetails, imageSettings, size, onPrintData,
                if (userInput !== null) {
                   const numberInput = Number(userInput); // Converts the input to a number
                   if (!isNaN(numberInput)) {
-                     console.log("User entered a valid number:", numberInput);
                      if (numberInput < 0) return;
                      if (numberInput >= localHotSpotData.length) return;
                      setEditIndex(numberInput);
                   } else {
-                     console.log("User did not enter a valid number.");
                   }
                }
                break;
@@ -144,8 +141,6 @@ const HotSpot = ({ hotSpotData, onLoadDetails, imageSettings, size, onPrintData,
    const [newWidth, newHeight] = useMemo(() => {
       let width = 0;
       let height = 0;
-
-      console.log("change image scale");
 
       const newDimensions = { ...defaultDimensions };
 
@@ -237,7 +232,21 @@ const HotSpot = ({ hotSpotData, onLoadDetails, imageSettings, size, onPrintData,
             // border: "1px solid red",
          }}
       >
-         {loadingImage && <div>Loading...</div>}
+         {loadingImage && (
+            <div
+               style={{
+                  position: "absolute",
+                  left: "50%",
+                  top: "50%",
+                  color: "white",
+                  transform: "translate(-50%, -50%)",
+                  fontSize: "32px",
+                  fontWeight: "bold",
+               }}
+            >
+               Loading...
+            </div>
+         )}
          {!loadingImage && (
             <>
                <img

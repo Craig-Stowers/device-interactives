@@ -18,7 +18,7 @@ export default function useAnimationLoader() {
          animations.current = await res;
          setIsLoading(false);
       }
-      console.log("load animation", animationsObject);
+
       fetchAllAnimations(animationsObject);
    }, []);
 

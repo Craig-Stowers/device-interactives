@@ -40,7 +40,7 @@ export default function ChapterButtons({ count, ...props }) {
    const handleNext = () => {
       if (props.chapterIndex === count - 1) return;
       const nextIndex = props.chapterIndex + 1;
-      console.log("chapterIndex", props.chapterIndex);
+
       props.onChapterChange(nextIndex);
    };
 

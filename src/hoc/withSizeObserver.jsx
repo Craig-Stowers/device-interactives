@@ -10,7 +10,6 @@ function withSizeObserver(WrappedComponent) {
          if (containerRef.current) {
             const observeTarget = containerRef.current;
             const resizeObserver = new ResizeObserver((entries) => {
-               console.log("resizing");
                if (!Array.isArray(entries) || !entries.length) {
                   return;
                }
@@ -22,7 +21,6 @@ function withSizeObserver(WrappedComponent) {
             resizeObserver.observe(observeTarget);
 
             const mutationObserver = new MutationObserver(() => {
-               console.log("observe!!! scale");
                // this.calculateScale();
                //this.notify();
             });
