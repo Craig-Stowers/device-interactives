@@ -18,8 +18,8 @@
    background-color: var(--white-background);
    display: flex;
    flex-direction: column;
-   padding-left: 30px;
-   padding-right: 30px;
+   /* padding-left: 30px;
+   padding-right: 30px; */
    box-sizing: border-box;
 }
 

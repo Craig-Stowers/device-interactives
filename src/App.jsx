@@ -50,7 +50,8 @@ function App() {
    const deviceData = useTextFileLoader(dataurl);
 
    const vertical = width / height < 1.15;
-   const removeWrapper = useURLSearchParams("removewrapper") === "true";
+
+   const removeWrapper = true; //useURLSearchParams("removewrapper") === "true";
    const topBorder = useURLSearchParams("topborder") === "true";
 
    const handleChapterChange = (i) => {
