@@ -12,10 +12,11 @@ import DropdownMenu from "./components/DropdownMenu";
 
 import useTextFileLoader from "./hooks/useTextFileLoader.js";
 import _scorm from "./helpers/scorm.js";
+import icon_close from "./assets/icon-close.svg";
 
 import { cache, loadAsset, unloadAll, unloadAllBut, unloadAsset } from "./helpers/FileCache";
 
-const adminMode = true;
+const adminMode = false;
 const editMode = false;
 
 const options = [
@@ -248,6 +249,24 @@ function App() {
    // Usage example
    const fullscreenUrl = appendParameter("removewrapper=true");
 
+   function simulateHiddenButtonClick() {
+      const container = document.getElementById("exitbuttonpanel");
+      if (container) {
+         const firstLink = container.querySelector("a");
+         if (firstLink) {
+            // Simulate a click on the first <a> element
+            firstLink.click();
+         } else {
+            console.error("No <a> element found inside the container");
+         }
+      } else {
+         console.error("Button conatiner not found");
+      }
+   }
+
+   // Add event listener to your custom button
+   // document.getElementById('customButton').addEventListener('click', simulateHiddenButtonClick);
+
    return (
       <div className={`${styles.app} ${vertical ? "vertical" : "horizontal"} ${removeWrapper ? "nowrapper" : ""}`}>
          <div className={styles.fullScreen}>
@@ -256,6 +275,7 @@ function App() {
                   <h1>{deviceData.title}</h1>
                </div>
             )}
+
             <div className={styles.content}>
                {screen === "info" && (
                   <>
@@ -282,41 +302,50 @@ function App() {
                )}
 
                {screen === "home" && (
-                  <div className={styles.hotSpotContainer}>
-                     {!showTopBorder && (
-                        <div className={styles.altTitleContainerHome}>
-                           <h1>{deviceData.title}</h1>
+                  <>
+                     <button
+                        className={`${styles.viewButton} ${styles.closeButton}`}
+                        onClick={() => simulateHiddenButtonClick()}
+                        // style={{ opacity: disabled ? 0.5 : 1 }}
+                     >
+                        <img src={icon_close} alt="Close" />
+                     </button>
+                     <div className={styles.hotSpotContainer}>
+                        {!showTopBorder && (
+                           <div className={styles.altTitleContainerHome}>
+                              <h1>{deviceData.title}</h1>
+                           </div>
+                        )}
+                        <div className={styles.hotSpotInner}>
+                           <HotSpot
+                              hotSpotData={filteredHotSpotData}
+                              onLoadDetails={handleLoadDetails}
+                              imageSettings={imageSettings}
+                              onPrintData={handlePrintData}
+                              editMode={editMode}
+                           />
                         </div>
-                     )}
-                     <div className={styles.hotSpotInner}>
-                        <HotSpot
-                           hotSpotData={filteredHotSpotData}
-                           onLoadDetails={handleLoadDetails}
-                           imageSettings={imageSettings}
-                           onPrintData={handlePrintData}
-                           editMode={editMode}
-                        />
-                     </div>
 
-                     {deviceData.views.length > 1 && (
-                        <div className={styles.viewButtonsContainer}>
-                           {deviceData.views.map((view, i) => {
-                              const disabled = i === viewIndex;
-                              return (
-                                 <button
-                                    key={"viewbtn" + i}
-                                    disabled={disabled}
-                                    className={`${styles.viewButton}`}
-                                    onClick={() => setViewIndex(i)}
-                                    // style={{ opacity: disabled ? 0.5 : 1 }}
-                                 >
-                                    {deviceData.viewButtons[i]}
-                                 </button>
-                              );
-                           })}
-                        </div>
-                     )}
-                  </div>
+                        {deviceData.views.length > 1 && (
+                           <div className={styles.viewButtonsContainer}>
+                              {deviceData.views.map((view, i) => {
+                                 const disabled = i === viewIndex;
+                                 return (
+                                    <button
+                                       key={"viewbtn" + i}
+                                       disabled={disabled}
+                                       className={`${styles.viewButton}`}
+                                       onClick={() => setViewIndex(i)}
+                                       // style={{ opacity: disabled ? 0.5 : 1 }}
+                                    >
+                                       {deviceData.viewButtons[i]}
+                                    </button>
+                                 );
+                              })}
+                           </div>
+                        )}
+                     </div>
+                  </>
                )}
             </div>
 
