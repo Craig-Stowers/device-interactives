@@ -16,7 +16,7 @@ import icon_close from "./assets/icon-close.svg";
 
 import { cache, loadAsset, unloadAll, unloadAllBut, unloadAsset } from "./helpers/FileCache";
 
-const adminMode = false;
+const adminMode = true;
 const editMode = false;
 
 const options = [
