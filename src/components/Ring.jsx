@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, forwardRef } from "react";
 import styles from "./Ring.module.css";
-import { isMobile, isTablet } from "react-device-detect";
+//import { isMobile, isTablet } from "react-device-detect";
 
 const Ring = forwardRef(
     (
@@ -23,10 +23,12 @@ const Ring = forwardRef(
         const renderedWidthRef = useRef(width);
         const targetWidthRef = useRef(width);
         const [renderedWidth, setRenderedWidth] = useState(width);
+
+        const [isTouchDevice, setIsTouchDevice] = useState(true);
         //const hitCircleRef = useRef(null);
         const touchOffRef = useRef(null);
 
-        const isTouchDevice = isMobile || isTablet;
+        //  const isTouchDevice = isMobile || isTablet;
 
         useEffect(() => {
             // console.log("isTouchDevice", isTouchDevice);
@@ -96,14 +98,17 @@ const Ring = forwardRef(
         // }, [hovering]);
 
         const handleTouchStart = (event) => {
-            if (!isTouchDevice) return;
+            setIsTouchDevice(true);
+            //  if (!isTouchDevice) return;
+
             onSelected();
         };
 
         const handleMouseClick = (event) => {};
 
         const handleMouseOver = () => {
-            onSelected();
+            setIsTouchDevice(false);
+            onSelected(true);
             // if (isTouchDevice) return;
             // setHovering(true);
         };
@@ -125,12 +130,15 @@ const Ring = forwardRef(
         const offsetLeft = `-${svgWidth / 2}px`;
 
         let hitBoxRadius = svgWidth * 0.15;
-        if (selected && isTouchDevice) {
+        if (selected) {
             hitBoxRadius = svgWidth * 0.4;
         }
-        if (selected && !isTouchDevice) {
-            hitBoxRadius = svgWidth * 0.5;
-        }
+        // if (selected && isTouchDevice) {
+        //     hitBoxRadius = svgWidth * 0.4;
+        // }
+        // if (selected && !isTouchDevice) {
+        //     hitBoxRadius = svgWidth * 0.5;
+        // }
 
         // const hitBoxRadius =
         //     selected && isTouchDevice ? svgWidth * 0.4 : svgWidth * 0.15;
@@ -197,7 +205,7 @@ const Ring = forwardRef(
                         height={svgWidth}
                         viewBox={`0 0 ${svgWidth} ${svgWidth}`}
                         style={{
-                            ...((adminSelected && editMode) || isTouchDevice
+                            ...(adminSelected && editMode
                                 ? { outline: "3px solid green" }
                                 : {}),
                         }}

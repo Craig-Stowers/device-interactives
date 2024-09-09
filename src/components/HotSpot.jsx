@@ -19,14 +19,16 @@ const HotSpot = ({
     const [circleWidth, setCircleWidth] = useState(50);
     const [selectedIndex, setSelectedIndex] = useState(null);
     const hitboxRefs = useRef({});
+    const clicks = useRef(0);
 
     const [localHotSpotData, setLocalHotSpotData] = useState([...hotSpotData]);
     const [editIndex, setEditIndex] = useState(0);
     const [modAmount, setModAmount] = useState(1);
+    const [isTouchDevice, setIsTouchDevice] = useState(true);
 
     const [cacheExists, setCacheExists] = useState(false);
 
-    const isTouchDevice = isMobile || isTablet;
+    //  const isTouchDevice = isMobile || isTablet;
 
     useEffect(() => {
         setLocalHotSpotData(hotSpotData);
@@ -118,6 +120,10 @@ const HotSpot = ({
     };
 
     useEffect(() => {
+        clicks.current = 0;
+    }, [selectedIndex]);
+
+    useEffect(() => {
         function pulse() {
             const time = (Date.now() / 1000) * 0.4; // Apply speed factor
             const scale = Math.sin(time * Math.PI) * 20 + 50; // Adjust frequency based on speed
@@ -130,13 +136,13 @@ const HotSpot = ({
 
         const interval = setInterval(pulse, 16); // Update the size every 50 milliseconds
         // return () => clearInterval(interval); // Cleanup the interval when the component unmounts
-        let clicks = 0;
 
         const mouseDown = (e) => {
             if (e.target === hitboxRefs.current[selectedIndex]) {
+                console.log("touch device", isTouchDevice);
                 if (isTouchDevice) {
-                    clicks++;
-                    if (clicks >= 2) {
+                    clicks.current++;
+                    if (clicks.current >= 2) {
                         onLoadDetails(selectedIndex);
                     }
                 } else {
@@ -153,7 +159,7 @@ const HotSpot = ({
 
             window.removeEventListener("mousedown", mouseDown);
         };
-    }, [selectedIndex]);
+    }, [selectedIndex, isTouchDevice]);
 
     // console.log("containerRatio", containerRatio, "newRatio", newRatio);
 
@@ -200,7 +206,12 @@ const HotSpot = ({
         return [width, height];
     }, [size, imageSettings]);
 
-    const handleSelected = (i) => {
+    const handleSelected = (i, isMouse) => {
+        if (isMouse) {
+            setIsTouchDevice(false);
+        } else {
+            setIsTouchDevice(true);
+        }
         setSelectedIndex(i);
     };
 
@@ -326,7 +337,8 @@ const HotSpot = ({
                                 highlightWidth: highlightWidth,
                                 adminSelected: editIndex === i,
                                 editMode,
-                                onSelected: () => handleSelected(hotlink.id),
+                                onSelected: (isTouch) =>
+                                    handleSelected(hotlink.id, isTouch),
                                 onUnselect: () => handleUnselected(hotlink.id),
                                 selected: selectedIndex === hotlink.id,
                                 onFocusEnter: handleFocusEnter,
