@@ -137,15 +137,11 @@ const HotSpot = ({
         const interval = setInterval(pulse, 16); // Update the size every 50 milliseconds
         // return () => clearInterval(interval); // Cleanup the interval when the component unmounts
 
-        const mouseDown = (e) => {
+        const handleTouchStart = (e) => {
+            e.preventDefault();
             if (e.target === hitboxRefs.current[selectedIndex]) {
-                console.log("touch device", isTouchDevice);
-                if (isTouchDevice) {
-                    clicks.current++;
-                    if (clicks.current >= 2) {
-                        onLoadDetails(selectedIndex);
-                    }
-                } else {
+                clicks.current++;
+                if (clicks.current >= 2) {
                     onLoadDetails(selectedIndex);
                 }
                 return;
@@ -153,13 +149,22 @@ const HotSpot = ({
             setSelectedIndex(null);
         };
 
+        const mouseDown = (e) => {
+            if (e.target === hitboxRefs.current[selectedIndex]) {
+                onLoadDetails(selectedIndex);
+                return;
+            }
+            setSelectedIndex(null);
+        };
+
         window.addEventListener("mousedown", mouseDown);
+        window.addEventListener("touchstart", handleTouchStart);
         return () => {
             clearInterval(interval);
 
             window.removeEventListener("mousedown", mouseDown);
         };
-    }, [selectedIndex, isTouchDevice]);
+    }, [selectedIndex]);
 
     // console.log("containerRatio", containerRatio, "newRatio", newRatio);
 
@@ -207,11 +212,6 @@ const HotSpot = ({
     }, [size, imageSettings]);
 
     const handleSelected = (i, isMouse) => {
-        if (isMouse) {
-            setIsTouchDevice(false);
-        } else {
-            setIsTouchDevice(true);
-        }
         setSelectedIndex(i);
     };
 
