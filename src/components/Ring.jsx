@@ -197,7 +197,7 @@ const Ring = forwardRef(
                         height={svgWidth}
                         viewBox={`0 0 ${svgWidth} ${svgWidth}`}
                         style={{
-                            ...(adminSelected && editMode
+                            ...((adminSelected && editMode) || isTouchDevice
                                 ? { outline: "3px solid green" }
                                 : {}),
                         }}
