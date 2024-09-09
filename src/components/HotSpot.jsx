@@ -137,19 +137,29 @@ const HotSpot = ({
         const interval = setInterval(pulse, 16); // Update the size every 50 milliseconds
         // return () => clearInterval(interval); // Cleanup the interval when the component unmounts
 
+        let touchStartTriggered = false;
         const handleTouchStart = (e) => {
             e.preventDefault();
+            touchStartTriggered = true;
             if (e.target === hitboxRefs.current[selectedIndex]) {
                 clicks.current++;
                 if (clicks.current >= 2) {
                     onLoadDetails(selectedIndex);
+                } else {
+                    setSelectedIndex(selectedIndex);
                 }
                 return;
             }
             setSelectedIndex(null);
         };
 
+        const handleTouchEnd = (e) => {
+            e.preventDefault();
+            touchStartTriggered = false;
+        };
+
         const mouseDown = (e) => {
+            if (touchStartTriggered) return;
             if (e.target === hitboxRefs.current[selectedIndex]) {
                 onLoadDetails(selectedIndex);
                 return;
@@ -159,9 +169,11 @@ const HotSpot = ({
 
         window.addEventListener("mousedown", mouseDown);
         window.addEventListener("touchstart", handleTouchStart);
+        window.addEventListener("touchend", handleTouchEnd);
         return () => {
             clearInterval(interval);
-
+            window.removeEventListener("touchstart", handleTouchStart);
+            window.removeEventListener("touchend", handleTouchEnd);
             window.removeEventListener("mousedown", mouseDown);
         };
     }, [selectedIndex]);
