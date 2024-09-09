@@ -140,8 +140,9 @@ const HotSpot = ({
         let touchStartTriggered = false;
         const handleTouchStart = (e) => {
             e.preventDefault();
-            touchStartTriggered = true;
             if (e.target === hitboxRefs.current[selectedIndex]) {
+                touchStartTriggered = true;
+                //  e.preventDefault();
                 clicks.current++;
                 if (clicks.current >= 2) {
                     onLoadDetails(selectedIndex);
@@ -153,9 +154,12 @@ const HotSpot = ({
             setSelectedIndex(null);
         };
 
+        let touchTimeout;
+
         const handleTouchEnd = (e) => {
-            e.preventDefault();
-            touchStartTriggered = false;
+            touchTimeout = setTimeout(() => {
+                touchStartTriggered = false;
+            }, 100);
         };
 
         const mouseDown = (e) => {
@@ -172,6 +176,7 @@ const HotSpot = ({
         window.addEventListener("touchend", handleTouchEnd);
         return () => {
             clearInterval(interval);
+            if (touchTimeout) clearTimeout(touchTimeout);
             window.removeEventListener("touchstart", handleTouchStart);
             window.removeEventListener("touchend", handleTouchEnd);
             window.removeEventListener("mousedown", mouseDown);
